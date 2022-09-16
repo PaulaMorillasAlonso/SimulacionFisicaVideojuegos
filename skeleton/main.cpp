@@ -87,6 +87,7 @@ void cleanupPhysics(bool interactive)
 	transport->release();
 	
 	gFoundation->release();
+	delete part;
 	}
 
 // Function called when a key is pressed
