@@ -32,6 +32,8 @@ PxDefaultCpuDispatcher*	gDispatcher = NULL;
 PxScene*				gScene      = NULL;
 ContactReportCallback gContactReportCallback;
 Particle* part;
+Particle* suelo;
+Particle* diana;
 std::vector<Proyectil*> bullet;
 
 
@@ -59,9 +61,11 @@ void initPhysics(bool interactive)
 	sceneDesc.simulationEventCallback = &gContactReportCallback;
 	gScene = gPhysics->createScene(sceneDesc);
 
-	auto pos= physx::PxTransform(0,0,0);
-	//auto plano = new RenderItem(CreateShape(physx::PxBoxGeometry(20, 1, 30)),&pos, { 0,0,0,1 });
+	auto floor = CreateShape(physx::PxBoxGeometry(300, 1, 300));
+	suelo = new Particle({ 5,30,5 }, { 0,0,0 }, { 0,0,0 }, 0, floor, {0,0.9,0,1});
 
+	auto round = CreateShape(physx::PxBoxGeometry(10, 10, 1));
+	diana = new Particle({ 7,50,7 }, { 0,0,0 }, { 0,0,0 }, 0, round, {0.8,0,0,1});
 }
 
 
@@ -78,6 +82,10 @@ void stepPhysics(bool interactive, double t)
 	{
 		if (bullet[i] != nullptr) {
 			bullet[i]->integrate(t);
+			if (bullet[i]->getPos().y <=suelo->getPos().y)  {
+
+				bullet.erase(bullet.begin()+i);
+			}
 		}
 	}
 }
@@ -114,18 +122,21 @@ void keyPress(unsigned char key, const PxTransform& camera)
 	switch(toupper(key))
 	{
 	case '1': 
-		bullet.push_back(new Proyectil(Proyectil::BULLET, GetCamera()->getTransform().p, GetCamera()->getDir()));
+	
+		bullet.push_back(new Proyectil(Proyectil::BULLET, GetCamera()->getTransform().p, GetCamera()->getDir(), {0.3,0.3,0.3,1}));
 		break;
 	case '2':
-		bullet.push_back(new Proyectil(Proyectil::CANNON, GetCamera()->getTransform().p, GetCamera()->getDir()));
+		
+		bullet.push_back(new Proyectil(Proyectil::CANNON, GetCamera()->getTransform().p, GetCamera()->getDir(), { 0.2,0.2,0.2,1 }));
 		break;
 	case '3':
-		bullet.push_back(new Proyectil(Proyectil::FIREBALL, GetCamera()->getTransform().p, GetCamera()->getDir()));
+		
+		bullet.push_back(new Proyectil(Proyectil::FIREBALL, GetCamera()->getTransform().p, GetCamera()->getDir(), {0.9,0.1,0.2,1}));
 		break;
 	case '4':	
-		bullet.push_back(new Proyectil(Proyectil::LASER, GetCamera()->getTransform().p, GetCamera()->getDir()));
+
+		bullet.push_back(new Proyectil(Proyectil::LASER, GetCamera()->getTransform().p, GetCamera()->getDir(), {0.2,1,1,1}));
 		break;
-	
 	/*case ' ':
 	{
 		break;
