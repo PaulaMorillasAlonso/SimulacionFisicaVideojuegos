@@ -3,6 +3,7 @@
 #include <PxPhysicsAPI.h>
 
 #include <vector>
+#include <list>
 
 #include "core.hpp"
 #include "RenderUtils.hpp"
@@ -10,6 +11,7 @@
 
 #include <iostream>
 #include "Particle.h"
+#include "Proyectil.h"
 
 
 
@@ -30,6 +32,8 @@ PxDefaultCpuDispatcher*	gDispatcher = NULL;
 PxScene*				gScene      = NULL;
 ContactReportCallback gContactReportCallback;
 Particle* part;
+std::vector<Proyectil*> bullet;
+
 
 // Initialize physics engine
 void initPhysics(bool interactive)
@@ -54,9 +58,11 @@ void initPhysics(bool interactive)
 	sceneDesc.filterShader = contactReportFilterShader;
 	sceneDesc.simulationEventCallback = &gContactReportCallback;
 	gScene = gPhysics->createScene(sceneDesc);
-	part = new Particle({ 0,0,0 }, { 8,8,0 }, { 2,2,0 }, .1);
 
-	}
+	auto pos= physx::PxTransform(0,0,0);
+	//auto plano = new RenderItem(CreateShape(physx::PxBoxGeometry(20, 1, 30)),&pos, { 0,0,0,1 });
+
+}
 
 
 // Function to configure what happens in each step of physics
@@ -68,7 +74,12 @@ void stepPhysics(bool interactive, double t)
 
 	gScene->simulate(t);
 	gScene->fetchResults(true);
-	part->integrate(t);
+	for (int i = 0; i < bullet.size(); i++)
+	{
+		if (bullet[i] != nullptr) {
+			bullet[i]->integrate(t);
+		}
+	}
 }
 
 // Function to clean data
@@ -87,8 +98,13 @@ void cleanupPhysics(bool interactive)
 	transport->release();
 	
 	gFoundation->release();
-	delete part;
+
+	for (int i = 0; i < bullet.size(); i++)
+	{
+		delete bullet[i];
 	}
+
+}
 
 // Function called when a key is pressed
 void keyPress(unsigned char key, const PxTransform& camera)
@@ -97,12 +113,23 @@ void keyPress(unsigned char key, const PxTransform& camera)
 
 	switch(toupper(key))
 	{
-	//case 'B': break;
-	//case ' ':	break;
-	case ' ':
+	case '1': 
+		bullet.push_back(new Proyectil(Proyectil::BULLET, GetCamera()->getTransform().p, GetCamera()->getDir()));
+		break;
+	case '2':
+		bullet.push_back(new Proyectil(Proyectil::CANNON, GetCamera()->getTransform().p, GetCamera()->getDir()));
+		break;
+	case '3':
+		bullet.push_back(new Proyectil(Proyectil::FIREBALL, GetCamera()->getTransform().p, GetCamera()->getDir()));
+		break;
+	case '4':	
+		bullet.push_back(new Proyectil(Proyectil::LASER, GetCamera()->getTransform().p, GetCamera()->getDir()));
+		break;
+	
+	/*case ' ':
 	{
 		break;
-	}
+	}*/
 	default:
 		break;
 	}
