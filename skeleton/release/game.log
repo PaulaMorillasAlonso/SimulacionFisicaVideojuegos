@@ -1,0 +1,37 @@
+﻿  main.cpp
+  Particle.cpp
+  ParticleGenerator.cpp
+  ParticleSystem.cpp
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\common\PhysX-3.4\PxShared\include\task\PxTask.h(329,1): warning C5220: "physx::PxLightCpuTask::mRefCount": un miembro de datos no estático con un tipo calificado volátil ya no implica
+           que los constructores de copia/movimiento generados por el compilador y los operadores de asignación de copia o movimiento no sean triviales (compilando archivo de origen Particle.cpp)
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\common\PhysX-3.4\PxShared\include\task\PxTask.h(326): message : vea la declaración de 'physx::PxLightCpuTask::mRefCount' (compilando archivo de origen Particle.cpp)
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\common\PhysX-3.4\PxShared\include\task\PxTask.h(329,1): warning C5220: "physx::PxLightCpuTask::mRefCount": un miembro de datos no estático con un tipo calificado volátil ya no implica
+           que los constructores de copia/movimiento generados por el compilador y los operadores de asignación de copia o movimiento no sean triviales (compilando archivo de origen main.cpp)
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\common\PhysX-3.4\PxShared\include\task\PxTask.h(326): message : vea la declaración de 'physx::PxLightCpuTask::mRefCount' (compilando archivo de origen main.cpp)
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\common\PhysX-3.4\PxShared\include\task\PxTask.h(329,1): warning C5220: "physx::PxLightCpuTask::mRefCount": un miembro de datos no estático con un tipo calificado volátil ya no implica
+           que los constructores de copia/movimiento generados por el compilador y los operadores de asignación de copia o movimiento no sean triviales (compilando archivo de origen ParticleGenerator.cpp)
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\common\PhysX-3.4\PxShared\include\task\PxTask.h(326): message : vea la declaración de 'physx::PxLightCpuTask::mRefCount' (compilando archivo de origen ParticleGenerator.cpp)
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\common\PhysX-3.4\PxShared\include\task\PxTask.h(329,1): warning C5220: "physx::PxLightCpuTask::mRefCount": un miembro de datos no estático con un tipo calificado volátil ya no implica
+           que los constructores de copia/movimiento generados por el compilador y los operadores de asignación de copia o movimiento no sean triviales (compilando archivo de origen ParticleSystem.cpp)
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\common\PhysX-3.4\PxShared\include\task\PxTask.h(326): message : vea la declaración de 'physx::PxLightCpuTask::mRefCount' (compilando archivo de origen ParticleSystem.cpp)
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\ParticleGenerator.h(18,1): warning C4265: "ParticleGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente (compilando archivo de origen ParticleSystem.cpp)
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\ParticleGenerator.h(18,1): warning C4265: "ParticleGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente (compilando archivo de origen ParticleGenerator.cpp)
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\ParticleGenerator.cpp(3,47): warning C4100: 'model': parámetro formal sin referencia
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\ParticleSystem.cpp(3,36): warning C4100: 't': parámetro formal sin referencia
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\main.cpp(81,20): warning C4388: '<': no coinciden signed/unsigned
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\main.cpp(110,20): warning C4388: '<': no coinciden signed/unsigned
+  Proyectil.cpp
+  UniformParticleGenerator.cpp
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\common\PhysX-3.4\PxShared\include\task\PxTask.h(329,1): warning C5220: "physx::PxLightCpuTask::mRefCount": un miembro de datos no estático con un tipo calificado volátil ya no implica
+           que los constructores de copia/movimiento generados por el compilador y los operadores de asignación de copia o movimiento no sean triviales (compilando archivo de origen Proyectil.cpp)
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\common\PhysX-3.4\PxShared\include\task\PxTask.h(326): message : vea la declaración de 'physx::PxLightCpuTask::mRefCount' (compilando archivo de origen Proyectil.cpp)
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\common\PhysX-3.4\PxShared\include\task\PxTask.h(329,1): warning C5220: "physx::PxLightCpuTask::mRefCount": un miembro de datos no estático con un tipo calificado volátil ya no implica
+           que los constructores de copia/movimiento generados por el compilador y los operadores de asignación de copia o movimiento no sean triviales (compilando archivo de origen UniformParticleGenerator.cpp)
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\common\PhysX-3.4\PxShared\include\task\PxTask.h(326): message : vea la declaración de 'physx::PxLightCpuTask::mRefCount' (compilando archivo de origen UniformParticleGenerator.cpp)
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\Proyectil.cpp(6,13): warning C4458: la declaración de 'vel' oculta el miembro de clase
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\Particle.h(14,10): message : vea la declaración de 'Particle::vel' (compilando archivo de origen Proyectil.cpp)
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\Proyectil.cpp(38,13): warning C4458: la declaración de 'vel' oculta el miembro de clase
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\Particle.h(14,10): message : vea la declaración de 'Particle::vel' (compilando archivo de origen Proyectil.cpp)
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\UniformParticleGenerator.cpp(18,19): warning C4189: 'p': la variable local se ha inicializado pero no se hace referencia a ella
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\UniformParticleGenerator.cpp(19,14): warning C4189: 'newPosX': la variable local se ha inicializado pero no se hace referencia a ella
+  game.vcxproj -> C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\../bin/game.exe

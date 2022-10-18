@@ -17,16 +17,15 @@ private:
 	physx::PxTransform pose;
 	double damping, inverse_mass, gravity;
 	RenderItem* rendeItem;
-
-protected:
+public:
+	Vector3 getPos() { return pose.p; }
+	void setColour(Vector4 color) { colour_ = color; }
 	Vector3 getVel() { return vel; }
 	void setPos(Vector3 Pose) { pose.p = Pose; };
+	void setVel(Vector3 Vel) { vel = Vel; };
 	void setMass(double Mass) { inverse_mass = 1 / Mass; };
 	void setVelocity(Vector3 Vel) { vel = Vel; };
 	void setAcceleration(Vector3 Acc) { acc = Acc; };
 	void setDamping(double Damping) { damping = Damping; }
-public:
-	Vector3 getPos() { return pose.p; }
-	void setColour(Vector4 color) { colour_ = color; }
 };
 

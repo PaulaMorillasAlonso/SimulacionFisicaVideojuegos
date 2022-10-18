@@ -36,6 +36,8 @@ void Particle::integrate(double t)
 {
 	//MRU
 	//if (inverse_mass <= 0.0f) return;
+
+	//EULER
 	pose = physx::PxTransform(pose.p.x + vel.x * t, pose.p.y + vel.y * t, pose.p.z + vel.z * t);
 	vel += acc * t;
 	vel *= powf(damping, t);
