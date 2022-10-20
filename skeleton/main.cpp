@@ -86,33 +86,34 @@ void stepPhysics(bool interactive, double t)
 	gScene->fetchResults(true);
 	for (int i = 0; i < bullet.size(); i++)
 	{
-		if (bullet[i] != nullptr) {
+		if (bullet[i]->getLifetime()>0) {
 			bullet[i]->integrate(t);
-			if (bullet[i]->getPos().y <=suelo->getPos().y || bullet[i]->getLifetime()<=0)  {
-
-				bullet.erase(bullet.begin()+i);
-				delete bullet[i];
-			}
+		
+		}
+		else {
+			delete bullet[i];
+			bullet.erase(bullet.begin() + i);
+			--i;
 		}
 	}
-	std::vector<Particle*> _particles= pSystem->getParticleList();
-	for (auto e :_particles) {
+	std::vector<Particle*>& _particles= pSystem->getParticleList();
+	/*for (auto e :_particles) {
 		all_particles.push_back(e);
 	}
-	_particles.clear();
-	pSystem->update(t);
+	_particles.clear();*/
 
-	for (int i = 0; i < all_particles.size(); i++)
+	for (int i = 0; i < _particles.size(); i++)
 	{
-		if (all_particles[i] != nullptr) {
-			all_particles[i]->integrate(t);
-			if (!all_particles[i]->isAlive()) {
-
-				all_particles.erase(all_particles.begin() + i);
-				//delete all_particles[i]; //a veces me sale un error de memoria si le doy mucho seguido
-			}
+		if (_particles[i]->getLifetime()>0) {
+			_particles[i]->integrate(t);
+		}
+		else {
+			delete _particles[i];
+			_particles.erase(_particles.begin() + i);
+			--i;
 		}
 	}
+	pSystem->update(t);
 
 }
 

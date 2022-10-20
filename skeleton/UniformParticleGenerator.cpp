@@ -51,7 +51,7 @@ std::vector<Particle*>UniformParticleGenerator::generateParticle()
 
         int genProbRnd = gen_prob_dist(gen_);
 
-        /*if (genProbRnd < _generation_probability) {*/
+        if (genProbRnd < _generation_probability) {
 
 
         Particle* p = new Particle({ 7,50,7 }, {0,0,0}, { 0,-10.0,0 }, damping_, lifeTime_, colour_);
@@ -67,7 +67,7 @@ std::vector<Particle*>UniformParticleGenerator::generateParticle()
 
         
             lista.push_back(p);
-        //}
+        }
        
     }
 

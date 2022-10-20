@@ -1,5 +1,6 @@
 #pragma once
 #include "RenderUtils.hpp"
+
 class Particle
 {
 public:
@@ -11,12 +12,13 @@ public:
 	void integrate(double t);
 
 private:
+
 	Vector3 vel = {0,0,0};
 	Vector3 acc = {0,0,0};
 	Vector4 colour_ = { 0,0,0,1 };
 	physx::PxTransform pose;
 	double damping, inverse_mass, gravity;
-	double lifeTime_;
+	double lifeTime_, iniTime_;
 	bool alive_;
 	RenderItem* renderItem;
 public:
