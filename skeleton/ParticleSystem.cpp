@@ -3,7 +3,7 @@
 
 ParticleSystem::ParticleSystem()
 {
-	fuente_ = new UniformParticleGenerator(2,5, 1,2, 1, 10, 0.99, 1000, CreateShape(physx::PxSphereGeometry(1.0)), {0,0,1,1});
+	fuente_ = new UniformParticleGenerator(2,5, 1,2, 1, 1, 0.99, 1000, {0,0,1,1});
 	_particle_generators.push_back(fuente_);
 	
 }
@@ -20,6 +20,7 @@ void ParticleSystem::update(double t)
 		{
 			_particles.push_back(i);
 		}
+		
 	}
 	
 }

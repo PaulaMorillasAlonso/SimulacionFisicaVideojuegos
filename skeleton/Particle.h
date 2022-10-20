@@ -17,7 +17,8 @@ private:
 	physx::PxTransform pose;
 	double damping, inverse_mass, gravity;
 	double lifeTime_;
-	RenderItem* rendeItem;
+	bool alive_;
+	RenderItem* renderItem;
 public:
 	Vector3 getPos() { return pose.p; }
 	void setColour(Vector4 color) { colour_ = color; }
@@ -30,6 +31,7 @@ public:
 	void setDamping(double Damping) { damping = Damping; }
 	double getLifetime() { return lifeTime_;}
 	void resetLifetime(double t) { lifeTime_ = t; }
+	bool isAlive() { return alive_; }
 	//virtual Particle* clone() const;
 };
 

@@ -37,7 +37,7 @@ Particle* suelo;
 Particle* diana;
 std::vector<Proyectil*> bullet;
 ParticleSystem* pSystem;
-
+std::vector<Particle*> all_particles;
 
 
 // Initialize physics engine
@@ -68,7 +68,7 @@ void initPhysics(bool interactive)
 	suelo = new Particle({ 5,40,5 }, { 0,0,0 }, { 0,0,0 }, 0,10000, floor, {0,0.9,0,1});*/
 
 	auto round = CreateShape(physx::PxBoxGeometry(10, 10, 1));
-	diana = new Particle({ 7,50,7 }, { 0,0,0 }, { 0,0,0 }, 0,10000, round, {0.8,0,0,1});
+	diana = new Particle({ 7,50,7 }, { 0,0,0 }, { 0,0,0 }, 0,10000, round, {0.8,0.8,0.8,1});
 
 	pSystem = new ParticleSystem();
 
@@ -91,23 +91,29 @@ void stepPhysics(bool interactive, double t)
 			if (bullet[i]->getPos().y <=suelo->getPos().y || bullet[i]->getLifetime()<=0)  {
 
 				bullet.erase(bullet.begin()+i);
-				delete bullet[i]; //a veces me sale un error de memoria si le doy mucho seguido
+				delete bullet[i];
 			}
 		}
 	}
-	auto list = pSystem->getParticleList();
-	for (int i = 0; i < list.size(); i++)
-	{
-		if (list[i] != nullptr) {
-			list[i]->integrate(t);
-			if (list[i]->getLifetime() <= 0) {
-
-				list.erase(list.begin() + i);
-				delete list[i]; //a veces me sale un error de memoria si le doy mucho seguido
-			}
-		}
+	std::vector<Particle*> _particles= pSystem->getParticleList();
+	for (auto e :_particles) {
+		all_particles.push_back(e);
 	}
+	_particles.clear();
 	pSystem->update(t);
+
+	for (int i = 0; i < all_particles.size(); i++)
+	{
+		if (all_particles[i] != nullptr) {
+			all_particles[i]->integrate(t);
+			if (!all_particles[i]->isAlive()) {
+
+				all_particles.erase(all_particles.begin() + i);
+				//delete all_particles[i]; //a veces me sale un error de memoria si le doy mucho seguido
+			}
+		}
+	}
+
 }
 
 // Function to clean data
