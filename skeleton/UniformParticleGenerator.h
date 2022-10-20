@@ -2,9 +2,10 @@
 
 #include <list>
 #include "Particle.h"
+#include "ParticleGenerator.h"
 #include <random>
 
-class UniformParticleGenerator
+class UniformParticleGenerator: public ParticleGenerator
 {
 private:
 	std::uniform_real_distribution<double> dist_pos;

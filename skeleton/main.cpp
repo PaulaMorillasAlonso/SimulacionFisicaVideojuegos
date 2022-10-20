@@ -62,10 +62,10 @@ void initPhysics(bool interactive)
 	gScene = gPhysics->createScene(sceneDesc);
 
 	auto floor = CreateShape(physx::PxBoxGeometry(300, 1, 300));
-	suelo = new Particle({ 5,30,5 }, { 0,0,0 }, { 0,0,0 }, 0, floor, {0,0.9,0,1});
+	suelo = new Particle({ 5,30,5 }, { 0,0,0 }, { 0,0,0 }, 0,10000, floor, {0,0.9,0,1});
 
 	auto round = CreateShape(physx::PxBoxGeometry(10, 10, 1));
-	diana = new Particle({ 7,50,7 }, { 0,0,0 }, { 0,0,0 }, 0, round, {0.8,0,0,1});
+	diana = new Particle({ 7,50,7 }, { 0,0,0 }, { 0,0,0 }, 0,10000, round, {0.8,0,0,1});
 }
 
 
@@ -82,9 +82,10 @@ void stepPhysics(bool interactive, double t)
 	{
 		if (bullet[i] != nullptr) {
 			bullet[i]->integrate(t);
-			if (bullet[i]->getPos().y <=suelo->getPos().y)  {
+			if (bullet[i]->getPos().y <=suelo->getPos().y || bullet[i]->getLifetime()<=0)  {
 
 				bullet.erase(bullet.begin()+i);
+				delete bullet[i]; //a veces me sale un error de memoria si le doy mucho seguido
 			}
 		}
 	}

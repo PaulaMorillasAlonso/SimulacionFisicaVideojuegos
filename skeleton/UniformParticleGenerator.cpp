@@ -19,12 +19,15 @@ std::list<Particle*> UniformParticleGenerator::generateParticle()
         auto newPosX = dist_pos(gen_);
         auto newPosY = dist_pos(gen_);
         auto newPosZ = dist_pos(gen_);
-        p->setPos({ p->getPos().x+newPosX, p->getPos().y+newPosY, p->getPos().z+newPosZ });
-      
-        //p->setVelocity();
+        p->setPos({(float) (p->getPos().x+newPosX), (float)(p->getPos().y+newPosY), (float)(p->getPos().z+newPosZ) });
+        
+        auto newVelX = dist_vel(gen_);
+        auto newVelY = dist_vel(gen_);
+        auto newVelZ = dist_vel(gen_);
+        p->setVel({ (float)(p->getVel().x + newVelX), (float)(p->getVel().y + newVelY), (float)(p->getVel().z + newVelZ) });
+
+        lista.push_back(p);
     }
-
-
 
     return lista;
 }

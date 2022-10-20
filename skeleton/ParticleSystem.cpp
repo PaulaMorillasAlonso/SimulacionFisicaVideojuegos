@@ -9,6 +9,6 @@ ParticleGenerator* ParticleSystem::getParticleGenerator(std::string name)
 	return nullptr;
 }
 
-void ParticleSystem::generateFireworkSystem()
-{
-}
+//void ParticleSystem::generateFireworkSystem()
+//{
+//}

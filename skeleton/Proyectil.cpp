@@ -1,5 +1,5 @@
 #include "Proyectil.h"
-Proyectil::Proyectil(types tipo, Vector3 pos, Vector3 dir) :Particle({ 0,0,0 }, { 0,0,0 }, { 0,0,0 }, 1)
+Proyectil::Proyectil(types tipo, Vector3 pos, Vector3 dir) :Particle({ 0,0,0 }, { 0,0,0 }, { 0,0,0 }, 1,5000)
 {
 	tipo_ = tipo;
 	setPos(pos);
@@ -31,7 +31,7 @@ Proyectil::Proyectil(types tipo, Vector3 pos, Vector3 dir) :Particle({ 0,0,0 }, 
 		break;
 	}
 }
-Proyectil::Proyectil(types tipo, Vector3 pos, Vector3 dir, Vector4 color) :Particle({ 0,0,0 }, { 0,0,0 }, { 0,0,0 }, 1, color)
+Proyectil::Proyectil(types tipo, Vector3 pos, Vector3 dir, Vector4 color) :Particle({ 0,0,0 }, { 0,0,0 }, { 0,0,0 }, 1,5000, color)
 {
 	tipo_ = tipo;
 	setPos(pos);

@@ -3,9 +3,9 @@
 class Particle
 {
 public:
-	Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double damping);
-	Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double damping,Vector4 colour);
-	Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double damping, physx::PxShape* geomType, Vector4 colour);
+	Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double damping, double lifeTime);
+	Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double damping, double lifeTime,Vector4 colour);
+	Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double damping, double lifeTime, physx::PxShape* geomType, Vector4 colour);
 	Particle() {};
 	~Particle();
 	void integrate(double t);
@@ -16,6 +16,7 @@ private:
 	Vector4 colour_ = { 0,0,0,1 };
 	physx::PxTransform pose;
 	double damping, inverse_mass, gravity;
+	double lifeTime_;
 	RenderItem* rendeItem;
 public:
 	Vector3 getPos() { return pose.p; }
@@ -27,5 +28,8 @@ public:
 	void setVelocity(Vector3 Vel) { vel = Vel; };
 	void setAcceleration(Vector3 Acc) { acc = Acc; };
 	void setDamping(double Damping) { damping = Damping; }
+	double getLifetime() { return lifeTime_;}
+	void resetLifetime(double t) { lifeTime_ = t; }
+	//virtual Particle* clone() const;
 };
 

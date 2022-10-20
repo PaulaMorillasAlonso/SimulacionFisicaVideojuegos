@@ -12,6 +12,6 @@ protected:
 public:
 	void update(double t);
 	ParticleGenerator* getParticleGenerator(std::string name);
-	void generateFireworkSystem();
+	//void generateFireworkSystem();
 };
 
