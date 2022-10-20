@@ -12,6 +12,7 @@
 #include <iostream>
 #include "Particle.h"
 #include "Proyectil.h"
+#include "ParticleSystem.h"
 
 
 
@@ -35,6 +36,8 @@ Particle* part;
 Particle* suelo;
 Particle* diana;
 std::vector<Proyectil*> bullet;
+ParticleSystem* pSystem;
+
 
 
 // Initialize physics engine
@@ -61,11 +64,14 @@ void initPhysics(bool interactive)
 	sceneDesc.simulationEventCallback = &gContactReportCallback;
 	gScene = gPhysics->createScene(sceneDesc);
 
-	auto floor = CreateShape(physx::PxBoxGeometry(300, 1, 300));
-	suelo = new Particle({ 5,30,5 }, { 0,0,0 }, { 0,0,0 }, 0,10000, floor, {0,0.9,0,1});
+	/*auto floor = CreateShape(physx::PxBoxGeometry(300, 1, 300));
+	suelo = new Particle({ 5,40,5 }, { 0,0,0 }, { 0,0,0 }, 0,10000, floor, {0,0.9,0,1});*/
 
 	auto round = CreateShape(physx::PxBoxGeometry(10, 10, 1));
 	diana = new Particle({ 7,50,7 }, { 0,0,0 }, { 0,0,0 }, 0,10000, round, {0.8,0,0,1});
+
+	pSystem = new ParticleSystem();
+
 }
 
 
@@ -89,6 +95,19 @@ void stepPhysics(bool interactive, double t)
 			}
 		}
 	}
+	auto list = pSystem->getParticleList();
+	for (int i = 0; i < list.size(); i++)
+	{
+		if (list[i] != nullptr) {
+			list[i]->integrate(t);
+			if (list[i]->getLifetime() <= 0) {
+
+				list.erase(list.begin() + i);
+				delete list[i]; //a veces me sale un error de memoria si le doy mucho seguido
+			}
+		}
+	}
+	pSystem->update(t);
 }
 
 // Function to clean data

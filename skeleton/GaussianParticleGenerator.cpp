@@ -9,8 +9,8 @@ GaussianParticleGenerator::GaussianParticleGenerator(double minPos, double maxPo
     numParticles = 7;
 }
 
-std::list<Particle*> GaussianParticleGenerator::generateParticle()
+std::vector<Particle*> GaussianParticleGenerator::generateParticle()
 {
-    std::list<Particle*> lista;
+    std::vector<Particle*> lista;
 	return lista ;
 }

@@ -4,16 +4,16 @@
 #include <string>
 class ParticleGenerator
 {
-private:
+protected:
 	std::string _name;
-	Vector3 _mean_pos, _mean_vel;
+	//Vector3 _mean_pos, _mean_vel;
 	double _generation_probability;
 	int _num_particles;
-	Particle* _model;
+	//Particle* _model;
 
 public:
-	void setParticle(Particle *model);
-	virtual std::list<Particle*> generateParticles() = 0;
+	//void setParticle(Particle *model);
+	virtual std::vector<Particle*> generateParticle() = 0;
 
 };
 

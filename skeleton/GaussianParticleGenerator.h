@@ -13,6 +13,6 @@ class GaussianParticleGenerator: public ParticleGenerator
 	int numParticles;
 public:
 	GaussianParticleGenerator(double minPos, double maxPos, double minVel, double maxVel);
-	std::list<Particle*>generateParticle();
+	std::vector<Particle*>generateParticle();
 };
 
