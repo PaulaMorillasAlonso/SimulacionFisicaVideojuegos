@@ -7,8 +7,8 @@
 class ParticleSystem
 {
 private:
-	std::vector<Particle*>_particles;
-	std::vector<ParticleGenerator*>_particle_generators;
+	std::list<Particle*>_particles;
+	std::list<ParticleGenerator*>_particle_generators;
 	UniformParticleGenerator* fuente_;
 protected:
 public:
@@ -17,6 +17,6 @@ public:
 	//void generateFireworkSystem();
 	ParticleSystem();
 	~ParticleSystem();
-	std::vector<Particle*>getParticleList();
+	std::list<Particle*>getParticleList();
 };
 

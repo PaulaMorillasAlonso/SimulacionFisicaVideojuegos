@@ -18,6 +18,6 @@ private:
 public:
 	UniformParticleGenerator(Vector3 meanPos, Vector3 meanVel,double minPos, double maxPos, double minVel, double maxVel, double gen_prob,
 		int numPart, double damping, double lifeTime, Vector4 colour);
-	std::vector<Particle*>generateParticle();
+	std::list<Particle*>generateParticle();
 };
 

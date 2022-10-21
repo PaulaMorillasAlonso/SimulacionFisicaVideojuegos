@@ -45,9 +45,9 @@ UniformParticleGenerator::UniformParticleGenerator(Vector3 meanPos,Vector3 meanV
 //
 //}
 
-std::vector<Particle*>UniformParticleGenerator::generateParticle()
+std::list<Particle*>UniformParticleGenerator::generateParticle()
 {
-    std::vector<Particle*> lista;
+    std::list<Particle*> lista;
 
     for (int i = 0; i < _num_particles; i++) {
 

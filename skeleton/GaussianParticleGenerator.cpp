@@ -18,8 +18,8 @@ GaussianParticleGenerator::GaussianParticleGenerator(double minPos, double maxPo
     colour_ = colour;
 }
 
-std::vector<Particle*> GaussianParticleGenerator::generateParticle()
+std::list<Particle*> GaussianParticleGenerator::generateParticle()
 {
-    std::vector<Particle*> lista;
+    std::list<Particle*> lista;
 	return lista ;
 }

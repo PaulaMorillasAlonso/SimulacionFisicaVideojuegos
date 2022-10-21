@@ -7,25 +7,25 @@ ParticleSystem::ParticleSystem()
 	_particle_generators.push_back(fuente_);
 	
 }
-std::vector<Particle*> ParticleSystem::getParticleList()
+std::list<Particle*> ParticleSystem::getParticleList()
 {
 	return _particles;
 }
 void ParticleSystem::update(double t)
 {
-	
-	for (int i = 0; i < _particles.size(); i++)
-	{
-		if (_particles[i]->isAlive()) {
-			_particles[i]->integrate(t);
+	std::list<Particle*>::iterator it = _particles.begin();
+	while (it != _particles.end()) {
+		Particle* p = *it;
+		if (p->isAlive()) {
+			p->integrate(t);
+			++it;
 		}
 		else {
-			delete _particles[i];
-			_particles.erase(_particles.begin() + i);
-			--i;
+			it = _particles.erase(it);
+			delete p;
 		}
 	}
-
+	
 	for (auto e : _particle_generators)
 	{
 		auto list = e->generateParticle();
