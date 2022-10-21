@@ -3,7 +3,7 @@
 
 ParticleSystem::ParticleSystem()
 {
-	fuente_ = new UniformParticleGenerator(2,5, 1,2, 1, 1, 0.99, 1000, {0,0,1,1});
+	fuente_ = new UniformParticleGenerator({7,50,7}, {0,0,0}, 2, 5, 1, 2, 1, 1, 0.99, 5000, { 0,0,1,1 });
 	_particle_generators.push_back(fuente_);
 	
 }
@@ -16,7 +16,7 @@ void ParticleSystem::update(double t)
 	
 	for (int i = 0; i < _particles.size(); i++)
 	{
-		if (_particles[i]->getLifetime() > 0) {
+		if (_particles[i]->isAlive()) {
 			_particles[i]->integrate(t);
 		}
 		else {
@@ -25,6 +25,7 @@ void ParticleSystem::update(double t)
 			--i;
 		}
 	}
+
 	for (auto e : _particle_generators)
 	{
 		auto list = e->generateParticle();

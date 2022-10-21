@@ -1,8 +1,10 @@
 #include "UniformParticleGenerator.h"
 
-UniformParticleGenerator::UniformParticleGenerator(double minPos, double maxPos,
+UniformParticleGenerator::UniformParticleGenerator(Vector3 meanPos,Vector3 meanVel,double minPos, double maxPos,
     double minVel,double maxVel,double gen_prob, int numPart, double damping, double lifeTime, Vector4 colour)
 {
+    _mean_pos = meanPos;
+    _mean_vel = meanVel;
     minPos_ = minPos;
     maxPos_ = maxPos;
     minVel_ = minVel;
@@ -54,16 +56,16 @@ std::vector<Particle*>UniformParticleGenerator::generateParticle()
         if (genProbRnd < _generation_probability) {
 
 
-        Particle* p = new Particle({ 7,50,7 }, {0,0,0}, { 0,-10.0,0 }, damping_, lifeTime_, colour_);
+        Particle* p = new Particle({ _mean_pos.x,_mean_pos.y,_mean_pos.z }, {_mean_pos.x,_mean_pos.y,_mean_vel.z}, { 0,-10.0,0 }, damping_, lifeTime_, colour_);
         double newPosX = dist_pos(gen_);
         double newPosY = dist_pos(gen_);
         double newPosZ = dist_pos(gen_);
-        p->setPos({(float) (p->getPos().x + newPosX),(float)(p->getPos().y + newPosY),(float) (p->getPos().z + newPosZ) });
+        p->setPos({(float) (_mean_pos.x + newPosX),(float)(_mean_pos.y + newPosY),(float) (_mean_pos.z + newPosZ) });
 
         double newVelX = dist_vel(gen_);
         double newVelY = dist_vel(gen_);
         double newVelZ = dist_vel(gen_);
-        p->setVel({ (float)(p->getVel().x + newVelX),(float)(p->getVel().y + newVelY),(float)(p->getVel().z + newVelZ) });
+        p->setVel({ (float)(_mean_vel.x + newVelX),(float)(_mean_vel.y + newVelY),(float)(_mean_vel.z + newVelZ) });
 
         
             lista.push_back(p);

@@ -39,7 +39,7 @@ Particle::Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double Damping, double
 
 Particle::~Particle()
 {
-	//if(rendeItem!=NULL)
+	
 	DeregisterRenderItem(renderItem);
 }
 
@@ -47,16 +47,14 @@ void Particle::integrate(double t)
 {
 	//MRU
 	//if (inverse_mass <= 0.0f) return;
-	lifeTime_--;
+
 	//EULER
 	pose = physx::PxTransform(pose.p.x + vel.x * t, pose.p.y + vel.y * t, pose.p.z + vel.z * t);
 	vel += acc * t;
 	vel *= powf(damping, t);
 
 	double actualTime = glutGet(GLUT_ELAPSED_TIME);
-	double timePassed = actualTime - iniTime_;
-
-	if (lifeTime_<=0 || pose.p.y <= 0) {
+	if ( actualTime-iniTime_>=lifeTime_|| pose.p.y <= 0) {
 
 		alive_ = false;
 	}

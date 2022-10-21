@@ -37,7 +37,6 @@ Particle* suelo;
 Particle* diana;
 std::vector<Proyectil*> bullet;
 ParticleSystem* pSystem;
-std::vector<Particle*> all_particles;
 
 
 // Initialize physics engine
@@ -96,11 +95,6 @@ void stepPhysics(bool interactive, double t)
 			--i;
 		}
 	}
-	std::vector<Particle*>& _particles= pSystem->getParticleList();
-	for (auto e :_particles) {
-		all_particles.push_back(e);
-	}
-	_particles.clear();
 
 	pSystem->update(t);
 
