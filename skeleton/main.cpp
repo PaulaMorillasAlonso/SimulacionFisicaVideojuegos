@@ -66,8 +66,8 @@ void initPhysics(bool interactive)
 	/*auto floor = CreateShape(physx::PxBoxGeometry(300, 1, 300));
 	suelo = new Particle({ 5,40,5 }, { 0,0,0 }, { 0,0,0 }, 0,10000, floor, {0,0.9,0,1});*/
 
-	auto round = CreateShape(physx::PxBoxGeometry(10, 10, 1));
-	diana = new Particle({ 7,50,7 }, { 0,0,0 }, { 0,0,0 }, 0,10000, round, {0.8,0.8,0.8,1});
+	/*auto round = CreateShape(physx::PxBoxGeometry(10, 10, 1));
+	diana = new Particle({ 7,50,7 }, { 0,0,0 }, { 0,0,0 }, 0,10000, round, {0.8,0.8,0.8,1});*/
 
 	pSystem = new ParticleSystem();
 
