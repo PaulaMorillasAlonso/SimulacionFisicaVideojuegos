@@ -13,6 +13,6 @@ protected:
 public:
 	//void setParticle(Particle *model);
 	virtual std::list<Particle*> generateParticle() = 0;
-
+	std::string getGeneratorName() { return _name; }
 };
 

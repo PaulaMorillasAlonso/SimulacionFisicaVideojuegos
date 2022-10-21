@@ -39,11 +39,14 @@ void ParticleSystem::update(double t)
 	}
 }
 
-//ParticleGenerator* ParticleSystem::getParticleGenerator(std::string name)
-//{
-//
-//	return nullptr;
-//}
+ParticleGenerator* ParticleSystem::getParticleGenerator(std::string name)
+{
+	for (auto e : _particle_generators) {
+
+		if (name == e->getGeneratorName()) return e;
+	}
+	return nullptr;
+}
 
 //void ParticleSystem::generateFireworkSystem()
 //{
