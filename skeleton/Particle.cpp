@@ -40,7 +40,7 @@ Particle::Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double Damping, double
 Particle::~Particle()
 {
 	//if(rendeItem!=NULL)
-	//DeregisterRenderItem(renderItem);
+	DeregisterRenderItem(renderItem);
 }
 
 void Particle::integrate(double t)

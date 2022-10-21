@@ -13,6 +13,18 @@ std::vector<Particle*> ParticleSystem::getParticleList()
 }
 void ParticleSystem::update(double t)
 {
+	
+	for (int i = 0; i < _particles.size(); i++)
+	{
+		if (_particles[i]->getLifetime() > 0) {
+			_particles[i]->integrate(t);
+		}
+		else {
+			delete _particles[i];
+			_particles.erase(_particles.begin() + i);
+			--i;
+		}
+	}
 	for (auto e : _particle_generators)
 	{
 		auto list = e->generateParticle();
@@ -20,9 +32,8 @@ void ParticleSystem::update(double t)
 		{
 			_particles.push_back(i);
 		}
-		
+
 	}
-	
 }
 
 //ParticleGenerator* ParticleSystem::getParticleGenerator(std::string name)

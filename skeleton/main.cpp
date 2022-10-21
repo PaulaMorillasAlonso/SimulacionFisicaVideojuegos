@@ -97,22 +97,11 @@ void stepPhysics(bool interactive, double t)
 		}
 	}
 	std::vector<Particle*>& _particles= pSystem->getParticleList();
-	/*for (auto e :_particles) {
+	for (auto e :_particles) {
 		all_particles.push_back(e);
 	}
-	_particles.clear();*/
+	_particles.clear();
 
-	for (int i = 0; i < _particles.size(); i++)
-	{
-		if (_particles[i]->getLifetime()>0) {
-			_particles[i]->integrate(t);
-		}
-		else {
-			delete _particles[i];
-			_particles.erase(_particles.begin() + i);
-			--i;
-		}
-	}
 	pSystem->update(t);
 
 }
