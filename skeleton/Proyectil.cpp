@@ -31,7 +31,7 @@ Proyectil::Proyectil(types tipo, Vector3 pos, Vector3 dir) :Particle({ 0,0,0 }, 
 		break;
 	}
 }
-Proyectil::Proyectil(types tipo, Vector3 pos, Vector3 dir, Vector4 color) :Particle({ 0,0,0 }, { 0,0,0 }, { 0,0,0 }, 1,5000, color,1.0)
+Proyectil::Proyectil(types tipo, Vector3 pos, Vector3 dir, Vector4 color) :Particle({ 0,0,0 }, { 0,0,0 }, { 0,0,0 }, 1,5000, color,1.0,-1)
 {
 	tipo_ = tipo;
 	setPos(pos);

@@ -11,7 +11,7 @@ Particle::Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc , double Damping, doubl
 	alive_ = true;
 	iniTime_ = glutGet(GLUT_ELAPSED_TIME);
 }
-Particle::Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double Damping, double lifeTime, Vector4 colour, double scale)
+Particle::Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double Damping, double lifeTime, Vector4 colour, double scale, int type)
 {
 	vel = Vel;
 	acc = Acc;
@@ -22,6 +22,7 @@ Particle::Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double Damping, double
 	pose = physx::PxTransform(Pos.x, Pos.y, Pos.z);
 	renderItem = new RenderItem(CreateShape(physx::PxSphereGeometry(scale_)), &pose, colour_);
 	alive_ = true;
+	type_ = type;
 	iniTime_ = glutGet(GLUT_ELAPSED_TIME);
 }
 Particle::Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double Damping, double lifeTime, physx::PxShape* geomType, Vector4 colour)
