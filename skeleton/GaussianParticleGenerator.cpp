@@ -1,10 +1,11 @@
 #include "GaussianParticleGenerator.h"
 
-GaussianParticleGenerator::GaussianParticleGenerator(Vector3 meanPos, Vector3 meanVel, Vector3 dev_pos, 
+GaussianParticleGenerator::GaussianParticleGenerator(Vector3 meanPos, Vector3 meanVel,Vector3 meanAcc, Vector3 dev_pos, 
     Vector3 dev_vel, double gen_prob, int numPart, double damping, double lifeTime, Vector4 colour)
 {
     _mean_pos = meanPos;
     _mean_vel = meanVel;
+    mean_acc = meanAcc;
     std_dev_pos = dev_pos;
     std_dev_vel = dev_vel;
     dist_pos = std::normal_distribution<double>(0, 1);
@@ -28,7 +29,8 @@ std::list<Particle*> GaussianParticleGenerator::generateParticle()
         if (genProbRnd < _generation_probability) {
 
 
-            Particle* p = new Particle({ _mean_pos.x,_mean_pos.y,_mean_pos.z }, { _mean_pos.x,_mean_pos.y,_mean_vel.z }, { 0,2.0,0 }, damping_, lifeTime_, colour_);
+            Particle* p = new Particle({ _mean_pos.x,_mean_pos.y,_mean_pos.z }, { _mean_pos.x,_mean_pos.y,_mean_vel.z }, mean_acc, damping_, lifeTime_, colour_);
+
             double newPosX = dist_pos(gen_)*std_dev_pos.x;
             double newPosY = dist_pos(gen_)*std_dev_pos.y;
             double newPosZ = dist_pos(gen_)*std_dev_pos.z;

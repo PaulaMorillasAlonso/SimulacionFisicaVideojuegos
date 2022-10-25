@@ -12,10 +12,10 @@ class GaussianParticleGenerator: public ParticleGenerator
 	std::default_random_engine gen_;
 	double damping_, lifeTime_;
 	Vector4 colour_ = { 0,0,0,1 };
-	Vector3 std_dev_pos, std_dev_vel;
+	Vector3 std_dev_pos, std_dev_vel, mean_acc;
 
 public:
-	GaussianParticleGenerator(Vector3 meanPos, Vector3 meanVel,Vector3 std_dev_pos,Vector3 std_dev_vel, double gen_prob,
+	GaussianParticleGenerator(Vector3 meanPos, Vector3 meanVel,Vector3 meanAcc,Vector3 std_dev_pos,Vector3 std_dev_vel, double gen_prob,
 		int numPart, double damping, double lifeTime, Vector4 colour);
 	std::list<Particle*>generateParticle();
 };
