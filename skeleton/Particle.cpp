@@ -11,15 +11,16 @@ Particle::Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc , double Damping, doubl
 	alive_ = true;
 	iniTime_ = glutGet(GLUT_ELAPSED_TIME);
 }
-Particle::Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double Damping, double lifeTime, Vector4 colour)
+Particle::Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double Damping, double lifeTime, Vector4 colour, double scale)
 {
 	vel = Vel;
 	acc = Acc;
 	damping = Damping;
 	lifeTime_ = lifeTime;
 	colour_ = colour;
+	scale_ = scale;
 	pose = physx::PxTransform(Pos.x, Pos.y, Pos.z);
-	renderItem = new RenderItem(CreateShape(physx::PxSphereGeometry(1.0)), &pose, colour_);
+	renderItem = new RenderItem(CreateShape(physx::PxSphereGeometry(scale_)), &pose, colour_);
 	alive_ = true;
 	iniTime_ = glutGet(GLUT_ELAPSED_TIME);
 }
@@ -58,4 +59,9 @@ void Particle::integrate(double t)
 
 		alive_ = false;
 	}
+}
+
+Particle* Particle::clone() const
+{
+	return nullptr;
 }
