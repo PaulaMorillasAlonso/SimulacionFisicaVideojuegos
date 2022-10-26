@@ -30,7 +30,7 @@ std::list<Particle*> GaussianParticleGenerator::generateParticle()
         if (genProbRnd < _generation_probability) {
 
 
-            Particle* p = new Particle({ _mean_pos.x,_mean_pos.y,_mean_pos.z }, { _mean_pos.x,_mean_pos.y,_mean_vel.z }, mean_acc, damping_, lifeTime_, colour_, scale_,-1);
+            Particle* p = new Particle({ _mean_pos.x,_mean_pos.y,_mean_pos.z }, { _mean_vel.x,_mean_vel.y,_mean_vel.z }, mean_acc, damping_, lifeTime_, colour_, scale_);
 
             double newPosX = dist_pos(gen_)*std_dev_pos.x;
             double newPosY = dist_pos(gen_)*std_dev_pos.y;

@@ -51,8 +51,10 @@ public:
 	~Firework() {};
 	//virtual Particle* clone() const;
 	std::list<Particle*> explode();
+	//virtual void integrate(double t) override;
 private:
 	std::list<std::shared_ptr<ParticleGenerator>> gens_;
 	int payload_;
+	int totalExplosions_;
 };
 

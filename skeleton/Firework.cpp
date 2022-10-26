@@ -11,6 +11,7 @@
 Firework::Firework(FireworkRule rules,std::shared_ptr<ParticleGenerator> gen):Particle(rules.pos_,rules.vel_,rules.acc_,rules.damping_,rules.lifeTime_,rules.colour_,rules.size_,-1) {
 	payload_ = rules.payload_;
 	type_ = rules.type_;
+	totalExplosions_ = 3;
 	gens_.push_back(gen);
 }
 //Particle* Firework::clone() const
@@ -20,5 +21,31 @@ Firework::Firework(FireworkRule rules,std::shared_ptr<ParticleGenerator> gen):Pa
 
 std::list<Particle*> Firework::explode()
 {
-	return std::list<Particle*>();
+	auto list=std::list<Particle*>();
+	if (totalExplosions_ > 0) {
+		for (auto e : gens_)
+		{
+			auto res = e->generateParticle();
+			for (auto e : res) {
+				e->setPos(pose.p);
+				list.push_back(e);
+			}
+		}
+	}
+	totalExplosions_--;
+	return list;
 }
+
+//void Firework::integrate(double t)
+//{
+//	pose = physx::PxTransform(pose.p.x + vel.x * t, pose.p.y + vel.y * t, pose.p.z + vel.z * t);
+//	vel += acc * t;
+//	vel *= powf(damping, t);
+//
+//	double actualTime = glutGet(GLUT_ELAPSED_TIME);
+//	if (actualTime - iniTime_ >= lifeTime_ || pose.p.y <= 0 || pose.p.y >= 100) {
+//
+//		alive_ = false;
+//		
+//	}
+//}

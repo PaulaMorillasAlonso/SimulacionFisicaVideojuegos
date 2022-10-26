@@ -10,6 +10,7 @@ class ParticleSystem
 {
 private:
 	std::list<Particle*>_particles;
+	std::list<Firework*>_fireworks;
 	std::list<ParticleGenerator*>_particle_generators;
 	UniformParticleGenerator* fuente_;
 	GaussianParticleGenerator* humo_;
@@ -22,6 +23,6 @@ public:
 	void createFireworkRules();
 	ParticleSystem();
 	~ParticleSystem() {};
-	std::list<Particle*>getParticleList();
+	
 };
 

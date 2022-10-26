@@ -10,20 +10,28 @@ ParticleSystem::ParticleSystem()
 	createFireworkRules();
 	generateFireworkSystem(0);
 }
-std::list<Particle*> ParticleSystem::getParticleList()
-{
-	return _particles;
-}
+
 void ParticleSystem::update(double t)
 {
 	std::list<Particle*>::iterator it = _particles.begin();
-	while (it != _particles.end()) {
+	std::list<Firework*>::iterator itFireworks = _fireworks.begin();
+	while (it != _particles.end() && itFireworks!=_fireworks.end()) {
 		Particle* p = *it;
+		Firework* f = *itFireworks;
 		if (p->isAlive()) {
 			p->integrate(t);
 			++it;
+			if(p->isFirework()) ++itFireworks;
 		}
 		else {
+			if (p->isFirework()) {
+				auto part=f->explode();
+				for (auto a : part) {
+					_particles.push_back(a);
+				}
+				
+			}
+
 			it = _particles.erase(it);
 			delete p;
 		}
@@ -52,7 +60,7 @@ ParticleGenerator* ParticleSystem::getParticleGenerator(std::string name)
 void ParticleSystem::createFireworkRules()
 {
 	firework_rules_ = std::vector<FireworkRule>(1);
-	firework_rules_[0].set({ 7,50,7 }, { 0.2,0.2,0 }, { 0,-10.0,0 }, 0.99, 3000, {0.7,1,1,1},1.0,2,0);
+	firework_rules_[0].set({ 7,50,7 }, { 2,2,0 }, { 0,4.0,0 }, 0.99, 3000, {1,0.1,0.1,1},1.0,20,0);
 }
 void ParticleSystem::generateFireworkSystem(unsigned type)
 {
@@ -60,10 +68,10 @@ void ParticleSystem::generateFireworkSystem(unsigned type)
 		return;
 	}
 	std::shared_ptr<ParticleGenerator> g(new GaussianParticleGenerator(firework_rules_[type].pos_,firework_rules_[type].vel_, 
-	firework_rules_[type].acc_, { 10, 10, 0 }, { 0.3,0.3,0 }, 1, 1,firework_rules_[type].damping_ ,firework_rules_[type].lifeTime_,
+	{0,-2,0}, { 10, 10, 0 }, { 5,5,0 }, 1, firework_rules_[type].payload_, firework_rules_[type].damping_, firework_rules_[type].lifeTime_,
 	firework_rules_[type].colour_, firework_rules_[type].size_));
 	
-	Particle* p = new Firework(firework_rules_[type],g);
-	
-
+	Firework* p = new Firework(firework_rules_[type],g);
+	_particles.push_back(p);
+	_fireworks.push_back(p);
 }
