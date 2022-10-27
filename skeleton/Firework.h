@@ -50,7 +50,7 @@ public:
 	Firework(FireworkRule rules, std::shared_ptr<ParticleGenerator> gen);
 	~Firework() {};
 	//virtual Particle* clone() const;
-	std::list<Particle*> explode();
+	virtual std::list<Particle*> explode()override;
 	//virtual void integrate(double t) override;
 private:
 	std::list<std::shared_ptr<ParticleGenerator>> gens_;

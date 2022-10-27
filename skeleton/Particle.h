@@ -1,6 +1,6 @@
 #pragma once
 #include "RenderUtils.hpp"
-
+#include <list>
 class Particle
 {
 public:
@@ -34,6 +34,7 @@ public:
 	bool isFirework() { return type_ >= 0; }
 
 	virtual void integrate(double t);
+	virtual std::list<Particle*> explode();
 
 
 protected:
@@ -47,6 +48,7 @@ protected:
 	bool alive_;
 	int type_;
 	RenderItem* renderItem;
+
 	
 };
 

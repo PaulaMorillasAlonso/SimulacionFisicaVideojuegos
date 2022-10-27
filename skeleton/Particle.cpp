@@ -63,3 +63,8 @@ void Particle::integrate(double t)
 	}
 }
 
+std::list<Particle*> Particle::explode()
+{
+	return std::list<Particle*>();
+}
+
