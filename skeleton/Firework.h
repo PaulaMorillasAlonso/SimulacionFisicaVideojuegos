@@ -55,6 +55,5 @@ public:
 private:
 	std::list<std::shared_ptr<ParticleGenerator>> gens_;
 	int payload_;
-	int totalExplosions_;
 };
 
