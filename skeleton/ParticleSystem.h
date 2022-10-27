@@ -15,6 +15,7 @@ private:
 	UniformParticleGenerator* fuente_;
 	GaussianParticleGenerator* humo_;
 	std::vector<FireworkRule> firework_rules_;
+	Vector4 randomColour();
 protected:
 public:
 	void update(double t);
