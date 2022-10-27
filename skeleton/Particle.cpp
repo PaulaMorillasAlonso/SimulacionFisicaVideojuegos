@@ -56,13 +56,10 @@ void Particle::integrate(double t)
 	vel *= powf(damping, t);
 
 	double actualTime = glutGet(GLUT_ELAPSED_TIME);
+
 	if ( actualTime-iniTime_>=lifeTime_|| pose.p.y <= 0 /*|| pose.p.y>=100*/) {
 
 		alive_ = false;
 	}
 }
 
-Particle* Particle::clone() const
-{
-	return nullptr;
-}

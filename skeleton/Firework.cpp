@@ -13,10 +13,6 @@ Firework::Firework(FireworkRule rules,std::shared_ptr<ParticleGenerator> gen):Pa
 	type_ = rules.type_;
 	gens_.push_back(gen);
 }
-//Particle* Firework::clone() const
-//{
-//	
-//}
 
 std::list<Particle*> Firework::explode()
 {
@@ -33,16 +29,3 @@ std::list<Particle*> Firework::explode()
 	return list;
 }
 
-//void Firework::integrate(double t)
-//{
-//	pose = physx::PxTransform(pose.p.x + vel.x * t, pose.p.y + vel.y * t, pose.p.z + vel.z * t);
-//	vel += acc * t;
-//	vel *= powf(damping, t);
-//
-//	double actualTime = glutGet(GLUT_ELAPSED_TIME);
-//	if (actualTime - iniTime_ >= lifeTime_ || pose.p.y <= 0 || pose.p.y >= 100) {
-//
-//		alive_ = false;
-//		
-//	}
-//}

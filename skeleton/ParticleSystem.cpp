@@ -71,11 +71,10 @@ void ParticleSystem::generateFireworkSystem(unsigned type)
 	/*std::shared_ptr<ParticleGenerator> g(new GaussianParticleGenerator(firework_rules_[type].pos_,firework_rules_[type].vel_, 
 	{0,-2,0}, { 20, 20, 0 }, { 10,10,0 }, 1, firework_rules_[type].payload_, firework_rules_[type].damping_, firework_rules_[type].lifeTime_,
 	firework_rules_[type].colour_, firework_rules_[type].size_));*/
-	std::shared_ptr<ParticleGenerator> g(new CircleParticleGenerator(firework_rules_[type].pos_, firework_rules_[type].vel_,
-		{ 0,-2,0 }, { 1, 1, 0 }, { 1,1,0 }, 1, firework_rules_[type].payload_, firework_rules_[type].damping_, firework_rules_[type].lifeTime_,
-		firework_rules_[type].colour_, firework_rules_[type].size_));
+	std::shared_ptr<ParticleGenerator> g(new CircleParticleGenerator({4,4,0},1,15));
 	
 	Firework* p = new Firework(firework_rules_[type],g);
+	g->setParticle(p);
 	_particles.push_back(p);
 	_fireworks.push_back(p);
 }
