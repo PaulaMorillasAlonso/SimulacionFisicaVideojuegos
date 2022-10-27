@@ -5,6 +5,7 @@
 #include "UniformParticleGenerator.h"
 #include "GaussianParticleGenerator.h"
 #include "CircleParticleGenerator.h"
+#include "SphereParticleGenerator.h"
 #include "Firework.h"
 
 class ParticleSystem

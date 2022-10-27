@@ -131,23 +131,19 @@ void keyPress(unsigned char key, const PxTransform& camera)
 
 	switch(toupper(key))
 	{
-	case '0': 
+	case '1': 
 		pSystem->generateFireworkSystem(0);
 		//bullet.push_back(new Proyectil(Proyectil::BULLET, GetCamera()->getTransform().p, GetCamera()->getDir(), {0.3,0.3,0.3,1}));
 		break;
-	case '1':
+	case '2':
 		pSystem->generateFireworkSystem(1);
 		//bullet.push_back(new Proyectil(Proyectil::CANNON, GetCamera()->getTransform().p, GetCamera()->getDir(), { 0.2,0.2,0.2,1 }));
 		break;
-	case '2':
-		
+	case '3':
+		pSystem->generateFireworkSystem(2);
+
 		//bullet.push_back(new Proyectil(Proyectil::FIREBALL, GetCamera()->getTransform().p, GetCamera()->getDir(), {0.9,0.1,0.2,1}));
 		break;
-	case '3':	
-
-		//bullet.push_back(new Proyectil(Proyectil::LASER, GetCamera()->getTransform().p, GetCamera()->getDir(), {0.2,1,1,1}));
-		break;
-
 	default:
 		break;
 	}
