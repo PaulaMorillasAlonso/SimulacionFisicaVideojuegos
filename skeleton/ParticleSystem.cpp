@@ -8,8 +8,6 @@ ParticleSystem::ParticleSystem()
 	/*humo_ = new GaussianParticleGenerator({ 7,50,7 }, { 7,7,2 }, { 0,2,0 }, {4, 4, 0}, { 2,2,0 }, 1, 1, 0.99, 3000, { 0.8,0.8,0.8,1 });
 	_particle_generators.push_back(humo_);*/
 	createFireworkRules();
-	generateFireworkSystem(0);
-	generateFireworkSystem(1);
 }
 
 void ParticleSystem::update(double t)
@@ -76,7 +74,7 @@ void ParticleSystem::generateFireworkSystem(unsigned type)
 			firework_rules_[type].colour_, firework_rules_[type].size_));
 		break;
 	case 1:
-		 g=std::shared_ptr<ParticleGenerator>(new CircleParticleGenerator({4,4,0},1,15));
+		 g=std::shared_ptr<ParticleGenerator>(new CircleParticleGenerator({4,4,0},1,15,firework_rules_[type].payload_));
 		break;
 	}
 	

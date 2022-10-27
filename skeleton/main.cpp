@@ -131,26 +131,23 @@ void keyPress(unsigned char key, const PxTransform& camera)
 
 	switch(toupper(key))
 	{
-	case '1': 
-	
-		bullet.push_back(new Proyectil(Proyectil::BULLET, GetCamera()->getTransform().p, GetCamera()->getDir(), {0.3,0.3,0.3,1}));
+	case '0': 
+		pSystem->generateFireworkSystem(0);
+		//bullet.push_back(new Proyectil(Proyectil::BULLET, GetCamera()->getTransform().p, GetCamera()->getDir(), {0.3,0.3,0.3,1}));
+		break;
+	case '1':
+		pSystem->generateFireworkSystem(1);
+		//bullet.push_back(new Proyectil(Proyectil::CANNON, GetCamera()->getTransform().p, GetCamera()->getDir(), { 0.2,0.2,0.2,1 }));
 		break;
 	case '2':
 		
-		bullet.push_back(new Proyectil(Proyectil::CANNON, GetCamera()->getTransform().p, GetCamera()->getDir(), { 0.2,0.2,0.2,1 }));
+		//bullet.push_back(new Proyectil(Proyectil::FIREBALL, GetCamera()->getTransform().p, GetCamera()->getDir(), {0.9,0.1,0.2,1}));
 		break;
-	case '3':
-		
-		bullet.push_back(new Proyectil(Proyectil::FIREBALL, GetCamera()->getTransform().p, GetCamera()->getDir(), {0.9,0.1,0.2,1}));
-		break;
-	case '4':	
+	case '3':	
 
-		bullet.push_back(new Proyectil(Proyectil::LASER, GetCamera()->getTransform().p, GetCamera()->getDir(), {0.2,1,1,1}));
+		//bullet.push_back(new Proyectil(Proyectil::LASER, GetCamera()->getTransform().p, GetCamera()->getDir(), {0.2,1,1,1}));
 		break;
-	/*case ' ':
-	{
-		break;
-	}*/
+
 	default:
 		break;
 	}
