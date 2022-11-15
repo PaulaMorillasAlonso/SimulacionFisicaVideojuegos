@@ -7,7 +7,7 @@ ParticleSystem::ParticleSystem()
 	
 	/*humo_ = new GaussianParticleGenerator({ 7,50,7 }, { 5,5,2 }, { 0,2,0 }, {4, 4, 0}, { 2,2,0 }, 1, 1, 0.99, 3000, { 0.8,0.8,0.8,1 },0.8);
 	_particle_generators.push_back(humo_);*/
-	createFireworkRules();
+	//createFireworkRules();
 }
 
 Vector4 ParticleSystem::randomColour()
@@ -71,9 +71,9 @@ void ParticleSystem::createFireworkRules()
 {
 	firework_rules_ = std::vector<FireworkRule>(3);
 
-	firework_rules_[0].set({ 7,50,7 }, { 10,10,1 }, { 0,8.0,0 }, 0.99, 1000, randomColour(), 0.1, 40, 0); //Fuego básico, sube y explota
-	firework_rules_[1].set({ 10,40,10 }, { 10,10,0 }, { 0,8.0,0 }, 0.99, 2000, {0.1,0.9,0.9,1}, 0.1, 50, 1); //Fuego circular
-	firework_rules_[2].set({ 15,60,15 }, { 10,10,0 }, { 0,8.0,0 }, 0.99, 1000, {0.9,0.1,0.47,1}, 0.1, 60, 2); //Fuego esfera
+	firework_rules_[0].set({ 7,50,7 }, { 10,10,1 }, { 0,8.0,0 }, 0.99, 1000, randomColour(), 0.4, 40, 0); //Fuego básico, sube y explota
+	firework_rules_[1].set({ 10,40,10 }, { 10,10,0 }, { 0,8.0,0 }, 0.99, 2000, {0.1,0.9,0.9,1}, 0.4, 50, 1); //Fuego circular
+	firework_rules_[2].set({ 15,60,15 }, { 10,10,0 }, { 0,8.0,0 }, 0.99, 1000, {0.9,0.1,0.47,1}, 0.4, 60, 2); //Fuego esfera
 
 }
 void ParticleSystem::generateFireworkSystem(unsigned type)
@@ -92,11 +92,8 @@ void ParticleSystem::generateFireworkSystem(unsigned type)
 		 g=std::shared_ptr<ParticleGenerator>(new CircleParticleGenerator({4,4,0},1,15,firework_rules_[type].payload_));
 		break;
 	case 2:
-
-		/*g = std::shared_ptr<ParticleGenerator>(new UniformParticleGenerator(firework_rules_[type].pos_, firework_rules_[type].vel_,firework_rules_[type].acc_,
-			1, 4,0, 5, 1, firework_rules_[type].payload_, firework_rules_[type].damping_, firework_rules_[type].lifeTime_,
-			randomColour(), firework_rules_[type].size_));*/
 		g = std::shared_ptr<ParticleGenerator>(new SphereParticleGenerator({ 20,20,0 }, 1, 15, firework_rules_[type].payload_));
+		break;
 
 	}
 	
