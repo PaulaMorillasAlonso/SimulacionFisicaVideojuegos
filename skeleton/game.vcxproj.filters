@@ -19,14 +19,15 @@
     <ClCompile Include="Firework.cpp" />
     <ClCompile Include="CircleParticleGenerator.cpp" />
     <ClCompile Include="SphereParticleGenerator.cpp" />
-    <ClCompile Include="ForceGenerator.cpp">
-      <Filter>Forces</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleForceRegistry.cpp" />
     <ClCompile Include="GravityForceGenerator.cpp">
       <Filter>Forces</Filter>
     </ClCompile>
-    <ClCompile Include="ParticleDragGenerator.cpp" />
+    <ClCompile Include="ParticleDragGenerator.cpp">
+      <Filter>Forces</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleForceRegistry.cpp">
+      <Filter>Forces</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -50,11 +51,15 @@
     <ClInclude Include="ForceGenerator.h">
       <Filter>Forces</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleForceRegistry.h" />
     <ClInclude Include="GravityForceGenerator.h">
       <Filter>Forces</Filter>
     </ClInclude>
-    <ClInclude Include="ParticleDragGenerator.h" />
+    <ClInclude Include="ParticleDragGenerator.h">
+      <Filter>Forces</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleForceRegistry.h">
+      <Filter>Forces</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

@@ -2,12 +2,33 @@
 
 ParticleSystem::ParticleSystem()
 {
-	/*fuente_ = new UniformParticleGenerator({ 7,50,7 }, { 0,0,0 }, {0,-10.0,0}, 2, 5, 1, 2, 1, 1, 0.99, 5000, { 0,0,1,1 },1.0);
-	_particle_generators.push_back(fuente_);*/
+	forceReg_ = new ParticleForceRegistry();
+	creaFuente();
 	
 	/*humo_ = new GaussianParticleGenerator({ 7,50,7 }, { 5,5,2 }, { 0,2,0 }, {4, 4, 0}, { 2,2,0 }, 1, 1, 0.99, 3000, { 0.8,0.8,0.8,1 },0.8);
 	_particle_generators.push_back(humo_);*/
-	//createFireworkRules();
+	/*createFireworkRules();*/
+}
+
+void ParticleSystem::creaFuente()
+{
+	gravGen_= new GravityForceGenerator({ 0,-10.0,0 });
+	fuente_ = new UniformParticleGenerator({ 7,50,7 }, { 0,0,0 }, { 0,1.0,0 }, 2, 5, 1, 2, 1, 1, 0.99, 5000, { 0,0,1,1 }, 1.0);
+	fuente_->addForceGenerator(gravGen_);
+	_particle_generators.push_back(fuente_);
+}
+
+ParticleSystem::~ParticleSystem()
+{
+	for (auto gens : _particle_generators) {
+		delete gens;
+	}
+	for (auto p :_particles) {
+		delete p;
+	}
+
+	forceReg_->deleteForce();
+	delete forceReg_;
 }
 
 Vector4 ParticleSystem::randomColour()
@@ -43,6 +64,7 @@ void ParticleSystem::update(double t)
 				
 			}
 			it = _particles.erase(it);
+			forceReg_->deleteParticleRegistry(p);
 			delete p;
 		}
 	}
@@ -50,12 +72,21 @@ void ParticleSystem::update(double t)
 	for (auto e : _particle_generators)
 	{
 		auto list = e->generateParticle();
+		std::vector<GravityForceGenerator*> force = e->returnForce();
 		for (auto i : list)
 		{
 			_particles.push_back(i);
+
+			for (auto s : force) {
+				GravityForceGenerator* grav = s;
+				if (grav != nullptr) {
+					forceReg_->addRegistry(grav, i);
+				}
+			}
 		}
 
 	}
+	forceReg_->updateForces(t);
 }
 
 ParticleGenerator* ParticleSystem::getParticleGenerator(std::string name)
@@ -101,3 +132,5 @@ void ParticleSystem::generateFireworkSystem(unsigned type)
 	g->setParticle(p);
 	_particles.push_back(p);
 }
+
+

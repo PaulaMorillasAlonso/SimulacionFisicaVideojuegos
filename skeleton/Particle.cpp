@@ -11,10 +11,12 @@ Particle::Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc , double Damping, doubl
 	alive_ = true;
 	iniTime_ = glutGet(GLUT_ELAPSED_TIME);
 }
-Particle::Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double Damping, double lifeTime, Vector4 colour, double scale, int type)
+Particle::Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double Damping, double lifeTime, Vector4 colour, double scale, int type, int mass)
 {
 	vel = Vel;
 	acc = Acc;
+	mass_ = mass;
+	inverse_mass = 1 / mass_;
 	damping = Damping;
 	lifeTime_ = lifeTime;
 	colour_ = colour;
@@ -48,16 +50,22 @@ Particle::~Particle()
 void Particle::integrate(double t)
 {
 	//MRU
-	//if (inverse_mass <= 0.0f) return;
+	if (inverse_mass <= 0.0f) return;
 
 	//EULER
+	//vel += acc * t;
+	//vel *= powf(damping, t);
 	pose = physx::PxTransform(pose.p.x + vel.x * t, pose.p.y + vel.y * t, pose.p.z + vel.z * t);
-	vel += acc * t;
-	vel *= powf(damping, t);
+
+	Vector3 newAcc = acc;
+	newAcc += totForce * inverse_mass;
+
+	vel = vel * pow(damping, t) + newAcc * t;
+	clearForce();
 
 	double actualTime = glutGet(GLUT_ELAPSED_TIME);
 
-	if ( actualTime-iniTime_>=lifeTime_|| pose.p.y <= 0 /*|| pose.p.y>=100*/) {
+	if (actualTime - iniTime_ >= lifeTime_ || pose.p.y <= 0 /*|| pose.p.y>=100*/) {
 
 		alive_ = false;
 	}
