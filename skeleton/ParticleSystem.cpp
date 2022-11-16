@@ -72,16 +72,22 @@ void ParticleSystem::update(double t)
 	for (auto e : _particle_generators)
 	{
 		auto list = e->generateParticle();
-		std::vector<GravityForceGenerator*> force = e->returnForce();
+		
+		std::vector<ForceGenerator*> force = e->returnForce();
+	
 		for (auto i : list)
 		{
 			_particles.push_back(i);
 
 			for (auto s : force) {
-				GravityForceGenerator* grav = s;
-				if (grav != nullptr) {
-					forceReg_->addRegistry(grav, i);
+			
+				if (s->forceType == ForceGenerator::GRAVITY) {
+					GravityForceGenerator* grav = static_cast<GravityForceGenerator*>(s);
+					if (grav != nullptr) {
+						forceReg_->addRegistry(grav, i);
+					}
 				}
+				
 			}
 		}
 
@@ -100,11 +106,13 @@ ParticleGenerator* ParticleSystem::getParticleGenerator(std::string name)
 
 void ParticleSystem::createFireworkRules()
 {
-	firework_rules_ = std::vector<FireworkRule>(3);
+	firework_rules_ = std::vector<FireworkRule>(4);
 
-	firework_rules_[0].set({ 7,50,7 }, { 1,1,1 }, { 0,-2,0 }, 0.99, 4000, randomColour(), 0.4, 5,1, 0); //Fuego básico, sube y explota
-	//firework_rules_[1].set({ 10,40,10 }, { 10,10,0 }, { 0,8.0,0 }, 0.99, 2000, {0.1,0.9,0.9,1}, 0.4, 50,1, 1); //Fuego circular
-	//firework_rules_[2].set({ 15,60,15 }, { 10,10,0 }, { 0,8.0,0 }, 0.99, 1000, {0.9,0.1,0.47,1}, 0.4, 60,1, 2); //Fuego esfera
+	firework_rules_[0].set({ 7,50,7 }, { 1,1,1 }, { 0,-2,0 }, 0.99, 4000, randomColour(), 0.4, 10,1, 0); //Fuego básico, sube y explota //gravedad
+	firework_rules_[1].set({ 10,40,10 }, { 10,10,0 }, { 0,8.0,0 }, 0.99, 2000, {0.1,0.9,0.9,1}, 0.4, 50,1, 1); //Fuego circular
+	firework_rules_[2].set({ 15,60,15 }, { 10,10,0 }, { 0,8.0,0 }, 0.99, 1000, {0.9,0.1,0.47,1}, 0.4, 60,1, 2); //Fuego esfera
+	firework_rules_[3].set({ 7,50,7 }, { 1,1,1 }, { 0,-2,0 }, 0.99, 4000, randomColour(), 0.4, 10, 1, 3); //Fuego básico, sube y explota //sin gravedad
+
 
 }
 void ParticleSystem::generateFireworkSystem(unsigned type)
@@ -123,18 +131,24 @@ void ParticleSystem::generateFireworkSystem(unsigned type)
 			randomColour(), firework_rules_[type].size_, firework_rules_[type].mass_);
 		g->addForceGenerator(gravGen_);
 		break;
-	/*case 1:
-		 g=std::shared_ptr<ParticleGenerator>(new CircleParticleGenerator({4,4,0},1,15,firework_rules_[type].payload_));
+	case 1:
+		 g=new CircleParticleGenerator({4,4,0},1,15,firework_rules_[type].payload_);
+
 		break;
 	case 2:
-		g = std::shared_ptr<ParticleGenerator>(new SphereParticleGenerator({ 20,20,0 }, 1, 15, firework_rules_[type].payload_));
-		break;*/
-
+		g = new SphereParticleGenerator({ 20,20,0 }, 1, 15, firework_rules_[type].payload_);
+		break;
+	case 3:
+		g = new GaussianParticleGenerator(firework_rules_[type].pos_, firework_rules_[type].vel_,
+			firework_rules_[type].acc_, { 4, 4, 0 }, { 1,1,0 }, 1, firework_rules_[type].payload_, firework_rules_[type].damping_, firework_rules_[type].lifeTime_,
+			randomColour(), firework_rules_[type].size_, firework_rules_[type].mass_);
+		break;
 	}
 	
 	Firework* p = new Firework(firework_rules_[type],g);
 	g->setParticle(p);
 	_particles.push_back(p);
+	_particle_generators.push_back(g);
 }
 
 
