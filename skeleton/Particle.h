@@ -39,7 +39,9 @@ public:
 	virtual std::list<Particle*> explode();
 
 	//Fuerzas
-	void addForce(Vector3 f) { totForce += f; }
+	void addForce(Vector3 f) { 
+		totForce += f; 
+	}
 	void clearForce() { totForce = Vector3(0,0,0); }
 
 protected:
