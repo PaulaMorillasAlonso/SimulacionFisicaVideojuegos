@@ -11,7 +11,7 @@ Particle::Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc , double Damping, doubl
 	alive_ = true;
 	iniTime_ = glutGet(GLUT_ELAPSED_TIME);
 }
-Particle::Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double Damping, double lifeTime, Vector4 colour, double scale, int type, int mass)
+Particle::Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double Damping, double lifeTime, Vector4 colour, double scale,int mass, int type)
 {
 	vel = Vel;
 	acc = Acc;

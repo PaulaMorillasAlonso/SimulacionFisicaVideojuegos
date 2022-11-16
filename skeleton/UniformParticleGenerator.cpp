@@ -1,7 +1,7 @@
 #include "UniformParticleGenerator.h"
 
 UniformParticleGenerator::UniformParticleGenerator(Vector3 meanPos,Vector3 meanVel,Vector3 meanAcc,double minPos, double maxPos,
-    double minVel,double maxVel,double gen_prob, int numPart, double damping, double lifeTime, Vector4 colour, double scale)
+    double minVel,double maxVel,double gen_prob, int numPart, double damping, double lifeTime, Vector4 colour, double scale, double mass)
 {
     _mean_pos = meanPos;
     _mean_vel = meanVel;
@@ -20,6 +20,7 @@ UniformParticleGenerator::UniformParticleGenerator(Vector3 meanPos,Vector3 meanV
     lifeTime_ = lifeTime;
     colour_ = colour;
     scale_ = scale;
+    mass_ = mass;
 
 
 }
@@ -35,7 +36,7 @@ std::list<Particle*>UniformParticleGenerator::generateParticle()
         if (genProbRnd < _generation_probability) {
 
 
-        Particle* p = new Particle({ _mean_pos.x,_mean_pos.y,_mean_pos.z }, {_mean_pos.x,_mean_pos.y,_mean_vel.z}, mean_acc, damping_, lifeTime_, colour_, scale_);
+        Particle* p = new Particle({ _mean_pos.x,_mean_pos.y,_mean_pos.z }, {_mean_pos.x,_mean_pos.y,_mean_vel.z}, mean_acc, damping_, lifeTime_, colour_, scale_,mass_);
         double newPosX = dist_pos(gen_);
         double newPosY = dist_pos(gen_);
         double newPosZ = dist_pos(gen_);

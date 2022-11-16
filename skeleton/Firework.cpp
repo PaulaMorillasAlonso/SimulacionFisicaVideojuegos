@@ -8,7 +8,7 @@
 //	payload_ = payload;
 //	gens_.push_back(gens);
 //}
-Firework::Firework(FireworkRule rules,std::shared_ptr<ParticleGenerator> gen):Particle(rules.pos_,rules.vel_,rules.acc_,rules.damping_,rules.lifeTime_,rules.colour_,rules.size_,-1) {
+Firework::Firework(FireworkRule rules,std::shared_ptr<ParticleGenerator> gen):Particle(rules.pos_,rules.vel_,rules.acc_,rules.damping_,rules.lifeTime_,rules.colour_,rules.size_,rules.mass_,-1) {
 	payload_ = rules.payload_;
 	type_ = rules.type_;
 	gens_.push_back(gen);

@@ -14,6 +14,7 @@ struct FireworkRule {
 	Vector4 colour_;
 	double size_;
 	int payload_;
+	double mass_;
 	/*
 	float minAge_;
 	float maxAge_;
@@ -28,7 +29,7 @@ struct FireworkRule {
 			damping_ = damping;*/
 
 	void set(Vector3 pos,Vector3 vel,Vector3 acc,double damping,double lifeTime,
-		Vector4 colour,double size,int payload, int type ) {
+		Vector4 colour,double size,int payload, double mass,int type ) {
 		type_ = type;
 		pos_=pos;
 		vel_=vel;
@@ -38,6 +39,7 @@ struct FireworkRule {
 		colour_=colour;
 		size_=size;
 		payload_=payload;
+		mass_ = mass;
 	}
 
 };
