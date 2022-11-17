@@ -270,6 +270,7 @@
     <ClCompile Include="Render\Render.cpp" />
     <ClCompile Include="SphereParticleGenerator.cpp" />
     <ClCompile Include="UniformParticleGenerator.cpp" />
+    <ClCompile Include="WhirlwindForceGenerator.cpp" />
     <ClCompile Include="WindForceGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -291,6 +292,7 @@
     <ClInclude Include="Render\Render.h" />
     <ClInclude Include="SphereParticleGenerator.h" />
     <ClInclude Include="UniformParticleGenerator.h" />
+    <ClInclude Include="WhirlwindForceGenerator.h" />
     <ClInclude Include="WindForceGenerator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

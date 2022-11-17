@@ -32,6 +32,16 @@ void ParticleSystem::creaViento() {
 	lluvia->addForceGenerator(windGen_);
 	_particle_generators.push_back(lluvia);
 }
+void ParticleSystem::creaTornado()
+{
+	gravGen_ = new GravityForceGenerator({ 0,-10.0,0 });
+	whirlwindGen_ = new WhirlwindForceGenerator(1, 0, 1.0, Vector3(1, 1, 1), {7,50,7});
+	auto lluvia = new GaussianParticleGenerator({ 7,50,7 }, { 1,1,1 }, { 0,0,0 }, { 10, 10, 10 }, { 2,2,0 }, 1, 10, 0.99, 3000, { 0.2,0.2,1,1 }, 0.3, 1);
+	lluvia->addForceGenerator(gravGen_);
+	lluvia->addForceGenerator(whirlwindGen_);
+	_particle_generators.push_back(lluvia);
+
+}
 ParticleSystem::~ParticleSystem()
 {
 	for (auto gens : _particle_generators) {
@@ -103,6 +113,12 @@ void ParticleSystem::update(double t)
 				}
 				else if(s->forceType == ForceGenerator::WIND) {
 					WindForceGenerator* w = static_cast<WindForceGenerator*>(s);
+					if (w != nullptr) {
+						forceReg_->addRegistry(w, i);
+					}
+				}
+				else if (s->forceType == ForceGenerator::WHIRLWIND) {
+					WhirlwindForceGenerator* w = static_cast<WhirlwindForceGenerator*>(s);
 					if (w != nullptr) {
 						forceReg_->addRegistry(w, i);
 					}

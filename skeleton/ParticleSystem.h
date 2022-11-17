@@ -11,6 +11,7 @@
 #include "ParticleForceRegistry.h"
 #include "GravityForceGenerator.h"
 #include "WindForceGenerator.h"
+#include "WhirlwindForceGenerator.h"
 #include "ForceGenerator.h"
 #include "ParticleDragGenerator.h"
 
@@ -27,6 +28,7 @@ private:
 	ParticleForceRegistry* forceReg_;
 	GravityForceGenerator* gravGen_ = nullptr;
 	WindForceGenerator* windGen_ = nullptr;
+	WhirlwindForceGenerator* whirlwindGen_ = nullptr;
 
 protected:
 
@@ -39,6 +41,7 @@ public:
 	void creaFuente();
 	void creaFuenteGravedad(Vector3 g, Vector3 pos, Vector4 color, double mass);
 	void creaViento();
+	void creaTornado();
 	~ParticleSystem();
 	
 };

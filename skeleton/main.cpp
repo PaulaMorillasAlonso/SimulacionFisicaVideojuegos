@@ -156,7 +156,7 @@ void keyPress(unsigned char key, const PxTransform& camera)
 	case '3':
 		//pSystem->generateFireworkSystem(2);
 		//bullet.push_back(new Proyectil(Proyectil::FIREBALL, GetCamera()->getTransform().p, GetCamera()->getDir(), {0.9,0.1,0.2,1}));
-		
+		pSystem->creaTornado();
 		
 
 		break;
