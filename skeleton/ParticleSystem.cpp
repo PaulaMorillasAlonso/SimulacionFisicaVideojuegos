@@ -23,7 +23,15 @@ void ParticleSystem::creaFuenteGravedad(Vector3 g, Vector3 pos, Vector4 color, d
 	fuente_->addForceGenerator(gravGen_);
 	_particle_generators.push_back(fuente_);
 }
+void ParticleSystem::creaViento() {
 
+	gravGen_ = new GravityForceGenerator({0,-10.0,0});
+	windGen_ = new WindForceGenerator(-1, 0, Vector3(10, 100, -10), { 7,50,7 },10);
+	auto lluvia = new GaussianParticleGenerator({ 7,50,7 }, { 1,1,1 }, { 0,0,0 }, { 30, 30, 0 }, { 2,2,0 }, 1, 10, 0.99, 3000, { 0.2,0.2,1,1 }, 0.3,1);
+	lluvia->addForceGenerator(gravGen_);
+	lluvia->addForceGenerator(windGen_);
+	_particle_generators.push_back(lluvia);
+}
 ParticleSystem::~ParticleSystem()
 {
 	for (auto gens : _particle_generators) {
@@ -91,6 +99,12 @@ void ParticleSystem::update(double t)
 					GravityForceGenerator* grav = static_cast<GravityForceGenerator*>(s);
 					if (grav != nullptr) {
 						forceReg_->addRegistry(grav, i);
+					}
+				}
+				else if(s->forceType == ForceGenerator::WIND) {
+					WindForceGenerator* w = static_cast<WindForceGenerator*>(s);
+					if (w != nullptr) {
+						forceReg_->addRegistry(w, i);
 					}
 				}
 				

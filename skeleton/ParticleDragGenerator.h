@@ -6,8 +6,10 @@
 class ParticleDragGenerator :public ForceGenerator
 {
 public:
-	ParticleDragGenerator();
-	ParticleDragGenerator(const float k1, const float k2);
+	
+	ParticleDragGenerator(const float k1, const float k2) { 
+		setDrag(k1, k2);
+	};
 	virtual void updateForce(Particle* particle, double t);
 	inline void setDrag(float k1, float k2) { _k1 = k1; _k2 = k2; }
 	inline float getK1(){ return (_k1);}

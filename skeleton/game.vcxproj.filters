@@ -28,6 +28,9 @@
     <ClCompile Include="ParticleForceRegistry.cpp">
       <Filter>Forces</Filter>
     </ClCompile>
+    <ClCompile Include="WindForceGenerator.cpp">
+      <Filter>Forces</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -58,6 +61,9 @@
       <Filter>Forces</Filter>
     </ClInclude>
     <ClInclude Include="ParticleForceRegistry.h">
+      <Filter>Forces</Filter>
+    </ClInclude>
+    <ClInclude Include="WindForceGenerator.h">
       <Filter>Forces</Filter>
     </ClInclude>
   </ItemGroup>
