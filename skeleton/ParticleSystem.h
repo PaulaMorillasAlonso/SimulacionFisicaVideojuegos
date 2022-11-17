@@ -34,6 +34,7 @@ public:
 	void createFireworkRules();
 	ParticleSystem();
 	void creaFuente();
+	void creaFuenteGravedad(Vector3 g, Vector3 pos, Vector4 color, double mass);
 	~ParticleSystem();
 	
 };

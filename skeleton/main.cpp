@@ -132,21 +132,35 @@ void keyPress(unsigned char key, const PxTransform& camera)
 	switch(toupper(key))
 	{
 	case '1': 
-		pSystem->generateFireworkSystem(0);
+		//pSystem->generateFireworkSystem(0);
 		//bullet.push_back(new Proyectil(Proyectil::BULLET, GetCamera()->getTransform().p, GetCamera()->getDir(), {0.3,0.3,0.3,1}));
+
+		//Sin gravedad
+		pSystem->creaFuente();
 		break;
 	case '2':
-		pSystem->generateFireworkSystem(1);
+		//pSystem->generateFireworkSystem(1);
 		//bullet.push_back(new Proyectil(Proyectil::CANNON, GetCamera()->getTransform().p, GetCamera()->getDir(), { 0.2,0.2,0.2,1 }));
+
+		//Gravedad
+		pSystem->creaFuenteGravedad({ 0,-10.0,0 }, { 15,50,7 }, { 0.9,0.1,0.47,1 },1);
 		break;
 	case '3':
-		pSystem->generateFireworkSystem(2);
-
+		//pSystem->generateFireworkSystem(2);
 		//bullet.push_back(new Proyectil(Proyectil::FIREBALL, GetCamera()->getTransform().p, GetCamera()->getDir(), {0.9,0.1,0.2,1}));
+		
+		//Gravedad
+		pSystem->creaFuenteGravedad({ 0,2.0,0 }, { 23,50,7 }, { 1,0.5,0,1 },1);
+
 		break;
 	case '4':
-		pSystem->generateFireworkSystem(3);
+		//pSystem->generateFireworkSystem(3);
 		//bullet.push_back(new Proyectil(Proyectil::BULLET, GetCamera()->getTransform().p, GetCamera()->getDir(), {0.3,0.3,0.3,1}));
+		
+		//Gravedad y masa
+
+		pSystem->creaFuenteGravedad({ 0,-10.0,0 }, { 30,50,7 }, { 0,0.8,0.3,1 }, 10);
+
 		break;
 	default:
 		break;
