@@ -7,7 +7,7 @@ CircleParticleGenerator::CircleParticleGenerator(Vector3 pos,Vector3 meanVel,dou
     radius_ = radius;
     _generation_probability = gen_prob;
     _num_particles = numPart;
-    setParticle(new Particle(pos, meanVel, { 0,0,0 }, 0.99, 5000, {1,0,0,1},1,1));
+
 }
 
 std::list<Particle*> CircleParticleGenerator::generateParticle()
