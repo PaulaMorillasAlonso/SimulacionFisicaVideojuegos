@@ -163,7 +163,7 @@ void keyPress(unsigned char key, const PxTransform& camera)
 	case '4':
 		//pSystem->generateFireworkSystem(3);
 		//bullet.push_back(new Proyectil(Proyectil::BULLET, GetCamera()->getTransform().p, GetCamera()->getDir(), {0.3,0.3,0.3,1}));
-
+		pSystem->creaExplosion();
 		break;
 	default:
 		break;

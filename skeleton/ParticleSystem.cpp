@@ -36,11 +36,18 @@ void ParticleSystem::creaTornado()
 {
 	gravGen_ = new GravityForceGenerator({ 0,-10.0,0 });
 	whirlwindGen_ = new WhirlwindForceGenerator(1, 0, 1.0, Vector3(1, 1, 1), {7,50,7});
-	auto lluvia = new GaussianParticleGenerator({ 7,50,7 }, { 1,1,1 }, { 0,0,0 }, { 10, 10, 10 }, { 2,2,0 }, 1, 10, 0.99, 3000, { 0.2,0.2,1,1 }, 0.3, 1);
+	auto lluvia = new GaussianParticleGenerator({ 7,50,7 }, { 1,1,1 }, { 0,0,0 }, { 10, 10, 10 }, { 2,2,0 }, 1, 10, 0.99, 6000, { 0.2,0.2,1,1 }, 0.3, 1);
 	lluvia->addForceGenerator(gravGen_);
 	lluvia->addForceGenerator(whirlwindGen_);
 	_particle_generators.push_back(lluvia);
 
+}
+void ParticleSystem::creaExplosion()
+{
+	explosionGen_ = new ExplosionForceGenerator(200000,100000,10000000, Vector3( 7,50,7));
+	auto lluvia = new GaussianParticleGenerator({ 7,50,7 }, { 10,10,10 }, { 0,0,0 }, { 10, 10, 10 }, { 12,12,0 }, 1, 10, 0.99, 12000, { 0.2,0.2,1,1 }, 0.3, 1);
+	lluvia->addForceGenerator(explosionGen_);
+	_particle_generators.push_back(lluvia);
 }
 ParticleSystem::~ParticleSystem()
 {
