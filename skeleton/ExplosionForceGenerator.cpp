@@ -26,5 +26,5 @@ void ExplosionForceGenerator::updateForce(Particle* particle, double t)
 
 		particle->addForce(force);
 	}
-	
+	R_ += 343 * t;
 }

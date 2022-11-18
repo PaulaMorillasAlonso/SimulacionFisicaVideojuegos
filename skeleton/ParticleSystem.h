@@ -43,6 +43,7 @@ public:
 	void creaFuente();
 	void creaFuenteGravedad(Vector3 g, Vector3 pos, Vector4 color, double mass);
 	void creaViento();
+	void creaSistemaViento();
 	void creaTornado();
 	void creaExplosion();
 	~ParticleSystem();
