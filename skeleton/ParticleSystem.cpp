@@ -34,17 +34,12 @@ void ParticleSystem::creaViento() {
 	_particle_generators.push_back(lluvia);
 	_particle_generators.push_back(nube);
 }
-void ParticleSystem::creaSistemaViento() {
 
-	
-	gravGen_ = new GravityForceGenerator({ 0,-10.0,0 });
-	windGen_ = new WindForceGenerator(-1, 0, Vector3(10, 100, -10), { 7,50,7 }, 10);
-}
 void ParticleSystem::creaTornado()
 {
 	
 	whirlwindGen_ = new WhirlwindForceGenerator(1, 0, 1.0, Vector3(1, 1, 1), {7,50,7});
-	auto lluvia = new GaussianParticleGenerator({ 7,50,7 }, { 1,1,1 }, { 0,0,0 }, { 3, 3, 3 }, { 2,2,0 }, 1, 10, 0.99, 12000, { 0.2,0.2,1,1 }, 0.3, 1);
+	auto lluvia = new GaussianParticleGenerator({ 7,50,7 }, { 1,1,1 }, { 0,0,0 }, { 3, 3, 3 }, { 2,2,0 }, 1, 10, 0.99, 12000, { 0.8,0.8,0.8,1 }, 0.3, 1);
 	lluvia->addForceGenerator(whirlwindGen_);
 	_particle_generators.push_back(lluvia);
 
@@ -52,9 +47,9 @@ void ParticleSystem::creaTornado()
 void ParticleSystem::creaExplosion()
 {
 	explosionGen_ = new ExplosionForceGenerator(2000,1000,1000, Vector3( 7,50,7));
-	auto lluvia = new GaussianParticleGenerator({ 7,50,7 }, { 10,10,10 }, { 0,0,0 }, { 2, 2, 2 }, { 1,1,0 }, 1, 10, 0.99, 5000, randomColour(), 0.3, 1);
-	lluvia->addForceGenerator(explosionGen_);
-	_particle_generators.push_back(lluvia);
+	auto exp = new GaussianParticleGenerator({ 7,50,7 }, { 10,10,10 }, { 0,0,0 }, { 2, 2, 2 }, { 1,1,0 }, 1, 10, 0.99, 5000, randomColour(), 0.3, 1);
+	exp->addForceGenerator(explosionGen_);
+	_particle_generators.push_back(exp);
 	
 	
 }
@@ -189,7 +184,7 @@ void ParticleSystem::generateFireworkSystem(unsigned type)
 		g->addForceGenerator(gravGen_);
 		break;
 	case 1:
-		 g=new CircleParticleGenerator({4,4,0},1,15,firework_rules_[type].payload_);
+		 g=new CircleParticleGenerator(firework_rules_[type].pos_,{4,4,0},1,15,firework_rules_[type].payload_);
 
 		break;
 	case 2:

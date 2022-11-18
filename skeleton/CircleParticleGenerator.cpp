@@ -1,5 +1,5 @@
 #include "CircleParticleGenerator.h"
-CircleParticleGenerator::CircleParticleGenerator(Vector3 meanVel,double gen_prob,double radius,double numPart)
+CircleParticleGenerator::CircleParticleGenerator(Vector3 pos,Vector3 meanVel,double gen_prob,double radius,double numPart)
 {
     gen_prob_dist = std::uniform_real_distribution<double>(0, 1);
     _mean_vel = meanVel;
@@ -7,7 +7,7 @@ CircleParticleGenerator::CircleParticleGenerator(Vector3 meanVel,double gen_prob
     radius_ = radius;
     _generation_probability = gen_prob;
     _num_particles = numPart;
-
+    setParticle(new Particle(pos, meanVel, { 0,0,0 }, 0.99, 5000, {1,0,0,1},1,1));
 }
 
 std::list<Particle*> CircleParticleGenerator::generateParticle()

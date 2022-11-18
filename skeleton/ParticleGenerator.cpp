@@ -9,7 +9,7 @@ void ParticleGenerator::setParticle(Particle* model)
 Particle* ParticleGenerator::clone()
 {
 
-	return new Particle(model_->getPos(), model_->getVel(), model_->getAcc(), model_->getDamping(), model_->getLifetime(), model_->getColour(), model_->getScale());
+	return new Particle(model_->getPos(), model_->getVel(), model_->getAcc(), model_->getDamping(), model_->getLifetime(), model_->getColour(), model_->getScale(),1);
 }
 int ParticleGenerator::addForceGenerator(ForceGenerator* force) {
     GravityForceGenerator * gravity = static_cast<GravityForceGenerator*>(force);
