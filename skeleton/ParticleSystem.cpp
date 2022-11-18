@@ -38,10 +38,11 @@ void ParticleSystem::creaViento() {
 void ParticleSystem::creaTornado()
 {
 	
-	whirlwindGen_ = new WhirlwindForceGenerator(1, 0, 1.0, Vector3(1, 1, 1), {7,50,7});
+	whirlwindGen_ = new WhirlwindForceGenerator(1, 0, 1.0, Vector3(0.1, 0.1, .1), {7,50,7});
 	auto lluvia = new GaussianParticleGenerator({ 7,50,7 }, { 1,1,1 }, { 0,0,0 }, { 3, 3, 3 }, { 2,2,0 }, 1, 10, 0.99, 12000, { 0.8,0.8,0.8,1 }, 0.3, 1);
 	lluvia->addForceGenerator(whirlwindGen_);
 	_particle_generators.push_back(lluvia);
+	
 
 }
 void ParticleSystem::creaExplosion()

@@ -37,6 +37,7 @@
     <ClCompile Include="ExplosionForceGenerator.cpp">
       <Filter>Forces</Filter>
     </ClCompile>
+    <ClCompile Include="PlaneParticleGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -78,6 +79,7 @@
     <ClInclude Include="ExplosionForceGenerator.h">
       <Filter>Forces</Filter>
     </ClInclude>
+    <ClInclude Include="PlaneParticleGenerator.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

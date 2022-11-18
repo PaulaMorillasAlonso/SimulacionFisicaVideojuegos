@@ -15,6 +15,7 @@
 #include "ForceGenerator.h"
 #include "ParticleDragGenerator.h"
 #include "ExplosionForceGenerator.h"
+#include "PlaneParticleGenerator.h"
 
 class ParticleSystem
 {

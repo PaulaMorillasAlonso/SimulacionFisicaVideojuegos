@@ -8,6 +8,7 @@ WhirlwindForceGenerator::WhirlwindForceGenerator(const float k1, const float k2,
 	origin_ = origin;
 	varY_ = 50;
 	K_ = K;
+	new Particle(origin, { 0,0,0 }, { 0,0,0 }, 1.0, 30000, { 1.0, 0.0, 1.0, 0.1 }, r_, 1);
 };
 void WhirlwindForceGenerator::updateForce(Particle* particle, double t)
 {
