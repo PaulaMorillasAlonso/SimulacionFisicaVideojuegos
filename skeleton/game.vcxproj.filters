@@ -38,6 +38,9 @@
       <Filter>Forces</Filter>
     </ClCompile>
     <ClCompile Include="PlaneParticleGenerator.cpp" />
+    <ClCompile Include="SpringForceGenerator.cpp">
+      <Filter>Muelles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -80,6 +83,9 @@
       <Filter>Forces</Filter>
     </ClInclude>
     <ClInclude Include="PlaneParticleGenerator.h" />
+    <ClInclude Include="SpringForceGenerator.h">
+      <Filter>Muelles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">
@@ -87,6 +93,9 @@
     </Filter>
     <Filter Include="Forces">
       <UniqueIdentifier>{042ed3a3-7960-4ee6-8255-e70fda9ad5b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Muelles">
+      <UniqueIdentifier>{56cd0861-2194-4518-ab4c-8a8e14b54c27}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

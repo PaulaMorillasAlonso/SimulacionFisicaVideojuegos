@@ -162,6 +162,9 @@ void keyPress(unsigned char key, const PxTransform& camera)
 		//bullet.push_back(new Proyectil(Proyectil::BULLET, GetCamera()->getTransform().p, GetCamera()->getDir(), {0.3,0.3,0.3,1}));
 		pSystem->creaExplosion();
 		break;
+	case '5':
+		pSystem->muelleFijo();
+		break;
 	default:
 		break;
 	}

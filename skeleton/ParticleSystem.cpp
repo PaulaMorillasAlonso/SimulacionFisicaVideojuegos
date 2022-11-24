@@ -54,6 +54,21 @@ void ParticleSystem::creaExplosion()
 	
 	
 }
+void ParticleSystem::muelleFijo()
+{
+	Particle* pFija = new Particle({ 7,80,7 }, { 0,0,0 }, { 0,0,0 }, 1, 30000, { 1,0,0,1 }, 1, 1);
+	_particles.push_back(pFija);
+
+	Particle* pMuelle = new Particle({ 7,80,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, 30000, {0,0,1,1},1,3);
+	_particles.push_back(pMuelle);
+
+	/*springGen_ */auto sGen= new SpringForceGenerator(1,10,pFija);
+	GravityForceGenerator* gGen = new GravityForceGenerator({ 0.0, -10, 0.0 });
+	
+	forceReg_->addRegistry(sGen, pMuelle);
+	forceReg_->addRegistry(gGen, pMuelle);
+
+}
 ParticleSystem::~ParticleSystem()
 {
 	for (auto gens : _particle_generators) {

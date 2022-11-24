@@ -16,6 +16,7 @@
 #include "ParticleDragGenerator.h"
 #include "ExplosionForceGenerator.h"
 #include "PlaneParticleGenerator.h"
+#include "SpringForceGenerator.h"
 
 class ParticleSystem
 {
@@ -32,6 +33,7 @@ private:
 	WindForceGenerator* windGen_ = nullptr;
 	WhirlwindForceGenerator* whirlwindGen_ = nullptr;
 	ExplosionForceGenerator* explosionGen_ = nullptr;
+	SpringForceGenerator* springGen_ = nullptr;
 
 protected:
 
@@ -46,6 +48,7 @@ public:
 	void creaViento();
 	void creaTornado();
 	void creaExplosion();
+	void muelleFijo();
 	~ParticleSystem();
 	
 };
