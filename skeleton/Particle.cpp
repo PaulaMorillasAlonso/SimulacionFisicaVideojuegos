@@ -27,7 +27,8 @@ Particle::Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double Damping, double
 	type_ = type;
 	iniTime_ = glutGet(GLUT_ELAPSED_TIME);
 }
-Particle::Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double Damping, double lifeTime, physx::PxShape* geomType, Vector4 colour)
+Particle::Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double Damping, double lifeTime, physx::PxShape* geomType, 
+	Vector4 colour,double scale, int mass, int type)
 {
 	vel = Vel;
 	acc = Acc;
@@ -38,6 +39,10 @@ Particle::Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double Damping, double
 	renderItem = new RenderItem(geomType, &pose, colour_);
 	alive_ = true;
 	iniTime_ = glutGet(GLUT_ELAPSED_TIME);
+	scale_ = scale;
+	mass_ = mass;
+	inverse_mass = 1 / mass_;
+	type_ = type;
 
 }
 

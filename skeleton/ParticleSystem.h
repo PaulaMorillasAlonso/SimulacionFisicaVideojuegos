@@ -35,6 +35,7 @@ private:
 	ExplosionForceGenerator* explosionGen_ = nullptr;
 	SpringForceGenerator* springGen_ = nullptr;
 
+
 protected:
 
 public:
@@ -48,7 +49,7 @@ public:
 	void creaViento();
 	void creaTornado();
 	void creaExplosion();
-	void muelleFijo();
+	void muelleFijo(WindForceGenerator* gen);
 	~ParticleSystem();
 	
 };

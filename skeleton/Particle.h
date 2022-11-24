@@ -6,7 +6,7 @@ class Particle
 public:
 	Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double damping, double lifeTime);
 	Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double damping, double lifeTime, Vector4 colour, double scale, int mass=10,int type = -1 );
-	Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double damping, double lifeTime, physx::PxShape* geomType, Vector4 colour);
+	Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double damping, double lifeTime, physx::PxShape* geomType, Vector4 colour, double scale, int mass = 10, int type = -1);
 	Particle() {};
 	~Particle();
 

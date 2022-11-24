@@ -37,7 +37,7 @@ Particle* suelo;
 Particle* diana;
 std::vector<Proyectil*> bullet;
 ParticleSystem* pSystem;
-
+WindForceGenerator* wGen;
 
 // Initialize physics engine
 void initPhysics(bool interactive)
@@ -163,7 +163,14 @@ void keyPress(unsigned char key, const PxTransform& camera)
 		pSystem->creaExplosion();
 		break;
 	case '5':
-		pSystem->muelleFijo();
+		wGen = new WindForceGenerator(-1, 0, Vector3(10, 1, 100), { 7,50,7 }, 10);
+		pSystem->muelleFijo(wGen);
+		break;
+	case '6':
+		wGen->deactivate();
+		break;
+	case '7':
+		wGen->activate();
 		break;
 	default:
 		break;
