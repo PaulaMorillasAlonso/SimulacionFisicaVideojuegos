@@ -13,6 +13,7 @@
 #include "Particle.h"
 #include "Proyectil.h"
 #include "ParticleSystem.h"
+#include <time.h>
 
 
 
@@ -163,14 +164,23 @@ void keyPress(unsigned char key, const PxTransform& camera)
 		pSystem->creaExplosion();
 		break;
 	case '5':
-		wGen = new WindForceGenerator(-1, 0, Vector3(10, 1, 100), { 7,50,7 }, 10);
-		pSystem->muelleFijo(wGen);
+	
+		pSystem->muelleFijo();
+		pSystem->deactivateSpringWind();
+
 		break;
-	case '6':
-		wGen->deactivate();
+	//case '6': //desactiva viento muelle
+	//	pSystem->deactivateSpringWind();
+	//	break;
+	case '6': //activa viento muelle
+		
+		pSystem->activaViento();
 		break;
-	case '7':
-		wGen->activate();
+	case 'X':
+		pSystem->addK();
+		break;
+	case 'C':
+		pSystem->subK();
 		break;
 	default:
 		break;

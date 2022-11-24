@@ -70,7 +70,7 @@ void Particle::integrate(double t)
 
 	double actualTime = glutGet(GLUT_ELAPSED_TIME);
 
-	if (actualTime - iniTime_ >= lifeTime_ || pose.p.y <= 0 /*|| pose.p.y>=100*/) {
+	if (actualTime - iniTime_ >= lifeTime_ || pose.p.y <= -100 || pose.p.y>=1000) {
 
 		alive_ = false;
 	}

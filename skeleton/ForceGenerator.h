@@ -13,7 +13,8 @@ public:
 	forceTypes forceType=NONE;
 	bool isActive = true;
 	void deactivate() { isActive = false; }
-	void activate() { isActive =true; }
+	void activate() { 
+		isActive =true; }
 protected:
 	int type_;
 };

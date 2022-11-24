@@ -7,6 +7,8 @@ ParticleSystem::ParticleSystem()
 	/*humo_ = new GaussianParticleGenerator({ 7,50,7 }, { 5,5,2 }, { 0,2,0 }, {4, 4, 0}, { 2,2,0 }, 1, 1, 0.99, 3000, { 0.8,0.8,0.8,1 },0.8);
 	_particle_generators.push_back(humo_);*/
 	//createFireworkRules();
+	iniTime_ = glutGet(GLUT_ELAPSED_TIME);
+
 }
 
 void ParticleSystem::creaFuente()
@@ -54,7 +56,7 @@ void ParticleSystem::creaExplosion()
 	
 	
 }
-void ParticleSystem::muelleFijo(WindForceGenerator* gen)
+void ParticleSystem::muelleFijo()
 {
 	auto cube = CreateShape(physx::PxBoxGeometry(4, 2, 4));
 	Particle* pFija = new Particle({ 7,80,7 }, { 0,0,0 }, { 0,0,0 }, 1, 30000, cube, {0,1,0,1},1);
@@ -63,12 +65,30 @@ void ParticleSystem::muelleFijo(WindForceGenerator* gen)
 	Particle* pMuelle = new Particle({ 7,80,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, 30000, {0,0,1,1},1,1);
 	_particles.push_back(pMuelle);
 
-	auto sGen= new SpringForceGenerator(1,10,pFija);
+	springGen_= new SpringForceGenerator(1,10,pFija);
 	GravityForceGenerator* gGen = new GravityForceGenerator({ 0.0, -10, 0.0 });
 
-	forceReg_->addRegistry(sGen, pMuelle);
+	windGen_= new WindForceGenerator(-1, 0, Vector3(5, 1, 10), { 7,50,7 }, 10);
+
+	forceReg_->addRegistry(springGen_, pMuelle);
 	forceReg_->addRegistry(gGen, pMuelle);
-	forceReg_->addRegistry(gen, pMuelle);
+	forceReg_->addRegistry(windGen_, pMuelle);
+
+}
+void ParticleSystem::activaViento()
+{
+	double actualTime = glutGet(GLUT_ELAPSED_TIME);
+	if (actualTime - iniTime_ >= 100) {
+		activateSpringWind();
+	}
+}
+void ParticleSystem::addK()
+{
+	springGen_->setK(springGen_->getK() + 0.2);
+}
+void ParticleSystem::subK()
+{
+	springGen_->setK(springGen_->getK() - 0.2);
 
 }
 ParticleSystem::~ParticleSystem()
