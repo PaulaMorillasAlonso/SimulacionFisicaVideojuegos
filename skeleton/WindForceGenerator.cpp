@@ -16,7 +16,7 @@ void WindForceGenerator::updateForce(Particle* particle, double t)
 	if (fabs(particle->getInverseMass()) < 1e-10)
 		return;
 	if (isActive) {
-		if (checkPosition(particle)) {
+		//if (checkPosition(particle)) {
 			Vector3 v = particle->getVel() - windVel_;
 
 			float drag_coef = v.normalize();
@@ -26,7 +26,7 @@ void WindForceGenerator::updateForce(Particle* particle, double t)
 
 			particle->addForce(dragF);
 
-		}
+		//}
 	}
 	
 }

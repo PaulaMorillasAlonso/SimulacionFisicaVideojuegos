@@ -17,6 +17,7 @@
 #include "ExplosionForceGenerator.h"
 #include "PlaneParticleGenerator.h"
 #include "SpringForceGenerator.h"
+#include "AnchoredSpringForceGenerator.h"
 
 class ParticleSystem
 {
@@ -50,6 +51,7 @@ public:
 	void creaTornado();
 	void creaExplosion();
 	void muelleFijo();
+	//void muelleDoble();
 	void activateSpringWind() { windGen_->activate(); };
 	void deactivateSpringWind() { windGen_->deactivate(); };
 	void activaViento();

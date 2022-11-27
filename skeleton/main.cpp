@@ -167,7 +167,6 @@ void keyPress(unsigned char key, const PxTransform& camera)
 	
 		pSystem->muelleFijo();
 		pSystem->deactivateSpringWind();
-
 		break;
 	//case '6': //desactiva viento muelle
 	//	pSystem->deactivateSpringWind();
@@ -175,6 +174,9 @@ void keyPress(unsigned char key, const PxTransform& camera)
 	case '6': //activa viento muelle
 		
 		pSystem->activaViento();
+		break;
+	case '7':
+		//pSystem->muelleDoble();
 		break;
 	case 'X':
 		pSystem->addK();

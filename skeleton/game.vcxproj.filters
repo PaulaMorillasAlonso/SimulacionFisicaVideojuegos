@@ -41,6 +41,12 @@
     <ClCompile Include="SpringForceGenerator.cpp">
       <Filter>Muelles</Filter>
     </ClCompile>
+    <ClCompile Include="AnchoredSpringForceGenerator.cpp">
+      <Filter>Muelles</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleBungee.cpp">
+      <Filter>Muelles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -84,6 +90,12 @@
     </ClInclude>
     <ClInclude Include="PlaneParticleGenerator.h" />
     <ClInclude Include="SpringForceGenerator.h">
+      <Filter>Muelles</Filter>
+    </ClInclude>
+    <ClInclude Include="AnchoredSpringForceGenerator.h">
+      <Filter>Muelles</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleBungee.h">
       <Filter>Muelles</Filter>
     </ClInclude>
   </ItemGroup>

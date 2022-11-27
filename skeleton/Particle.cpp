@@ -69,11 +69,13 @@ void Particle::integrate(double t)
 	clearForce();
 
 	double actualTime = glutGet(GLUT_ELAPSED_TIME);
+	if (lifeTime_ != -1) {
+		if (actualTime - iniTime_ >= lifeTime_ || pose.p.y <= -1000 || pose.p.y>=1000) {
 
-	if (actualTime - iniTime_ >= lifeTime_ || pose.p.y <= -100 || pose.p.y>=1000) {
-
-		alive_ = false;
+			alive_ = false;
+		}
 	}
+	
 }
 
 std::list<Particle*> Particle::explode()

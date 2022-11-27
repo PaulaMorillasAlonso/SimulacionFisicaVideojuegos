@@ -58,29 +58,52 @@ void ParticleSystem::creaExplosion()
 }
 void ParticleSystem::muelleFijo()
 {
-	auto cube = CreateShape(physx::PxBoxGeometry(4, 2, 4));
+	/*auto cube = CreateShape(physx::PxBoxGeometry(4, 2, 4));
 	Particle* pFija = new Particle({ 7,80,7 }, { 0,0,0 }, { 0,0,0 }, 1, 30000, cube, {0,1,0,1},1);
-	_particles.push_back(pFija);
+	_particles.push_back(pFija);*/
+	auto aGen = new AnchoredSpringForceGenerator(1,5,{ 7,80,7 });
 
 	Particle* pMuelle = new Particle({ 7,80,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, 30000, {0,0,1,1},1,1);
 	_particles.push_back(pMuelle);
 
-	springGen_= new SpringForceGenerator(1,10,pFija);
-	GravityForceGenerator* gGen = new GravityForceGenerator({ 0.0, -10, 0.0 });
+	//springGen_= new SpringForceGenerator(1,5,pFija);
+	GravityForceGenerator* gGen = new GravityForceGenerator({ 0.0, -5, 0.0 });
 
-	windGen_= new WindForceGenerator(-1, 0, Vector3(5, 1, 10), { 7,50,7 }, 10);
+	windGen_= new WindForceGenerator(-1, 0, Vector3(3, 1, 3), { 7,50,7 }, 10);
 
-	forceReg_->addRegistry(springGen_, pMuelle);
+	forceReg_->addRegistry(aGen, pMuelle);
 	forceReg_->addRegistry(gGen, pMuelle);
 	forceReg_->addRegistry(windGen_, pMuelle);
 
 }
+//void ParticleSystem::muelleFijo()
+//{
+//	auto cube = CreateShape(physx::PxBoxGeometry(4, 2, 4));
+//	Particle* pFija = new Particle({ 7,80,7 }, { 0,0,0 }, { 0,0,0 }, 1, 30000, cube, { 0,1,0,1 }, 1);
+//	_particles.push_back(pFija);
+//
+//	Particle* pMuelle = new Particle({ 7,80,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, 30000, { 0,0,1,1 }, 1, 1);
+//	_particles.push_back(pMuelle);
+//
+//	springGen_ = new SpringForceGenerator(1, 5, pFija);
+//	GravityForceGenerator* gGen = new GravityForceGenerator({ 0.0, -5, 0.0 });
+//
+//	windGen_ = new WindForceGenerator(-1, 0, Vector3(3, 1, 3), { 7,50,7 }, 10);
+//
+//	forceReg_->addRegistry(springGen_, pMuelle);
+//	forceReg_->addRegistry(gGen, pMuelle);
+//	forceReg_->addRegistry(windGen_, pMuelle);
+//
+//}
 void ParticleSystem::activaViento()
 {
-	double actualTime = glutGet(GLUT_ELAPSED_TIME);
-	if (actualTime - iniTime_ >= 100) {
-		activateSpringWind();
+	if (windGen_ != nullptr) {
+		double actualTime = glutGet(GLUT_ELAPSED_TIME);
+		if (actualTime - iniTime_ >= 100) {
+			activateSpringWind();
+		}
 	}
+	
 }
 void ParticleSystem::addK()
 {
