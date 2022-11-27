@@ -176,7 +176,7 @@ void keyPress(unsigned char key, const PxTransform& camera)
 		pSystem->activaViento();
 		break;
 	case '7':
-		//pSystem->muelleDoble();
+		pSystem->muelleDoble();
 		break;
 	case 'X':
 		pSystem->addK();

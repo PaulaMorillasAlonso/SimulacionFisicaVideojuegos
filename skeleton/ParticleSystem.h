@@ -51,7 +51,7 @@ public:
 	void creaTornado();
 	void creaExplosion();
 	void muelleFijo();
-	//void muelleDoble();
+	void muelleDoble();
 	void activateSpringWind() { windGen_->activate(); };
 	void deactivateSpringWind() { windGen_->deactivate(); };
 	void activaViento();

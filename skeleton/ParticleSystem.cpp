@@ -63,17 +63,39 @@ void ParticleSystem::muelleFijo()
 	_particles.push_back(pFija);*/
 	auto aGen = new AnchoredSpringForceGenerator(1,5,{ 7,80,7 });
 
-	Particle* pMuelle = new Particle({ 7,80,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, 30000, {0,0,1,1},1,1);
+	Particle* pMuelle = new Particle({ 7,80,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, -1, {0,0,1,1},1,1);
 	_particles.push_back(pMuelle);
 
 	//springGen_= new SpringForceGenerator(1,5,pFija);
 	GravityForceGenerator* gGen = new GravityForceGenerator({ 0.0, -5, 0.0 });
 
-	windGen_= new WindForceGenerator(-1, 0, Vector3(3, 1, 3), { 7,50,7 }, 10);
+	windGen_= new WindForceGenerator(-1, 0, Vector3(0.2, 0.1, 0.3), { 7,50,7 }, 10);
 
 	forceReg_->addRegistry(aGen, pMuelle);
 	forceReg_->addRegistry(gGen, pMuelle);
 	forceReg_->addRegistry(windGen_, pMuelle);
+
+}
+void ParticleSystem::muelleDoble()
+{
+	Particle* p1 = new Particle({ 7,70,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, -1, { 1,0,0,1 }, 3);
+	_particles.push_back(p1);
+
+	Particle * p2 = new Particle({ 30,70,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, -1, { 0,0,1,1 }, 3);
+	_particles.push_back(p2);
+
+	auto f1 = new SpringForceGenerator(3, 20, p2);
+	forceReg_->addRegistry(f1, p1);
+
+	auto f2 = new SpringForceGenerator(3, 20, p1);
+	forceReg_->addRegistry(f2, p2);
+
+	GravityForceGenerator* gGen1 = new GravityForceGenerator({ 1.5, 0, 0.0 });
+	forceReg_->addRegistry(gGen1, p1);
+
+	GravityForceGenerator* gGen2 = new GravityForceGenerator({ -1.5, 0, 0.0 });
+	forceReg_->addRegistry(gGen2, p2);
+
 
 }
 //void ParticleSystem::muelleFijo()
