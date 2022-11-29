@@ -47,6 +47,9 @@
     <ClCompile Include="ParticleBungee.cpp">
       <Filter>Muelles</Filter>
     </ClCompile>
+    <ClCompile Include="BuoyancyForceGenerator.cpp">
+      <Filter>Muelles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -96,6 +99,9 @@
       <Filter>Muelles</Filter>
     </ClInclude>
     <ClInclude Include="ParticleBungee.h">
+      <Filter>Muelles</Filter>
+    </ClInclude>
+    <ClInclude Include="BuoyancyForceGenerator.h">
       <Filter>Muelles</Filter>
     </ClInclude>
   </ItemGroup>

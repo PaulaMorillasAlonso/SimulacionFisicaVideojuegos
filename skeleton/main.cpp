@@ -181,9 +181,9 @@ void keyPress(unsigned char key, const PxTransform& camera)
 	case '8':
 		pSystem->gomaElastica();
 		break;
-	/*case '9':
-		pSystem->activaGoma();
-		break;*/
+	case '9':
+		pSystem->flotaTest();
+		break;
 	case 'X':
 		pSystem->addK();
 		break;

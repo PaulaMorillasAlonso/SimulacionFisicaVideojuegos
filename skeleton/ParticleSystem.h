@@ -19,6 +19,7 @@
 #include "SpringForceGenerator.h"
 #include "AnchoredSpringForceGenerator.h"
 #include "ParticleBungee.h"
+#include "BuoyancyForceGenerator.h"
 
 class ParticleSystem
 {
@@ -37,6 +38,7 @@ private:
 	ExplosionForceGenerator* explosionGen_ = nullptr;
 	SpringForceGenerator* springGen_ = nullptr;
 	ParticleDragGenerator* partDragGen_ = nullptr;
+	BuoyancyForceGenerator* buoyancyGen_ = nullptr;
 	double iniTime_;
 
 protected:
@@ -55,10 +57,11 @@ public:
 	void muelleFijo();
 	void muelleDoble();
 	void gomaElastica();
+	void flotaTest();
 	void activateSpringWind() { windGen_->activate(); };
 	void deactivateSpringWind() { windGen_->deactivate(); };
 	void activaViento();
-	void activaGoma();
+
 	void addK();
 	void subK();
 	~ParticleSystem();

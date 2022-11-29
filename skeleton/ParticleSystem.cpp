@@ -121,6 +121,20 @@ void ParticleSystem::gomaElastica()
 	forceReg_->addRegistry(partDragGen_, goma2_);
 	
 }
+void ParticleSystem::flotaTest()
+{
+
+	auto cebo = new Particle({ 7,60,7 }, { 0,0,0 }, { 0,0,0 }, 0.99, -1, {1,0,0,1},2, 3);
+	_particles.push_back(cebo);
+
+	gravGen_ = new GravityForceGenerator({0,-9.8,0});
+	forceReg_->addRegistry(gravGen_, cebo);
+
+
+	buoyancyGen_ = new BuoyancyForceGenerator(0.0, 0.25, 1000, Vector3(7,50,7));
+	forceReg_->addRegistry(buoyancyGen_, cebo);
+
+}
 //void ParticleSystem::muelleFijo()
 //{
 //	auto cube = CreateShape(physx::PxBoxGeometry(4, 2, 4));
