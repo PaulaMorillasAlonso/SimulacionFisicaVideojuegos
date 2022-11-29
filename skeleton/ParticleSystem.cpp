@@ -130,8 +130,10 @@ void ParticleSystem::flotaTest()
 	gravGen_ = new GravityForceGenerator({0,-9.8,0});
 	forceReg_->addRegistry(gravGen_, cebo);
 
+	partDragGen_ = new ParticleDragGenerator(0.1, 0.1);
+	forceReg_->addRegistry(partDragGen_, cebo);
 
-	buoyancyGen_ = new BuoyancyForceGenerator(0.0, 0.25, 1000, Vector3(7,50,7));
+	buoyancyGen_ = new BuoyancyForceGenerator(10.0, 0.25, 1000, Vector3(7,50,7));
 	forceReg_->addRegistry(buoyancyGen_, cebo);
 
 }
