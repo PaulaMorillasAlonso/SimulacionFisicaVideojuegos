@@ -58,6 +58,7 @@ public:
 	void muelleDoble();
 	void gomaElastica();
 	void flotaTest();
+	void creaSlinky();
 	void activateSpringWind() { windGen_->activate(); };
 	void deactivateSpringWind() { windGen_->deactivate(); };
 	void activaViento();

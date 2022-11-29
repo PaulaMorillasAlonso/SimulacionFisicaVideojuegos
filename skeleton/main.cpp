@@ -184,6 +184,9 @@ void keyPress(unsigned char key, const PxTransform& camera)
 	case '9':
 		pSystem->flotaTest();
 		break;
+	case '0':
+		pSystem->creaSlinky();
+		break;
 	case 'X':
 		pSystem->addK();
 		break;

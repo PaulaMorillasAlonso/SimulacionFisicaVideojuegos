@@ -137,25 +137,57 @@ void ParticleSystem::flotaTest()
 	forceReg_->addRegistry(buoyancyGen_, cebo);
 
 }
-//void ParticleSystem::muelleFijo()
-//{
-//	auto cube = CreateShape(physx::PxBoxGeometry(4, 2, 4));
-//	Particle* pFija = new Particle({ 7,80,7 }, { 0,0,0 }, { 0,0,0 }, 1, 30000, cube, { 0,1,0,1 }, 1);
-//	_particles.push_back(pFija);
-//
-//	Particle* pMuelle = new Particle({ 7,80,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, 30000, { 0,0,1,1 }, 1, 1);
-//	_particles.push_back(pMuelle);
-//
-//	springGen_ = new SpringForceGenerator(1, 5, pFija);
-//	GravityForceGenerator* gGen = new GravityForceGenerator({ 0.0, -5, 0.0 });
-//
-//	windGen_ = new WindForceGenerator(-1, 0, Vector3(3, 1, 3), { 7,50,7 }, 10);
-//
-//	forceReg_->addRegistry(springGen_, pMuelle);
-//	forceReg_->addRegistry(gGen, pMuelle);
-//	forceReg_->addRegistry(windGen_, pMuelle);
-//
-//}
+void ParticleSystem::creaSlinky()
+{
+	float ini = 70,offset=5;
+	GravityForceGenerator* grav = new GravityForceGenerator({ 0, -2, 0.0 });
+
+	Particle* p1 = new Particle({ 7,ini,7 }, { 0,0,0 }, { 0,0,0 }, 0.99, -1, { 1,0,0,1 }, 3);
+	_particles.push_back(p1);
+
+
+	Particle* p2 = new Particle({ 7,ini-offset,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, -1, { 0,0,1,1 }, 3);
+	_particles.push_back(p2);
+
+	auto f2 = new SpringForceGenerator(3, offset, p1);
+	forceReg_->addRegistry(f2, p2);
+
+	forceReg_->addRegistry(grav, p2);
+
+	Particle* p3 = new Particle({ 7,ini - 2*offset,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, -1, { 0,1,0,1 }, 3);
+	_particles.push_back(p3);
+
+	auto f3 = new SpringForceGenerator(3, offset, p2);
+	forceReg_->addRegistry(f3, p3);
+
+	forceReg_->addRegistry(grav, p3);
+
+	Particle* p4 = new Particle({ 7,ini - 3 * offset,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, -1, { 1,1,0,1 }, 3);
+	_particles.push_back(p4);
+
+	auto f4 = new SpringForceGenerator(3, offset, p3);
+	forceReg_->addRegistry(f4, p4);
+
+	forceReg_->addRegistry(grav, p4);
+
+	Particle* p5 = new Particle({ 7,ini - 4 * offset,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, -1, { 1,0,1,1 }, 3);
+	_particles.push_back(p5);
+
+	auto f5 = new SpringForceGenerator(3, offset, p4);
+	forceReg_->addRegistry(f5, p5);
+
+	forceReg_->addRegistry(grav, p5);
+
+	Particle* p6 = new Particle({ 7,ini - 5 * offset,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, -1, { 0,1,1,1 }, 3);
+	_particles.push_back(p6);
+
+	auto f6 = new SpringForceGenerator(3, offset, p5);
+	forceReg_->addRegistry(f6, p6);
+
+	forceReg_->addRegistry(grav, p6);
+
+}
+
 void ParticleSystem::activaViento()
 {
 	if (windGen_ != nullptr) {
