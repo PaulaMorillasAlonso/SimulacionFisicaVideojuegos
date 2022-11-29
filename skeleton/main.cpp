@@ -178,6 +178,12 @@ void keyPress(unsigned char key, const PxTransform& camera)
 	case '7':
 		pSystem->muelleDoble();
 		break;
+	case '8':
+		pSystem->gomaElastica();
+		break;
+	/*case '9':
+		pSystem->activaGoma();
+		break;*/
 	case 'X':
 		pSystem->addK();
 		break;

@@ -18,6 +18,7 @@
 #include "PlaneParticleGenerator.h"
 #include "SpringForceGenerator.h"
 #include "AnchoredSpringForceGenerator.h"
+#include "ParticleBungee.h"
 
 class ParticleSystem
 {
@@ -35,8 +36,9 @@ private:
 	WhirlwindForceGenerator* whirlwindGen_ = nullptr;
 	ExplosionForceGenerator* explosionGen_ = nullptr;
 	SpringForceGenerator* springGen_ = nullptr;
-
+	ParticleDragGenerator* partDragGen_ = nullptr;
 	double iniTime_;
+
 protected:
 
 public:
@@ -52,9 +54,11 @@ public:
 	void creaExplosion();
 	void muelleFijo();
 	void muelleDoble();
+	void gomaElastica();
 	void activateSpringWind() { windGen_->activate(); };
 	void deactivateSpringWind() { windGen_->deactivate(); };
 	void activaViento();
+	void activaGoma();
 	void addK();
 	void subK();
 	~ParticleSystem();

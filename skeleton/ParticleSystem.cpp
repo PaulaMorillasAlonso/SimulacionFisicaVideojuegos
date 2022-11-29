@@ -9,6 +9,8 @@ ParticleSystem::ParticleSystem()
 	//createFireworkRules();
 	iniTime_ = glutGet(GLUT_ELAPSED_TIME);
 
+	
+
 }
 
 void ParticleSystem::creaFuente()
@@ -97,6 +99,27 @@ void ParticleSystem::muelleDoble()
 	forceReg_->addRegistry(gGen2, p2);
 
 
+}
+void ParticleSystem::gomaElastica()
+{
+
+
+	auto goma1_ = new Particle({ 7,70,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, -1, { 1,0,0,1 }, 3);
+	_particles.push_back(goma1_);
+
+	auto goma2_ = new Particle({ 30,70,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, -1, { 0,1,0,1 }, 3);
+	_particles.push_back(goma2_);
+
+	auto f1 = new ParticleBungee(3, 20, goma2_);
+	forceReg_->addRegistry(f1, goma1_);
+
+	auto f2 = new ParticleBungee(3, 20, goma1_);
+	forceReg_->addRegistry(f2, goma2_);
+
+	partDragGen_ = new ParticleDragGenerator(1, 1);
+	forceReg_->addRegistry(partDragGen_, goma1_);
+	forceReg_->addRegistry(partDragGen_, goma2_);
+	
 }
 //void ParticleSystem::muelleFijo()
 //{
