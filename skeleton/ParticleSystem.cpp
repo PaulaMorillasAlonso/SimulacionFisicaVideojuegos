@@ -63,15 +63,15 @@ void ParticleSystem::muelleFijo()
 	/*auto cube = CreateShape(physx::PxBoxGeometry(4, 2, 4));
 	Particle* pFija = new Particle({ 7,80,7 }, { 0,0,0 }, { 0,0,0 }, 1, 30000, cube, {0,1,0,1},1);
 	_particles.push_back(pFija);*/
-	auto aGen = new AnchoredSpringForceGenerator(1,5,{ 7,80,7 });
+	auto aGen = new AnchoredSpringForceGenerator(5,20,{ 7,80,7 });
 
 	Particle* pMuelle = new Particle({ 7,80,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, -1, {0,0,1,1},1,1);
 	_particles.push_back(pMuelle);
 
 	//springGen_= new SpringForceGenerator(1,5,pFija);
-	GravityForceGenerator* gGen = new GravityForceGenerator({ 0.0, -5, 0.0 });
+	GravityForceGenerator* gGen = new GravityForceGenerator({ 0.0, -0.002, 0.0 });
 
-	windGen_= new WindForceGenerator(-1, 0, Vector3(0.2, 0.1, 0.3), { 7,50,7 }, 10);
+	windGen_= new WindForceGenerator(-1, 0, Vector3(-10, 0, -10), { 7,50,7 }, 20);
 
 	forceReg_->addRegistry(aGen, pMuelle);
 	forceReg_->addRegistry(gGen, pMuelle);
