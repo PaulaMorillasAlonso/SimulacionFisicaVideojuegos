@@ -8,6 +8,7 @@ public:
 		k_ = k;
 		resting_length = restingLength;
 		other_ = other;
+	
 	};
 	virtual void updateForce(Particle* particle, double t);
 	inline void setK(double k) { k_ = k; }

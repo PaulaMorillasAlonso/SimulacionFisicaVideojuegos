@@ -8,6 +8,8 @@ void SpringForceGenerator::updateForce(Particle* particle, double t) {
 	Vector3 force = other_->getPos()-particle-> getPos();
 	const float length = force.normalize();
 	const float delta_x = length-resting_length;
-	force*=delta_x* k_;
+	
+	force *= delta_x * k_;
 	particle->addForce(force);
+	
 }

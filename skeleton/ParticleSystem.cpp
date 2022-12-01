@@ -139,52 +139,68 @@ void ParticleSystem::flotaTest()
 }
 void ParticleSystem::creaSlinky()
 {
-	float ini = 70,offset=5;
+	float ini = 70,offset=8;
 	GravityForceGenerator* grav = new GravityForceGenerator({ 0, -2, 0.0 });
+	partDragGen_ = new ParticleDragGenerator(0.1, 0.1);
 
-	Particle* p1 = new Particle({ 7,ini,7 }, { 0,0,0 }, { 0,0,0 }, 0.99, -1, { 1,0,0,1 }, 3);
+	Particle* p1 = new Particle({ 7,ini,7 }, { 0,0,0 }, { 0,0,0 }, 0.99, -1, { 0.95,0.49,0,1 }, 3);
 	_particles.push_back(p1);
 
 
-	Particle* p2 = new Particle({ 7,ini-offset,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, -1, { 0,0,1,1 }, 3);
+	Particle* p2 = new Particle({ 7,ini-offset,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, -1, { 1,0.49,0.34,1 }, 3);
 	_particles.push_back(p2);
 
-	auto f2 = new SpringForceGenerator(3, offset, p1);
+	auto f2 = new SpringForceGenerator(2, offset, p1);
 	forceReg_->addRegistry(f2, p2);
 
 	forceReg_->addRegistry(grav, p2);
+	forceReg_->addRegistry(partDragGen_, p2);
 
-	Particle* p3 = new Particle({ 7,ini - 2*offset,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, -1, { 0,1,0,1 }, 3);
+
+	Particle* p3 = new Particle({ 7,ini - 2*offset,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, -1, { 0.93,0.51,0.7,1 }, 3);
 	_particles.push_back(p3);
 
-	auto f3 = new SpringForceGenerator(3, offset, p2);
+	auto f3 = new SpringForceGenerator(2, offset, p2);
 	forceReg_->addRegistry(f3, p3);
 
 	forceReg_->addRegistry(grav, p3);
+	auto d3=new ParticleDragGenerator(0.8, 0.8);
+	forceReg_->addRegistry(d3, p3);
 
-	Particle* p4 = new Particle({ 7,ini - 3 * offset,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, -1, { 1,1,0,1 }, 3);
+
+	Particle* p4 = new Particle({ 7,ini - 3 * offset,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, -1, { 0.7,0.6,0.86,1 }, 3);
 	_particles.push_back(p4);
 
-	auto f4 = new SpringForceGenerator(3, offset, p3);
+	auto f4 = new SpringForceGenerator(2, offset, p3);
 	forceReg_->addRegistry(f4, p4);
 
 	forceReg_->addRegistry(grav, p4);
+	auto d4 = new ParticleDragGenerator(0.8, 0.8);
+	forceReg_->addRegistry(d4, p4);
 
-	Particle* p5 = new Particle({ 7,ini - 4 * offset,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, -1, { 1,0,1,1 }, 3);
+
+	Particle* p5 = new Particle({ 7,ini - 4 * offset,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, -1, { 0.61,0.54,0.9,1 }, 3);
 	_particles.push_back(p5);
 
-	auto f5 = new SpringForceGenerator(3, offset, p4);
+	auto f5 = new SpringForceGenerator(2, offset, p4);
 	forceReg_->addRegistry(f5, p5);
 
 	forceReg_->addRegistry(grav, p5);
+	auto d5 = new ParticleDragGenerator(0.8, 0.8);
+	forceReg_->addRegistry(d5, p5);
 
-	Particle* p6 = new Particle({ 7,ini - 5 * offset,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, -1, { 0,1,1,1 }, 3);
+
+	Particle* p6 = new Particle({ 7,ini - 5 * offset,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, -1, { 0.30,0.1,1,1 }, 3);
 	_particles.push_back(p6);
 
-	auto f6 = new SpringForceGenerator(3, offset, p5);
+	auto f6 = new SpringForceGenerator(2, offset, p5);
 	forceReg_->addRegistry(f6, p6);
 
 	forceReg_->addRegistry(grav, p6);
+
+	auto d6 = new ParticleDragGenerator(0.8, 0.8);
+	forceReg_->addRegistry(d6, p6);
+
 
 }
 
