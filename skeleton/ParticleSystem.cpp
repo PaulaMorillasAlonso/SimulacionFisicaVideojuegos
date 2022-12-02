@@ -63,7 +63,7 @@ void ParticleSystem::muelleFijo()
 	/*auto cube = CreateShape(physx::PxBoxGeometry(4, 2, 4));
 	Particle* pFija = new Particle({ 7,80,7 }, { 0,0,0 }, { 0,0,0 }, 1, 30000, cube, {0,1,0,1},1);
 	_particles.push_back(pFija);*/
-	auto aGen = new AnchoredSpringForceGenerator(5,20,{ 7,80,7 });
+	auto aGen = new AnchoredSpringForceGenerator(0.5,20,{ 7,80,7 });
 
 	Particle* pMuelle = new Particle({ 7,80,7 }, { 0,0,0 }, { 0,0,0 }, 0.99f, -1, {0,0,1,1},1,1);
 	_particles.push_back(pMuelle);

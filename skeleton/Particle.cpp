@@ -60,12 +60,12 @@ void Particle::integrate(double t)
 	//EULER
 	//vel += acc * t;
 	//vel *= powf(damping, t);
-	pose = physx::PxTransform(pose.p.x + vel.x * t, pose.p.y + vel.y * t, pose.p.z + vel.z * t);
 
 	Vector3 newAcc = acc;
 	newAcc += totForce * inverse_mass;
 
 	vel = vel * pow(damping, t) + newAcc * t;
+	pose = physx::PxTransform(pose.p.x + vel.x * t, pose.p.y + vel.y * t, pose.p.z + vel.z * t);
 	clearForce();
 
 	double actualTime = glutGet(GLUT_ELAPSED_TIME);
