@@ -13,6 +13,7 @@
 #include "Particle.h"
 #include "Proyectil.h"
 #include "ParticleSystem.h"
+#include "RBSystem.h"
 #include <time.h>
 
 
@@ -38,6 +39,7 @@ Particle* suelo;
 Particle* diana;
 std::vector<Proyectil*> bullet;
 ParticleSystem* pSystem;
+RBSystem* rbSystem;
 WindForceGenerator* wGen;
 
 // Initialize physics engine
@@ -64,6 +66,9 @@ void initPhysics(bool interactive)
 	sceneDesc.simulationEventCallback = &gContactReportCallback;
 	gScene = gPhysics->createScene(sceneDesc);
 
+	//Plane as a solid rigid
+	
+
 	/*auto floor = CreateShape(physx::PxBoxGeometry(300, 1, 300));
 	suelo = new Particle({ 5,40,5 }, { 0,0,0 }, { 0,0,0 }, 0,10000, floor, {0,0.9,0,1});*/
 
@@ -72,6 +77,7 @@ void initPhysics(bool interactive)
 
 	pSystem = new ParticleSystem();
 
+	rbSystem = new RBSystem(gScene, gPhysics);
 }
 
 
@@ -192,6 +198,11 @@ void keyPress(unsigned char key, const PxTransform& camera)
 		break;
 	case 'C':
 		pSystem->subK();
+		break;
+	case 'P':
+		rbSystem->addStaticRB({ 10,10,-30 }, { 0.8, 0.8, 0.8, 1 }, { 40, 20, 5 },-1,1);
+		rbSystem->addStaticRB({ 0,0,0 }, { 0.8, 0.8, 0.8, 1 },{ 100,0.1,100 },-1,1);
+		rbSystem->addDynamicRB({ 10,80,-30 }, { 2,2,2 }, { 1,0,0,1 }, {4,4,4},-1,1);
 		break;
 	default:
 		break;

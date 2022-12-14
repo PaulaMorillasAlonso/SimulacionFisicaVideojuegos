@@ -50,6 +50,15 @@
     <ClCompile Include="BuoyancyForceGenerator.cpp">
       <Filter>Muelles</Filter>
     </ClCompile>
+    <ClCompile Include="RBSystem.cpp">
+      <Filter>RBSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="RBParticle.cpp">
+      <Filter>RBSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="UniformRBGenerator.cpp">
+      <Filter>RBSystem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -104,6 +113,15 @@
     <ClInclude Include="BuoyancyForceGenerator.h">
       <Filter>Muelles</Filter>
     </ClInclude>
+    <ClInclude Include="RBSystem.h">
+      <Filter>RBSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="RBParticle.h">
+      <Filter>RBSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="UniformRBGenerator.h">
+      <Filter>RBSystem</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">
@@ -114,6 +132,9 @@
     </Filter>
     <Filter Include="Muelles">
       <UniqueIdentifier>{56cd0861-2194-4518-ab4c-8a8e14b54c27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RBSystem">
+      <UniqueIdentifier>{8a2921ba-b4c4-4648-875a-d3b9e6e085ae}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
