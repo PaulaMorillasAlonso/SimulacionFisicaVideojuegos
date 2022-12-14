@@ -78,6 +78,8 @@ void initPhysics(bool interactive)
 	pSystem = new ParticleSystem();
 
 	rbSystem = new RBSystem(gScene, gPhysics);
+	
+	
 }
 
 
@@ -199,10 +201,17 @@ void keyPress(unsigned char key, const PxTransform& camera)
 	case 'C':
 		pSystem->subK();
 		break;
+	case 'O':
+		rbSystem->addStaticRB({ camera.p.x - 200,camera.p.y - 100,camera.p.z - 400 }, { 0, 1, 0, 1 }, { 100, 100, 10 }, -1, 1);
+		rbSystem->addStaticRB({ camera.p.x - 300,camera.p.y - 100,camera.p.z - 300 }, { 0, 1, 0, 1 }, { 10,100,100 }, -1, 1);
+		rbSystem->addStaticRB({ camera.p.x-100,camera.p.y - 100,camera.p.z - 300 }, { 0, 1, 0, 1 }, { 10,100,100 }, -1, 1);
+		rbSystem->addStaticRB({ camera.p.x - 200,camera.p.y - 200,camera.p.z - 300 }, { 0, 0, 1, 1 }, { 100,10,100 }, -1, 1);
+		break;
 	case 'P':
-		rbSystem->addStaticRB({ 10,10,-30 }, { 0.8, 0.8, 0.8, 1 }, { 40, 20, 5 },-1,1);
-		rbSystem->addStaticRB({ 0,0,0 }, { 0.8, 0.8, 0.8, 1 },{ 100,0.1,100 },-1,1);
-		rbSystem->addDynamicRB({ 10,80,-30 }, { 2,2,2 }, { 1,0,0,1 }, {4,4,4},-1,1);
+		
+		//rbSystem->addDynamicRB({ 10,80,-30 }, { 2,2,2 }, { 1,0,0,1 }, {4,4,4},-1,1);
+		rbSystem->addUniformGenerator({ -150,0,-250 }, { 0,0,0 }, { 0,0,0 }, 10, 20, 1, 2, 1, 5,
+			1, 2000, { 1,0,0,1 }, { 4,4,4 }, 1, gScene, gPhysics, true);
 		break;
 	default:
 		break;
