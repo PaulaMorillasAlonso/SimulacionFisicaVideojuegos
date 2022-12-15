@@ -8,8 +8,8 @@ class RBParticle
 {
 public:
 
-	RBParticle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double damping, double lifeTime, Vector4 colour,
-	Vector3 scale,bool isDynamic, PxScene* scene, PxPhysics* gPhysics,int mass = 1);
+	RBParticle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double Damping, double lifeTime, Vector4 colour, Vector3 scale,
+		bool isDynamic, PxScene* scene, PxPhysics* gPhysics, int mass, Vector3 matValues);
 	
 	~RBParticle() {};
 
@@ -34,6 +34,22 @@ public:
 	void setDamping(double Damping) { damping = Damping; }
 	void resetLifetime(double t) { lifeTime_ = t; }
 
+	void setBounce(float b) {
+		restitution_ = b; 
+		mat_->setRestitution(restitution_);
+	};
+	void setDynamicFriction(float df) {
+		dynamicFriction_ = df;
+		mat_->setDynamicFriction(dynamicFriction_);
+	}
+	void setStaticFriction(float sf) {
+		staticFriction_ = sf;
+		mat_->setStaticFriction(staticFriction_);
+	}
+	void setInertiaTensor(Vector3 size) {
+		rd->setMassSpaceInertiaTensor({ size.y * size.z,size.x * size.z,size.x * size.y });
+	}
+
 	//check
 	bool isAlive() { return alive_; }
 
@@ -47,8 +63,8 @@ public:
 	void clearForce() { totForce = Vector3(0, 0, 0); }
 
 	//creacion
-	void addStaticBody(Vector3 pos, Vector4 color, Vector3 size);
-	void addDynamicRB(Vector3 pos, Vector3 vel, Vector4 color, Vector3 size);
+	void addStaticBody(Vector3 pos, Vector4 color, Vector3 size, float staticFriction, float dynamicFriction, float restitution);
+	void addDynamicRB(Vector3 pos, Vector3 vel, Vector4 color, Vector3 size,float staticFriction, float dynamicFriction, float restitution);
 
 protected:
 
@@ -63,5 +79,8 @@ protected:
 	bool alive_,isDynamic_;
 	PxScene* scene_;
 	PxPhysics* gPhysics_;
+	float staticFriction_,  dynamicFriction_,restitution_;
+	PxMaterial* mat_;
+	PxRigidDynamic* rd;
 };
 

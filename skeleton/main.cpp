@@ -54,7 +54,6 @@ void initPhysics(bool interactive)
 	gPvd->connect(*transport,PxPvdInstrumentationFlag::eALL);
 
 	gPhysics = PxCreatePhysics(PX_PHYSICS_VERSION, *gFoundation, PxTolerancesScale(),true,gPvd);
-
 	gMaterial = gPhysics->createMaterial(0.5f, 0.5f, 0.6f);
 
 	// For Solid Rigids +++++++++++++++++++++++++++++++++++++
@@ -65,6 +64,7 @@ void initPhysics(bool interactive)
 	sceneDesc.filterShader = contactReportFilterShader;
 	sceneDesc.simulationEventCallback = &gContactReportCallback;
 	gScene = gPhysics->createScene(sceneDesc);
+	gScene->setGravity(sceneDesc.gravity);
 
 	//Plane as a solid rigid
 	
@@ -80,7 +80,7 @@ void initPhysics(bool interactive)
 	rbSystem = new RBSystem(gScene, gPhysics);
 
 	rbSystem->addUniformGenerator({ -150,0,-250 }, { 0,0,0 }, { 0,0,0 }, 10, 20, 1, 2, 1, 1,
-		0.99f, 4000, { 1,0,0,1 }, { 4,4,4 }, 1, gScene, gPhysics, true);
+		0.99f, 4000, { 1,0,0,1 }, { 4,4,4 }, 1, gScene, gPhysics, true, { 0.5, 0.5, 0.5 });
 	
 }
 
@@ -204,10 +204,10 @@ void keyPress(unsigned char key, const PxTransform& camera)
 		pSystem->subK();
 		break;
 	case 'O':
-		rbSystem->addStaticRB({ camera.p.x - 200,camera.p.y - 100,camera.p.z - 400 }, { 0, 1, 0, 1 }, { 100, 100, 10 }, -1, 1);
-		rbSystem->addStaticRB({ camera.p.x - 300,camera.p.y - 100,camera.p.z - 300 }, { 0, 1, 0, 1 }, { 10,100,100 }, -1, 1);
-		rbSystem->addStaticRB({ camera.p.x-100,camera.p.y - 100,camera.p.z - 300 }, { 0, 1, 0, 1 }, { 10,100,100 }, -1, 1);
-		rbSystem->addStaticRB({ camera.p.x - 200,camera.p.y - 200,camera.p.z - 300 }, { 0, 0, 1, 1 }, { 100,10,100 }, -1, 1);
+		rbSystem->addStaticRB({ camera.p.x - 200,camera.p.y - 100,camera.p.z - 400 }, { 0, 1, 0, 1 }, { 100, 100, 10 }, -1, 1, {0.5,0.5,0.5});
+		rbSystem->addStaticRB({ camera.p.x - 300,camera.p.y - 100,camera.p.z - 300 }, { 0, 1, 0, 1 }, { 10,100,100 }, -1, 1,{0.5, 0.5, 0.5});
+		rbSystem->addStaticRB({ camera.p.x-100,camera.p.y - 100,camera.p.z - 300 }, { 0, 1, 0, 1 }, { 10,100,100 }, -1, 1, { 0.5, 0.5, 0.5 });
+		rbSystem->addStaticRB({ camera.p.x - 200,camera.p.y - 200,camera.p.z - 300 }, { 0, 0, 1, 1 }, { 100,10,100 }, -1, 1, { 0.5, 0.5, 0.5 });
 		break;
 	case 'P':
 		

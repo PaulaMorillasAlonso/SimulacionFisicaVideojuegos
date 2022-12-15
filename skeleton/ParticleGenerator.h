@@ -5,10 +5,17 @@
 #include <vector>
 #include "ForceGenerator.h"
 #include "GravityForceGenerator.h"
+#include "WindForceGenerator.h"
+#include "WhirlwindForceGenerator.h"
+#include "ExplosionForceGenerator.h"
 
 class ParticleGenerator
 {
 	GravityForceGenerator* gravGen_=nullptr;
+	WindForceGenerator* windGen_ = nullptr;
+	WhirlwindForceGenerator* whirlWindGen_ = nullptr;
+	ExplosionForceGenerator* explosionGen_ = nullptr;
+
 protected:
 	std::string _name;
 	Vector3 _mean_pos, _mean_vel;

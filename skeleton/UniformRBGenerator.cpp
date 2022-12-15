@@ -2,7 +2,7 @@
 
 UniformRBGenerator::UniformRBGenerator(Vector3 meanPos, Vector3 meanVel, Vector3 meanAcc, double minPos,
     double maxPos, double minVel, double maxVel, double gen_prob, int numPart, double damping, double lifeTime,
-    Vector4 colour, Vector3 scale, double mass, PxScene* scene, PxPhysics* gPhysics, bool isDynamic)
+    Vector4 colour, Vector3 scale, double mass, PxScene* scene, PxPhysics* gPhysics, bool isDynamic, Vector3 matValues)
 {
     mean_pos_ = meanPos;
     mean_vel_ = meanVel;
@@ -24,6 +24,7 @@ UniformRBGenerator::UniformRBGenerator(Vector3 meanPos, Vector3 meanVel, Vector3
     scene_ = scene;
     gPhysics_ = gPhysics;
     isDynamic_ = isDynamic;
+    matValues_ = matValues;
   
 }
 
@@ -35,7 +36,8 @@ std::list<RBParticle*> UniformRBGenerator::generateRB()
 
     if (genProbRnd < generation_probability_) {
 
-        RBParticle* p = new RBParticle(mean_pos_, mean_vel_, mean_acc, damping_, lifeTime_, colour_, scale_, isDynamic_, scene_, gPhysics_, mass_);
+        RBParticle* p = new RBParticle(mean_pos_, mean_vel_, mean_acc, damping_,
+            lifeTime_, colour_, scale_, isDynamic_, scene_, gPhysics_, mass_, matValues_);
 
         double newPosX = dist_pos(gen_);
         double newPosY = dist_pos(gen_);
