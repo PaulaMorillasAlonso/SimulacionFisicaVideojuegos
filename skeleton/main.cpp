@@ -78,7 +78,9 @@ void initPhysics(bool interactive)
 	pSystem = new ParticleSystem();
 
 	rbSystem = new RBSystem(gScene, gPhysics);
-	
+
+	rbSystem->addUniformGenerator({ -150,0,-250 }, { 0,0,0 }, { 0,0,0 }, 10, 20, 1, 2, 1, 1,
+		0.99f, 4000, { 1,0,0,1 }, { 4,4,4 }, 1, gScene, gPhysics, true);
 	
 }
 
@@ -106,7 +108,7 @@ void stepPhysics(bool interactive, double t)
 	}
 
 	pSystem->update(t);
-
+	rbSystem->generatePerSeconds();
 }
 
 // Function to clean data
@@ -210,8 +212,7 @@ void keyPress(unsigned char key, const PxTransform& camera)
 	case 'P':
 		
 		//rbSystem->addDynamicRB({ 10,80,-30 }, { 2,2,2 }, { 1,0,0,1 }, {4,4,4},-1,1);
-		rbSystem->addUniformGenerator({ -150,0,-250 }, { 0,0,0 }, { 0,0,0 }, 10, 20, 1, 2, 1, 5,
-			1, 2000, { 1,0,0,1 }, { 4,4,4 }, 1, gScene, gPhysics, true);
+
 		break;
 	default:
 		break;

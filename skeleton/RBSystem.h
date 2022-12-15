@@ -8,11 +8,12 @@ using namespace physx;
 class RBSystem
 {
 private:
-	std::list<PxRigidDynamic*>dynamicRigidBodies_;
-	std::list<PxRigidStatic*>staticRigidBodies_; //{·O·}
+	std::list<RBParticle*>rigidBodies_;
 	PxScene* scene_;
 	PxPhysics* gPhysics_;
-
+	float iniTime_,spawnCubes_;
+	UniformRBGenerator* uniformGen_;
+	int maxUniformParticles_;
 public:
 
 	RBSystem(PxScene *scene, PxPhysics *gPhysics);
@@ -24,5 +25,6 @@ public:
 
 	void addUniformGenerator(Vector3 meanPos, Vector3 meanVel, Vector3 meanAcc, double minPos, double maxPos, double minVel, double maxVel, double gen_prob,
 		int numPart, double damping, double lifeTime, Vector4 colour, Vector3 scale, double mass, PxScene* scene, PxPhysics* gPhysics, bool isDynamic);
+	void generatePerSeconds();
 };
 

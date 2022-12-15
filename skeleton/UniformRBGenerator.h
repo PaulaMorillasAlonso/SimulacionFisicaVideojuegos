@@ -18,7 +18,6 @@ private:
 	Vector4 colour_ = { 0,0,0,1 };
 	float generation_probability_;
 	int num_particles_;
-	int numPartActual_;
 	PxScene* scene_;
 	PxPhysics* gPhysics_;
 	bool isDynamic_;
