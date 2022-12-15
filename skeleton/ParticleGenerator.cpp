@@ -50,3 +50,5 @@ std::vector<ForceGenerator*>ParticleGenerator::returnForce() {
     }
     return forceGen;
 }
+
+

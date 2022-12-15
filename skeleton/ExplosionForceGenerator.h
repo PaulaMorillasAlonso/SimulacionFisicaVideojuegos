@@ -6,6 +6,8 @@ public:
 
 	ExplosionForceGenerator(double K, double R,double const_tiempo, Vector3&position);
 	virtual void updateForce(Particle* particle, double t) override;
+	virtual void updateForceRB(PxRigidDynamic* particle, double t) override;
+
 	~ExplosionForceGenerator() {};
 
 protected:

@@ -31,10 +31,21 @@ void WindForceGenerator::updateForce(Particle* particle, double t)
 	
 }
 
-bool WindForceGenerator::checkPosition(Particle* particle)
+void WindForceGenerator::updateForceRB(PxRigidDynamic* particle, double t)
 {
-	return ((particle->getPos().x <= pos_.x + r_ && particle->getPos().x >= pos_.x - r_) &&
-		(particle->getPos().y <= pos_.y + r_ && particle->getPos().y >= pos_.y - r_) &&
-		(particle->getPos().z <= pos_.z + r_ && particle->getPos().z >= pos_.z - r_));
+	if (fabs(particle->getInvMass()) < 1e-10)
+		return;
+	if (isActive) {
 	
+		Vector3 v = particle->getLinearVelocity() - windVel_;
+
+		float drag_coef = v.normalize();
+		Vector3 dragF;
+		drag_coef = _k1 * drag_coef + _k2 * drag_coef * drag_coef;
+		dragF = -v * drag_coef;
+
+		particle->addForce(dragF);
+	}
 }
+
+

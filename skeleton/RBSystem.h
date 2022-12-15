@@ -7,22 +7,32 @@
 #include "WhirlwindForceGenerator.h"
 #include "ParticleDragGenerator.h"
 #include "ExplosionForceGenerator.h"
+#include "RBForceRegistry.h"
+#include "ForceGenerator.h"
 #include <list>
 using namespace std;
 using namespace physx;
-
 
 class RBSystem
 {
 private:
 	std::list<RBParticle*>rigidBodies_;
+	std::list<PxRigidDynamic*>dynamicBodies_;
 	std::list<UniformRBGenerator*>rbGenerator_;
 	PxScene* scene_;
 	PxPhysics* gPhysics_;
 	float iniTime_,spawnCubes_;
 	UniformRBGenerator* uniformGen_;
 	int maxUniformParticles_;
-	//RBForceRegistry* forceReg_;
+	RBForceRegistry* forceReg_;
+	WindForceGenerator* windGen_;
+
+
+	PxRigidDynamic* castParticle(RBParticle* p) {
+		return p->addDynamicRB(p->getPos(), p->getVel(),
+								p->getColour(), p->getScale(), p->getStaticFriction(),
+								p->getDynamicFriction(), p->getBounce());
+	}
 public:
 
 	RBSystem(PxScene *scene, PxPhysics *gPhysics);

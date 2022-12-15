@@ -8,11 +8,12 @@ RBSystem::RBSystem(PxScene* scene, PxPhysics* gPhysics)
 	spawnCubes_ = 3000;
 	iniTime_ = 0;
 	maxUniformParticles_ = 10;
+	windGen_ = new WindForceGenerator(1, 0, Vector3(10, 100, -10), { -150,0,-250 }, 10);
 }
 
 void RBSystem::update(double t)
 {
-	/*std::list<RBParticle*>::iterator it = rigidBodies_.begin();
+	std::list<RBParticle*>::iterator it = rigidBodies_.begin();
 
 	while (it != rigidBodies_.end()) {
 		RBParticle* p = *it;
@@ -23,52 +24,12 @@ void RBSystem::update(double t)
 		else
 		{
 			it = rigidBodies_.erase(it);
-			forceReg_->deleteParticleRegistry(p);
+			forceReg_->deleteParticleRegistry(castParticle(p));
 			delete p;
 		}
 	}
-	for (auto e : rbGenerator_)
-	{
-		auto list = e->generateRB();
-
-		std::vector<ForceGenerator*> force = e->returnForce();
-
-		for (auto i : list)
-		{
-			rigidBodies_.push_back(i);
-
-			for (auto s : force) {
-
-				if (s->forceType == RBForceGenerator::GRAVITY) {
-					GravityForceGenerator* grav = static_cast<GravityForceGenerator*>(s);
-					if (grav != nullptr) {
-						forceReg_->addRegistry(grav, i);
-					}
-				}
-				else if (s->forceType == RBForceGenerator::WIND) {
-					WindForceGenerator* w = static_cast<WindForceGenerator*>(s);
-					if (w != nullptr) {
-						forceReg_->addRegistry(w, i);
-					}
-				}
-				else if (s->forceType == RBForceGenerator::WHIRLWIND) {
-					WhirlwindForceGenerator* w = static_cast<WhirlwindForceGenerator*>(s);
-					if (w != nullptr) {
-						forceReg_->addRegistry(w, i);
-					}
-				}
-				else if (s->forceType == RBForceGenerator::EXPLOSION) {
-					ExplosionForceGenerator* exp = static_cast<ExplosionForceGenerator*>(s);
-					if (exp != nullptr) {
-						forceReg_->addRegistry(exp, i);
-					}
-				}
-
-			}
-		}
-
-	}
-	forceReg_->updateForces(t);*/
+	
+	forceReg_->updateForces(t);
 }
 
 void RBSystem::addStaticRB(Vector3 pos, Vector4 color, Vector3 scale, double lifetime, int mass, Vector3 matValue)
@@ -100,6 +61,8 @@ void RBSystem::generatePerSeconds()
 		iniTime_ = glutGet(GLUT_ELAPSED_TIME) + spawnCubes_;
 	}
 	for (auto e:partList) {
+
 		rigidBodies_.push_back(e);
+		forceReg_->addRegistry(windGen_, castParticle(e));
 	}
 }

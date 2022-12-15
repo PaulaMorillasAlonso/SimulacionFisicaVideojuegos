@@ -3,13 +3,14 @@
 #include <random>
 #include "core.hpp"
 #include "RBParticle.h"
-#include "ForceGenerator.h"
+#include "ParticleGenerator.h"
 using namespace physx;
 using namespace std;
 
 class UniformRBGenerator
 {
 private:
+	
 	std::uniform_real_distribution<double> dist_pos;
 	std::uniform_real_distribution<double> dist_vel;
 	std::uniform_real_distribution<double> gen_prob_dist;

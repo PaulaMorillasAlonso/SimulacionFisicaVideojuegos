@@ -8,7 +8,7 @@ public:
 	
 	WindForceGenerator(const float k1, const float k2, Vector3 windVelocity, Vector3 pos, int radius=100);
 	virtual void updateForce(Particle* particle, double t) override;
-	bool checkPosition(Particle* particle);
+	virtual void updateForceRB(PxRigidDynamic* particle, double t) override;
 	~WindForceGenerator() {};
 
 protected:

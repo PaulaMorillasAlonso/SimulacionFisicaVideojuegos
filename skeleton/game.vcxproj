@@ -301,7 +301,6 @@
     <ClInclude Include="ParticleSystem.h" />
     <ClInclude Include="PlaneParticleGenerator.h" />
     <ClInclude Include="Proyectil.h" />
-    <ClInclude Include="RBForceGenerator.h" />
     <ClInclude Include="RBForceRegistry.h" />
     <ClInclude Include="RBParticle.h" />
     <ClInclude Include="RBSystem.h" />

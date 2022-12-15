@@ -24,3 +24,21 @@ void ParticleBungee::updateForce(Particle* particle, double t) {
 	
 
 }
+
+void ParticleBungee::updateForceRB(PxRigidDynamic* particle, double t)
+{
+	if (fabs(particle->getInvMass()) < 1e-10)
+		return;
+
+	Vector3 f = particle->getGlobalPose().p;
+	f -= other_->getPos();
+
+	float length = f.normalize();
+	length = (length - resting_length);
+
+	if (length > 0.01) {
+
+		f *= -(length * k_);
+		particle->addForce(f);
+	}
+}

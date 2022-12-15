@@ -67,10 +67,10 @@ void RBParticle::addStaticBody(Vector3 pos, Vector4 color, Vector3 size, float s
 	
 }
 
-void RBParticle::addDynamicRB(Vector3 pos, Vector3 vel, Vector4 color, Vector3 size, 
+PxRigidDynamic* RBParticle::addDynamicRB(Vector3 pos, Vector3 vel, Vector4 color, Vector3 size,
 	float staticFriction, float dynamicFriction, float restitution)
 {
-	PxRigidDynamic* rd = gPhysics_->createRigidDynamic(PxTransform(pos));
+	rd = gPhysics_->createRigidDynamic(PxTransform(pos));
 	rd->setLinearVelocity(vel);
 	rd->setAngularVelocity({0,0,0});
 	mat_ = gPhysics_->createMaterial(staticFriction, dynamicFriction, restitution); //static friction, dynamic friction, restitution
@@ -79,4 +79,6 @@ void RBParticle::addDynamicRB(Vector3 pos, Vector3 vel, Vector4 color, Vector3 s
 	rd->setMassSpaceInertiaTensor({ size.y * size.z,size.x * size.z,size.x * size.y });
 	auto item = new RenderItem(shape, rd, color);
 	scene_->addActor(*rd);
+	
+	return rd;
 }

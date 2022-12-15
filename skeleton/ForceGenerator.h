@@ -8,7 +8,7 @@ class ForceGenerator
 {
 public: 
 	virtual void updateForce(Particle* particle, double duration) = 0;
-	//virtual void updateForce(RBParticle* particle, double duration)=0;
+	virtual void updateForceRB(PxRigidDynamic* particle, double duration)=0;
 	std::string _name;
 	double t = -1e10; 
 	enum forceTypes{NONE,GRAVITY,WIND, WHIRLWIND,EXPLOSION };

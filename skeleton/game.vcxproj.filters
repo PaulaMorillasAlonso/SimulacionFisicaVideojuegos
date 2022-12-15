@@ -125,9 +125,6 @@
     <ClInclude Include="RBForceRegistry.h">
       <Filter>RBSystem</Filter>
     </ClInclude>
-    <ClInclude Include="RBForceGenerator.h">
-      <Filter>RBSystem</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">

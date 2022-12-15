@@ -80,7 +80,7 @@ void initPhysics(bool interactive)
 	rbSystem = new RBSystem(gScene, gPhysics);
 
 	rbSystem->addUniformGenerator({ -150,0,-250 }, { 0,0,0 }, { 0,0,0 }, 10, 20, 1, 2, 1, 1,
-		0.99f, 4000, { 1,0,0,1 }, { 4,4,4 }, 1, gScene, gPhysics, true, { 0.5, 0.5, 0.5 });
+		0.99f, 4000, { 1,0,0,1 }, { 8,8,8 }, 1, gScene, gPhysics, true, { 0.5, 0.5, 0.5 });
 	
 }
 

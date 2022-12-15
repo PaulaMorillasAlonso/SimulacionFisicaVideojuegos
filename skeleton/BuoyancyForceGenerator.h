@@ -4,7 +4,8 @@ class BuoyancyForceGenerator :public ForceGenerator
 {
 public:
 	BuoyancyForceGenerator(float h, float V, float d, Vector3 &pos);
-	virtual void updateForce(Particle *particle, double t);
+	virtual void updateForce(Particle* particle, double t);
+	virtual void updateForceRB(PxRigidDynamic*particle, double t);
 	virtual ~BuoyancyForceGenerator() { };
 protected:
 	float height;

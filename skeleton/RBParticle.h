@@ -23,6 +23,10 @@ public:
 	Vector4 getColour() { return colour_; }
 	double getInverseMass() { return inverse_mass; }
 	double getMass() { return mass_; }
+	float getBounce() { return restitution_; }
+	float getStaticFriction() { return dynamicFriction_; }
+	float getDynamicFriction() { return staticFriction_; }
+	bool getIsDynamic() { return isDynamic_; }
 
 	//set
 	void setColour(Vector4 color) { colour_ = color; }
@@ -64,7 +68,7 @@ public:
 
 	//creacion
 	void addStaticBody(Vector3 pos, Vector4 color, Vector3 size, float staticFriction, float dynamicFriction, float restitution);
-	void addDynamicRB(Vector3 pos, Vector3 vel, Vector4 color, Vector3 size,float staticFriction, float dynamicFriction, float restitution);
+	PxRigidDynamic* addDynamicRB(Vector3 pos, Vector3 vel, Vector4 color, Vector3 size,float staticFriction, float dynamicFriction, float restitution);
 
 protected:
 

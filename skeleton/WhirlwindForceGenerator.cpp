@@ -31,3 +31,24 @@ void WhirlwindForceGenerator::updateForce(Particle* particle, double t)
 	particle->addForce(dragF);
 
 }
+
+void WhirlwindForceGenerator::updateForceRB(PxRigidDynamic* particle, double t)
+{
+	if (fabs(particle->getInvMass()) < 1e-10)
+		return;
+
+	auto x = -(particle->getGlobalPose().p.z - origin_.z);
+	auto y = varY_ - (particle->getGlobalPose().p.y - origin_.y);
+	auto z = (particle->getGlobalPose().p.x - origin_.x);
+
+	windVel_ = K_ * Vector3(x, y, z);
+
+	Vector3 v = particle->getLinearVelocity() - windVel_;
+	float drag_coef = v.normalize();
+
+	Vector3 dragF;
+	drag_coef = _k1 * drag_coef + _k2 * drag_coef * drag_coef;
+	dragF = -v * drag_coef;
+
+	particle->addForce(dragF);
+}
