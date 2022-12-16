@@ -1,7 +1,7 @@
 #include "RBParticle.h"
 
-RBParticle::RBParticle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double Damping, double lifeTime, Vector4 colour, Vector3 scale, 
-	bool isDynamic, PxScene* scene, PxPhysics* gPhysics, int mass, Vector3 matValues)
+RBParticle::RBParticle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double Damping, double lifeTime, Vector4 colour, Vector3 scale,
+	PxScene* scene, PxPhysics* gPhysics, int mass, Vector3 matValues, PxRigidDynamic* rigid )
 {
 	vel = Vel;
 	acc = Acc;
@@ -13,20 +13,15 @@ RBParticle::RBParticle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double Damping, do
 	scale_ = scale;
 	pos = Pos;
 	alive_ = true;
-	isDynamic_ = isDynamic;
 	iniTime_ = glutGet(GLUT_ELAPSED_TIME);
 	scene_ = scene;
 	gPhysics_ = gPhysics;
 	staticFriction_ = matValues.x;
 	dynamicFriction_ = matValues.y;
 	restitution_ = matValues.z;
-
-	if (isDynamic_) {
-		addDynamicRB(pos,vel,colour_,scale_,staticFriction_,dynamicFriction_,restitution_);
-	}
-	else {
-		addStaticBody(pos,colour_,scale_, staticFriction_, dynamicFriction_, restitution_);
-	}
+	rd = rigid;
+	addDynamicRB(pos,vel,colour_,scale_,staticFriction_,dynamicFriction_,restitution_,rd);
+	
 }
 
 
@@ -56,19 +51,8 @@ void RBParticle::integrate(double t)
 	}
 }
 
-void RBParticle::addStaticBody(Vector3 pos, Vector4 color, Vector3 size, float staticFriction,float dynamicFriction, float restitution)
-{
-	PxRigidStatic* rs = gPhysics_->createRigidStatic(PxTransform(pos));
-	mat_=  gPhysics_->createMaterial(staticFriction,dynamicFriction,restitution); //static friction, dynamic friction, restitution
-	PxShape* shape = CreateShape(PxBoxGeometry(size.x, size.y, size.z),mat_);
-	rs->attachShape(*shape);
-	auto item = new RenderItem(shape, rs, color);
-	scene_->addActor(*rs);
-	
-}
-
-PxRigidDynamic* RBParticle::addDynamicRB(Vector3 pos, Vector3 vel, Vector4 color, Vector3 size,
-	float staticFriction, float dynamicFriction, float restitution)
+void RBParticle::addDynamicRB(Vector3 pos, Vector3 vel, Vector4 color, Vector3 size,
+	float staticFriction, float dynamicFriction, float restitution, PxRigidDynamic *rigid)
 {
 	rd = gPhysics_->createRigidDynamic(PxTransform(pos));
 	rd->setLinearVelocity(vel);
@@ -79,6 +63,5 @@ PxRigidDynamic* RBParticle::addDynamicRB(Vector3 pos, Vector3 vel, Vector4 color
 	rd->setMassSpaceInertiaTensor({ size.y * size.z,size.x * size.z,size.x * size.y });
 	auto item = new RenderItem(shape, rd, color);
 	scene_->addActor(*rd);
-	
-	return rd;
+
 }

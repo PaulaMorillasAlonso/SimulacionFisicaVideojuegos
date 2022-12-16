@@ -8,7 +8,8 @@ RBSystem::RBSystem(PxScene* scene, PxPhysics* gPhysics)
 	spawnCubes_ = 3000;
 	iniTime_ = 0;
 	maxUniformParticles_ = 10;
-	windGen_ = new WindForceGenerator(1, 0, Vector3(10, 100, -10), { -150,0,-250 }, 10);
+	windGen_ = new WindForceGenerator(-1, 0, Vector3(100, 1, -100), { -150,0,-250 }, 100);
+	forceReg_ = new RBForceRegistry();
 }
 
 void RBSystem::update(double t)
@@ -24,7 +25,7 @@ void RBSystem::update(double t)
 		else
 		{
 			it = rigidBodies_.erase(it);
-			forceReg_->deleteParticleRegistry(castParticle(p));
+			forceReg_->deleteParticleRegistry(p->getDynamicInstance());
 			delete p;
 		}
 	}
@@ -34,15 +35,15 @@ void RBSystem::update(double t)
 
 void RBSystem::addStaticRB(Vector3 pos, Vector4 color, Vector3 scale, double lifetime, int mass, Vector3 matValue)
 {
-	RBParticle* p = new RBParticle(pos, { 0,0,0 }, { 0,0,0 }, 1, lifetime, color,
-		scale, false, scene_, gPhysics_, mass,matValue);
+	PxRigidStatic* rs = gPhysics_->createRigidStatic(PxTransform(pos));
+	PxMaterial* mat = gPhysics_->createMaterial(matValue.x, matValue.y, matValue.z); //static friction, dynamic friction, restitution
+	PxShape* shape = CreateShape(PxBoxGeometry(scale.x, scale.y, scale.z), mat);
+	rs->attachShape(*shape);
+	auto item = new RenderItem(shape, rs, color);
+	scene_->addActor(*rs);
+
 }
 
-void RBSystem::addDynamicRB(Vector3 pos, Vector3 vel, Vector4 color, Vector3 scale, double lifetime, int mass, Vector3 matValue)
-{
-	RBParticle* p = new RBParticle(pos, vel, { 0,0,0 }, 1, lifetime, color,
-		scale, true, scene_, gPhysics_, mass,matValue);
-}
 void RBSystem::addUniformGenerator(Vector3 meanPos, Vector3 meanVel, Vector3 meanAcc, double minPos, double maxPos, double minVel, double maxVel, double gen_prob,
 	int numPart, double damping, double lifeTime, Vector4 colour, Vector3 scale, 
 	double mass, PxScene* scene, PxPhysics* gPhysics, bool isDynamic, Vector3 matValue)
@@ -54,15 +55,17 @@ void RBSystem::addUniformGenerator(Vector3 meanPos, Vector3 meanVel, Vector3 mea
 
 void RBSystem::generatePerSeconds()
 {
-	std::list<RBParticle*> partList;
+
+	std::list<PxRigidDynamic*> dynList;
 	if (glutGet(GLUT_ELAPSED_TIME) >= iniTime_ && rigidBodies_.size()<maxUniformParticles_) {
 		
-		partList=uniformGen_->generateRB();
+		dynList=uniformGen_->generateRB();
 		iniTime_ = glutGet(GLUT_ELAPSED_TIME) + spawnCubes_;
 	}
-	for (auto e:partList) {
-
-		rigidBodies_.push_back(e);
-		forceReg_->addRegistry(windGen_, castParticle(e));
+	
+	for (auto i : dynList) 
+	{
+		dynamicBodies_.push_back(i);
+		forceReg_->addRegistry(windGen_, i);
 	}
 }

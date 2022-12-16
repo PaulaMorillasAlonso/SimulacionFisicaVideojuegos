@@ -9,7 +9,7 @@ class RBParticle
 public:
 
 	RBParticle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double Damping, double lifeTime, Vector4 colour, Vector3 scale,
-		bool isDynamic, PxScene* scene, PxPhysics* gPhysics, int mass, Vector3 matValues);
+		 PxScene* scene, PxPhysics* gPhysics, int mass, Vector3 matValues,	PxRigidDynamic* rigid=nullptr);
 	
 	~RBParticle() {};
 
@@ -26,7 +26,7 @@ public:
 	float getBounce() { return restitution_; }
 	float getStaticFriction() { return dynamicFriction_; }
 	float getDynamicFriction() { return staticFriction_; }
-	bool getIsDynamic() { return isDynamic_; }
+
 
 	//set
 	void setColour(Vector4 color) { colour_ = color; }
@@ -67,8 +67,10 @@ public:
 	void clearForce() { totForce = Vector3(0, 0, 0); }
 
 	//creacion
-	void addStaticBody(Vector3 pos, Vector4 color, Vector3 size, float staticFriction, float dynamicFriction, float restitution);
-	PxRigidDynamic* addDynamicRB(Vector3 pos, Vector3 vel, Vector4 color, Vector3 size,float staticFriction, float dynamicFriction, float restitution);
+	
+	void addDynamicRB(Vector3 pos, Vector3 vel, Vector4 color, Vector3 size,
+		float staticFriction, float dynamicFriction, float restitution, PxRigidDynamic *rigid);
+	PxRigidDynamic* getDynamicInstance() { return rd; }
 
 protected:
 
@@ -80,7 +82,7 @@ protected:
 	double damping, mass_, inverse_mass, gravity_;
 	double lifeTime_, iniTime_;
 	Vector3 scale_ = {10,1,10};
-	bool alive_,isDynamic_;
+	bool alive_;
 	PxScene* scene_;
 	PxPhysics* gPhysics_;
 	float staticFriction_,  dynamicFriction_,restitution_;

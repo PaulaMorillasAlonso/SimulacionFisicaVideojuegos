@@ -30,7 +30,7 @@ public:
 		Vector3 scale, double mass,PxScene* scene, PxPhysics* gPhysics,
 		bool isDynamic, Vector3 matValues);
 
-	std::list<RBParticle*>generateRB();
+	std::list<PxRigidDynamic*>generateRB();
 	//std::vector<ForceGenerator*>returnForce();
 };
 

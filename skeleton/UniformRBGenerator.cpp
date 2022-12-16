@@ -28,16 +28,16 @@ UniformRBGenerator::UniformRBGenerator(Vector3 meanPos, Vector3 meanVel, Vector3
   
 }
 
-std::list<RBParticle*> UniformRBGenerator::generateRB()
+std::list<PxRigidDynamic*> UniformRBGenerator::generateRB()
 {
-    std::list<RBParticle*> lista;
+    std::list<PxRigidDynamic*> lista;
   
    int genProbRnd = gen_prob_dist(gen_);
 
     if (genProbRnd < generation_probability_) {
 
         RBParticle* p = new RBParticle(mean_pos_, mean_vel_, mean_acc, damping_,
-            lifeTime_, colour_, scale_, isDynamic_, scene_, gPhysics_, mass_, matValues_);
+            lifeTime_, colour_, scale_, scene_, gPhysics_, mass_, matValues_);
 
         double newPosX = dist_pos(gen_);
         double newPosY = dist_pos(gen_);
@@ -50,7 +50,7 @@ std::list<RBParticle*> UniformRBGenerator::generateRB()
         p->setVel({ (float)(mean_vel_.x + newVelX),(float)(mean_vel_.y + newVelY),(float)(mean_vel_.z + newVelZ) });
 
 
-        lista.push_back(p);
+        lista.push_back(p->getDynamicInstance());
 
     }
   

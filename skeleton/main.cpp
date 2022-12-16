@@ -109,6 +109,7 @@ void stepPhysics(bool interactive, double t)
 
 	pSystem->update(t);
 	rbSystem->generatePerSeconds();
+	rbSystem->update(t);
 }
 
 // Function to clean data
