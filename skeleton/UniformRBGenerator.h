@@ -31,6 +31,5 @@ public:
 		bool isDynamic, Vector3 matValues);
 
 	std::list<PxRigidDynamic*>generateRB();
-	//std::vector<ForceGenerator*>returnForce();
 };
 

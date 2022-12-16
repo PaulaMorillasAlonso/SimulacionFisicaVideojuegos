@@ -40,5 +40,15 @@ public:
 		int numPart, double damping, double lifeTime, Vector4 colour, Vector3 scale, double mass, 
 		PxScene* scene, PxPhysics* gPhysics, bool isDynamic,Vector3 matValue);
 	void generatePerSeconds();
+	void activateWind() {
+		if (windGen_ != nullptr) {
+			windGen_->activate();
+		}
+	}
+	void deactivateWind() {
+		if (windGen_ != nullptr) {
+			windGen_->deactivate();
+		}
+	}
 };
 

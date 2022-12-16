@@ -72,6 +72,8 @@ public:
 		float staticFriction, float dynamicFriction, float restitution, PxRigidDynamic *rigid);
 	PxRigidDynamic* getDynamicInstance() { return rd; }
 
+	
+
 protected:
 
 	Vector3 vel = { 0,0,0 };

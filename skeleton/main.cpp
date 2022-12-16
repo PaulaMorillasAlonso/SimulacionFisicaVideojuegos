@@ -212,7 +212,12 @@ void keyPress(unsigned char key, const PxTransform& camera)
 		break;
 	case 'P':
 		
-		//rbSystem->addDynamicRB({ 10,80,-30 }, { 2,2,2 }, { 1,0,0,1 }, {4,4,4},-1,1);
+		rbSystem->deactivateWind();
+
+	break;
+	case 'I':
+
+		rbSystem->activateWind();
 
 		break;
 	default:
