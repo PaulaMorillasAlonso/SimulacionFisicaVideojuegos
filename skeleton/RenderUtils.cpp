@@ -51,6 +51,7 @@ namespace
 	{
 		sCamera->handleMotion(x, y);
 	}
+	
 
 	void keyboardCallback(unsigned char key, int x, int y)
 	{
@@ -147,6 +148,7 @@ void renderLoop()
 	glutKeyboardFunc(keyboardCallback);
 	glutMouseFunc(mouseCallback);
 	glutMotionFunc(motionCallback);
+	glutPassiveMotionFunc(motionCallback);
 	motionCallback(0, 0);
 
 	atexit(exitCallback);

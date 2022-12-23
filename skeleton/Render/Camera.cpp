@@ -33,6 +33,7 @@
 #include <ctype.h>
 #include "foundation/PxMat33.h"
 
+
 using namespace physx;
 
 namespace Snippets
@@ -80,7 +81,7 @@ void Camera::handleAnalogMove(float x, float y)
 
 void Camera::handleMotion(int x, int y)
 {
-	int dx = mMouseX - x;
+	int dx = mMouseX -x;
 	int dy = mMouseY - y;
 
 	PxVec3 viewY = mDir.cross(PxVec3(0,1,0)).getNormalized();
