@@ -8,7 +8,7 @@ RBSystem::RBSystem(PxScene* scene, PxPhysics* gPhysics)
 	spawnCubes_ = 3000;
 	iniTime_ = 0;
 	maxUniformParticles_ = 10;
-	windGen_ = new WindForceGenerator(1, 0, Vector3(-100, 1, 0), { -150,0,-250 }, 20);
+	//windGen_ = new WindForceGenerator(1, 0, Vector3(-100, 1, 0), { -150,0,-250 }, 20);
 	forceReg_ = new RBForceRegistry();
 }
 

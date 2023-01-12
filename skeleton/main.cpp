@@ -42,6 +42,48 @@ ParticleSystem* pSystem;
 RBSystem* rbSystem;
 WindForceGenerator* wGen;
 
+void crearHabitacion()
+{
+	auto floor = CreateShape(physx::PxBoxGeometry(300, 1, 300));
+	Particle* suelo = new Particle({ 5,40,5 }, { 0,0,0 }, { 0,0,0 }, 0, -1, floor, { 0.5, 0.2, 0.0, 1 }, 1);
+
+	auto techoObj = CreateShape(physx::PxBoxGeometry(300, 1, 300));
+	Particle* techo = new Particle({ 5,130,5 }, { 0,0,0 }, { 0,0,0 }, 0, -1, techoObj, { 1, 1, 1, 1 }, 1);
+
+	auto p1Obj = CreateShape(physx::PxBoxGeometry(1, 100, 300));
+	Particle* p1 = new Particle({ 7,50,7 }, { 0,0,0 }, { 0,0,0 }, 0, -1, p1Obj, { 0.99, 0.71, 0.29, 1 }, 1);
+
+	Particle* p2 = new Particle({ 150,50,7 }, { 0,0,0 }, { 0,0,0 }, 0, -1, p1Obj, { 0.99, 0.71, 0.29, 1 }, 1);
+
+	auto p2Obj = CreateShape(physx::PxBoxGeometry(300, 100, 1));
+	Particle* p3 = new Particle({ 5,50,150 }, { 0,0,0 }, { 0,0,0 }, 0, -1, p2Obj, { 0.99, 0.71, 0.29, 1 }, 1);
+	Particle* p4 = new Particle({ 5,50,-150 }, { 0,0,0 }, { 0,0,0 }, 0, -1, p2Obj, { 0.99, 0.71, 0.29, 1 }, 1);
+
+	auto camaObj = CreateShape(physx::PxBoxGeometry(30, 5, 20));
+	Particle* cama = new Particle({ 30,45,7 }, { 0,0,0 }, { 0,0,0 }, 0, -1, camaObj, { 1, 0, 0, 1 }, 1);
+
+	auto almObj = CreateShape(physx::PxBoxGeometry(10, 1, 20));
+	Particle* almohada = new Particle({ 15,50,7 }, { 0,0,0 }, { 0,0,0 }, 0, -1, almObj, { 1, 1, 1, 1 }, 1);
+
+	auto mObj = CreateShape(physx::PxBoxGeometry(4, 1, 10));
+	Particle* m1 = new Particle({ 146,62,-7 }, { 0,0,0 }, { 0,0,0 }, 0, -1, mObj, { 0.5, 0.2, 0.0, 1 }, 1);
+
+	auto mObj1 = CreateShape(physx::PxBoxGeometry(10, 1, 4));
+	Particle* m2 = new Particle({ 80,70,-146 }, { 0,0,0 }, { 0,0,0 }, 0, -1, mObj1, { 0.5, 0.2, 0.0, 1 }, 1);
+
+	auto mesaObj1 = CreateShape(physx::PxBoxGeometry(30, 2, 15));
+	Particle* mesa = new Particle({ 80,60,138 }, { 0,0,0 }, { 0,0,0 }, 0, -1, mesaObj1, { 0.5, 0.2, 0.0, 1 }, 1);
+
+	auto pataObj = CreateShape(physx::PxBoxGeometry(2, 15, 2));
+	Particle* mesaPata1 = new Particle({ 100,45,142 }, { 0,0,0 }, { 0,0,0 }, 0, -1, pataObj, { 0.5, 0.2, 0.0, 1 }, 1);
+	Particle* mesaPata2 = new Particle({ 56,45,142 }, { 0,0,0 }, { 0,0,0 }, 0, -1, pataObj, { 0.5, 0.2, 0.0, 1 }, 1);
+	Particle* mesaPata3 = new Particle({ 100,45,128 }, { 0,0,0 }, { 0,0,0 }, 0, -1, pataObj, { 0.5, 0.2, 0.0, 1 }, 1);
+	Particle* mesaPata4 = new Particle({ 56,45,128 }, { 0,0,0 }, { 0,0,0 }, 0, -1, pataObj, { 0.5, 0.2, 0.0, 1 }, 1);
+
+	auto mesillaObj = CreateShape(physx::PxBoxGeometry(8, 6, 8));
+	Particle* mesilla = new Particle({ 16,45,-27 }, { 0,0,0 }, { 0,0,0 }, 0, -1, mesillaObj, { 0.5, 0.2, 0.0, 1 }, 1);
+
+}
 // Initialize physics engine
 void initPhysics(bool interactive)
 {
@@ -68,21 +110,21 @@ void initPhysics(bool interactive)
 
 	//Plane as a solid rigid
 	
-
-	/*auto floor = CreateShape(physx::PxBoxGeometry(300, 1, 300));
-	suelo = new Particle({ 5,40,5 }, { 0,0,0 }, { 0,0,0 }, 0,10000, floor, {0,0.9,0,1});*/
-
-	/*auto round = CreateShape(physx::PxBoxGeometry(10, 10, 1));
-	diana = new Particle({ 7,50,7 }, { 0,0,0 }, { 0,0,0 }, 0,10000, round, {0.8,0.8,0.8,1});*/
-
+	
 	pSystem = new ParticleSystem();
 
 	rbSystem = new RBSystem(gScene, gPhysics);
 
-	rbSystem->addUniformGenerator({ -150,0,-250 }, { 0,0,0 }, { 0,0,0 }, 10, 20, 1, 2, 1, 1,
-		0.99f, 4000, { 1,0,0,1 }, { 8,8,8 }, 1, gScene, gPhysics, true, { 0.5, 0.5, 0.02 });
+	crearHabitacion();
+
+	/*rbSystem->addUniformGenerator({ -150,0,-250 }, { 0,0,0 }, { 0,0,0 }, 10, 20, 1, 2, 1, 1,
+		0.99f, 4000, { 1,0,0,1 }, { 8,8,8 }, 1, gScene, gPhysics, true, { 0.5, 0.5, 0.02 });*/
+	
+	//rbSystem->createRoom();
 	
 }
+
+
 
 
 // Function to configure what happens in each step of physics
@@ -108,7 +150,7 @@ void stepPhysics(bool interactive, double t)
 	}
 
 	pSystem->update(t);
-	rbSystem->generatePerSeconds();
+	//rbSystem->generatePerSeconds();
 	rbSystem->update(t);
 }
 
@@ -148,13 +190,13 @@ void keyPress(unsigned char key, const PxTransform& camera)
 		//bullet.push_back(new Proyectil(Proyectil::BULLET, GetCamera()->getTransform().p, GetCamera()->getDir(), {0.3,0.3,0.3,1}));
 
 		//Sin gravedad
-		pSystem->creaFuente();
-		//Gravedad
-		pSystem->creaFuenteGravedad({ 0,-10.0,0 }, { 15,50,7 }, { 0.9,0.1,0.47,1 }, 1);
-		//Gravedad y dir
-		pSystem->creaFuenteGravedad({ 0,2.0,0 }, { 23,50,7 }, { 1,0.5,0,1 }, 1);
-		//Gravedad y masa
-		pSystem->creaFuenteGravedad({ 0,-10.0,0 }, { 30,50,7 }, { 0,0.8,0.3,1 }, 10);
+		//pSystem->creaFuente();
+		////Gravedad
+		//pSystem->creaFuenteGravedad({ 0,-10.0,0 }, { 15,50,7 }, { 0.9,0.1,0.47,1 }, 1);
+		////Gravedad y dir
+		//pSystem->creaFuenteGravedad({ 0,2.0,0 }, { 23,50,7 }, { 1,0.5,0,1 }, 1);
+		////Gravedad y masa
+		//pSystem->creaFuenteGravedad({ 0,-10.0,0 }, { 30,50,7 }, { 0,0.8,0.3,1 }, 10);
 
 		break;
 	case '2':
@@ -162,62 +204,59 @@ void keyPress(unsigned char key, const PxTransform& camera)
 		//bullet.push_back(new Proyectil(Proyectil::CANNON, GetCamera()->getTransform().p, GetCamera()->getDir(), { 0.2,0.2,0.2,1 }));
 
 		//viento
-		pSystem->creaViento();
+		//pSystem->creaViento();
 		break;
 	case '3':
 		//pSystem->generateFireworkSystem(2);
 		//bullet.push_back(new Proyectil(Proyectil::FIREBALL, GetCamera()->getTransform().p, GetCamera()->getDir(), {0.9,0.1,0.2,1}));
-		pSystem->creaTornado();
+		//pSystem->creaTornado();
 		break;
 	case '4':
 		//pSystem->generateFireworkSystem(3);
 		//bullet.push_back(new Proyectil(Proyectil::BULLET, GetCamera()->getTransform().p, GetCamera()->getDir(), {0.3,0.3,0.3,1}));
-		pSystem->creaExplosion();
+		//pSystem->creaExplosion();
 		break;
 	case '5':
 	
-		pSystem->muelleFijo();
-		pSystem->deactivateSpringWind();
+		//pSystem->muelleFijo();
+		//pSystem->deactivateSpringWind();
 		break;
 	//case '6': //desactiva viento muelle
 	//	pSystem->deactivateSpringWind();
 	//	break;
 	case '6': //activa viento muelle
 		
-		pSystem->activaViento();
+		//pSystem->activaViento();
 		break;
 	case '7':
-		pSystem->muelleDoble();
+		//pSystem->muelleDoble();
 		break;
 	case '8':
-		pSystem->gomaElastica();
+		//pSystem->gomaElastica();
 		break;
 	case '9':
-		pSystem->flotaTest();
+		//pSystem->flotaTest();
 		break;
 	case '0':
-		pSystem->creaSlinky();
+		//pSystem->creaSlinky();
 		break;
 	case 'X':
-		pSystem->addK();
+		//pSystem->addK();
 		break;
 	case 'C':
-		pSystem->subK();
+		//pSystem->subK();
 		break;
 	case 'O':
-		rbSystem->addStaticRB({ camera.p.x - 200,camera.p.y - 100,camera.p.z - 400 }, { 0, 1, 0, 1 }, { 100, 100, 10 }, -1, 1, {0.5,0.5,0.5});
-		rbSystem->addStaticRB({ camera.p.x - 300,camera.p.y - 100,camera.p.z - 300 }, { 0, 1, 0, 1 }, { 10,100,100 }, -1, 1,{0.5, 0.5, 0.5});
-		rbSystem->addStaticRB({ camera.p.x-100,camera.p.y - 100,camera.p.z - 300 }, { 0, 1, 0, 1 }, { 10,100,100 }, -1, 1, { 0.5, 0.5, 0.5 });
-		rbSystem->addStaticRB({ camera.p.x - 200,camera.p.y - 200,camera.p.z - 300 }, { 0, 0, 1, 1 }, { 100,10,100 }, -1, 1, { 0.5, 0.5, 0.5 });
+		
 		break;
 	case 'P':
 		
-		rbSystem->deactivateWind();
+		//rbSystem->deactivateWind();
 
 	break;
 	case 'I':
 
-		rbSystem->activateWind();
+		//rbSystem->activateWind();
 
 		break;
 	default:

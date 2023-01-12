@@ -50,5 +50,6 @@ public:
 			windGen_->deactivate();
 		}
 	}
+
 };
 
