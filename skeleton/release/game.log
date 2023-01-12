@@ -1,9 +1,8 @@
-﻿  main.cpp
+﻿  Lampara.cpp
 C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\common\PhysX-3.4\PxShared\include\task\PxTask.h(329,1): warning C5220: "physx::PxLightCpuTask::mRefCount": un miembro de datos no estático con un tipo calificado volátil ya no implica
            que los constructores de copia/movimiento generados por el compilador y los operadores de asignación de copia o movimiento no sean triviales
 C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\common\PhysX-3.4\PxShared\include\task\PxTask.h(326): message : vea la declaración de 'physx::PxLightCpuTask::mRefCount'
 C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\Particle.h(11,3): warning C4265: "Particle": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\Proyectil.h(9,3): warning C4265: "Proyectil": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
 C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\RBParticle.h(14,3): warning C4265: "RBParticle": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
 C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\ForceGenerator.h(21,1): warning C4265: "ForceGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
 C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\GravityForceGenerator.h(17,1): warning C4265: "GravityForceGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
@@ -13,29 +12,4 @@ C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\WhirlwindForceGenera
 C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\ExplosionForceGenerator.h(11,3): warning C4265: "ExplosionForceGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
 C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\ParticleGenerator.h(33,1): warning C4265: "ParticleGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
 C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\UniformParticleGenerator.h(23,1): warning C4265: "UniformParticleGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\GaussianParticleGenerator.h(21,3): warning C4265: "GaussianParticleGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\CircleParticleGenerator.h(16,1): warning C4265: "CircleParticleGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\SphereParticleGenerator.h(15,1): warning C4265: "SphereParticleGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\Firework.h(41,3): warning C4265: "Firework": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\PlaneParticleGenerator.h(16,1): warning C4265: "PlaneParticleGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\main.cpp(48,20): warning C4459: la declaración de 'suelo' oculta la declaración global
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\main.cpp(38,11): message : vea la declaración de 'suelo'
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\main.cpp(84,12): warning C4189: 'mesilla': la variable local se ha inicializado pero no se hace referencia a ella
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\main.cpp(78,12): warning C4189: 'mesaPata1': la variable local se ha inicializado pero no se hace referencia a ella
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\main.cpp(72,12): warning C4189: 'm2': la variable local se ha inicializado pero no se hace referencia a ella
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\main.cpp(79,12): warning C4189: 'mesaPata2': la variable local se ha inicializado pero no se hace referencia a ella
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\main.cpp(69,12): warning C4189: 'm1': la variable local se ha inicializado pero no se hace referencia a ella
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\main.cpp(51,12): warning C4189: 'techo': la variable local se ha inicializado pero no se hace referencia a ella
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\main.cpp(59,12): warning C4189: 'p3': la variable local se ha inicializado pero no se hace referencia a ella
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\main.cpp(75,12): warning C4189: 'mesa': la variable local se ha inicializado pero no se hace referencia a ella
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\main.cpp(54,12): warning C4189: 'p1': la variable local se ha inicializado pero no se hace referencia a ella
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\main.cpp(60,12): warning C4189: 'p4': la variable local se ha inicializado pero no se hace referencia a ella
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\main.cpp(56,12): warning C4189: 'p2': la variable local se ha inicializado pero no se hace referencia a ella
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\main.cpp(48,12): warning C4189: 'suelo': la variable local se ha inicializado pero no se hace referencia a ella
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\main.cpp(63,12): warning C4189: 'cama': la variable local se ha inicializado pero no se hace referencia a ella
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\main.cpp(80,12): warning C4189: 'mesaPata3': la variable local se ha inicializado pero no se hace referencia a ella
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\main.cpp(66,12): warning C4189: 'almohada': la variable local se ha inicializado pero no se hace referencia a ella
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\main.cpp(81,12): warning C4189: 'mesaPata4': la variable local se ha inicializado pero no se hace referencia a ella
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\main.cpp(139,20): warning C4388: '<': no coinciden signed/unsigned
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\main.cpp(174,20): warning C4388: '<': no coinciden signed/unsigned
   game.vcxproj -> C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\../bin/game.exe

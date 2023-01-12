@@ -14,6 +14,7 @@
 #include "Proyectil.h"
 #include "ParticleSystem.h"
 #include "RBSystem.h"
+#include "Lampara.h"
 #include <time.h>
 
 
@@ -82,6 +83,7 @@ void crearHabitacion()
 
 	auto mesillaObj = CreateShape(physx::PxBoxGeometry(8, 6, 8));
 	Particle* mesilla = new Particle({ 16,45,-27 }, { 0,0,0 }, { 0,0,0 }, 0, -1, mesillaObj, { 0.5, 0.2, 0.0, 1 }, 1);
+	pSystem->creaLampara(Vector3(16, 54, -27));
 
 }
 // Initialize physics engine
@@ -114,6 +116,7 @@ void initPhysics(bool interactive)
 	pSystem = new ParticleSystem();
 
 	rbSystem = new RBSystem(gScene, gPhysics);
+
 
 	crearHabitacion();
 

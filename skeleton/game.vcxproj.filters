@@ -59,6 +59,9 @@
     <ClCompile Include="UniformRBGenerator.cpp">
       <Filter>RBSystem</Filter>
     </ClCompile>
+    <ClCompile Include="Lampara.cpp">
+      <Filter>Final</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -125,6 +128,9 @@
     <ClInclude Include="RBForceRegistry.h">
       <Filter>RBSystem</Filter>
     </ClInclude>
+    <ClInclude Include="Lampara.h">
+      <Filter>Final</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Render">
@@ -138,6 +144,9 @@
     </Filter>
     <Filter Include="RBSystem">
       <UniqueIdentifier>{8a2921ba-b4c4-4648-875a-d3b9e6e085ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Final">
+      <UniqueIdentifier>{e57aefcb-8c0d-4336-8071-5d7f6d3f2150}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

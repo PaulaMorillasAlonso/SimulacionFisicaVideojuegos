@@ -214,6 +214,13 @@ void ParticleSystem::activaViento()
 	}
 	
 }
+void ParticleSystem::creaLampara(Vector3& pos)
+{
+	
+	Lampara* lamp = new Lampara(pos, { 0,2,0 }, { 0,-3,0 }, 0.2, 0.8, 0, 1, 0.6, 1, 0.99, 1000, { 0.9,0.3,0,1 }, 0.08, 1);
+	_particle_generators.push_back(lamp->getLampGen());
+
+}
 void ParticleSystem::addK()
 {
 	springGen_->setK(springGen_->getK() + 0.2);

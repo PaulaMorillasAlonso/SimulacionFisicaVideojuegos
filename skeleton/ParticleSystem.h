@@ -20,6 +20,7 @@
 #include "AnchoredSpringForceGenerator.h"
 #include "ParticleBungee.h"
 #include "BuoyancyForceGenerator.h"
+#include "Lampara.h"
 
 class ParticleSystem
 {
@@ -62,7 +63,7 @@ public:
 	void activateSpringWind() { windGen_->activate(); };
 	void deactivateSpringWind() { windGen_->deactivate(); };
 	void activaViento();
-
+	void creaLampara(Vector3& pos);
 	void addK();
 	void subK();
 	~ParticleSystem();
