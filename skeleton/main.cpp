@@ -68,6 +68,7 @@ void crearHabitacion()
 
 	auto mObj = CreateShape(physx::PxBoxGeometry(4, 1, 10));
 	Particle* m1 = new Particle({ 146,62,-7 }, { 0,0,0 }, { 0,0,0 }, 0, -1, mObj, { 0.5, 0.2, 0.0, 1 }, 1);
+	pSystem->creaBolaNieve(Vector3(146, 67, -7));
 
 	auto mObj1 = CreateShape(physx::PxBoxGeometry(10, 1, 4));
 	Particle* m2 = new Particle({ 80,70,-146 }, { 0,0,0 }, { 0,0,0 }, 0, -1, mObj1, { 0.5, 0.2, 0.0, 1 }, 1);
@@ -119,6 +120,7 @@ void initPhysics(bool interactive)
 
 
 	crearHabitacion();
+
 
 	/*rbSystem->addUniformGenerator({ -150,0,-250 }, { 0,0,0 }, { 0,0,0 }, 10, 20, 1, 2, 1, 1,
 		0.99f, 4000, { 1,0,0,1 }, { 8,8,8 }, 1, gScene, gPhysics, true, { 0.5, 0.5, 0.02 });*/
@@ -189,6 +191,7 @@ void keyPress(unsigned char key, const PxTransform& camera)
 	switch(toupper(key))
 	{
 	case '1': 
+		pSystem->agitaBolaNieve();
 		//pSystem->generateFireworkSystem(0);
 		//bullet.push_back(new Proyectil(Proyectil::BULLET, GetCamera()->getTransform().p, GetCamera()->getDir(), {0.3,0.3,0.3,1}));
 

@@ -8,7 +8,7 @@ PlaneParticleGenerator::PlaneParticleGenerator(Vector3 meanPos, Vector3 meanVel,
     for (float i = -_num_particles; i < _num_particles; i += 3) {
         for (float j = -_num_particles; j < _num_particles; j += 3) {
 
-            Particle* p = new Particle(pos_, vel_, acc_, damping_, lifeTime_, colour_, scale_, mass_);
+            Particle* p = new Particle(pos_, vel_, acc_, damping_, lifeTime_, colour_, scale_, mass_,-1);
             p->setPos({ p->getPos().x + i,p->getPos().y+j,p->getPos().z });
             lista.push_back(p);
         }

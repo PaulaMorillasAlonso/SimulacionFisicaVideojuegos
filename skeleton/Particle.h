@@ -5,7 +5,8 @@ class Particle
 {
 public:
 	Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double damping, double lifeTime);
-	Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double damping, double lifeTime, Vector4 colour, double scale, int mass=10,int type = -1 );
+	Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double damping, double lifeTime, Vector4 colour, double scale, int mass = 10, int type = -1);
+	Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double damping, double lifeTime, Vector4 colour, double scale, bool radio,double radius=-1,int mass=10,int type = -1);
 	Particle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double damping, double lifeTime, physx::PxShape* geomType, Vector4 colour, double scale, int mass = 10, int type = -1);
 	Particle() {};
 	~Particle();
@@ -30,6 +31,7 @@ public:
 	void setAcceleration(Vector3 Acc) { acc = Acc; };
 	void setDamping(double Damping) { damping = Damping; }
 	void resetLifetime(double t) { lifeTime_ = t; }
+	void setAlive(bool viva) { alive_ = viva; }
 
 	//check
 	bool isAlive() { return alive_; }
@@ -47,14 +49,16 @@ public:
 protected:
 
 	Vector3 vel = { 0,0,0 };
+	Vector3 iniPos = { 0,0,0 };
 	Vector3 totForce = {0,0,0};
 	Vector3 acc = {0,0,0};
 	Vector4 colour_ = { 0,0,0,1 };
 	physx::PxTransform pose;
 	double damping, mass_,inverse_mass, gravity;
 	double lifeTime_, iniTime_, scale_;
-	bool alive_;
+	bool alive_,tieneRadio_=false;
 	int type_;
+	double radius_;
 	RenderItem* renderItem;
 
 	

@@ -21,6 +21,7 @@
 #include "ParticleBungee.h"
 #include "BuoyancyForceGenerator.h"
 #include "Lampara.h"
+#include "BolaNieve.h"
 
 class ParticleSystem
 {
@@ -35,12 +36,14 @@ private:
 	ParticleForceRegistry* forceReg_;
 	GravityForceGenerator* gravGen_ = nullptr;
 	WindForceGenerator* windGen_ = nullptr;
+	WindForceGenerator* bolaGen_ = nullptr;
 	WhirlwindForceGenerator* whirlwindGen_ = nullptr;
 	ExplosionForceGenerator* explosionGen_ = nullptr;
 	SpringForceGenerator* springGen_ = nullptr;
 	ParticleDragGenerator* partDragGen_ = nullptr;
 	BuoyancyForceGenerator* buoyancyGen_ = nullptr;
 	double iniTime_;
+	bool agitaBola_;
 
 protected:
 
@@ -64,6 +67,8 @@ public:
 	void deactivateSpringWind() { windGen_->deactivate(); };
 	void activaViento();
 	void creaLampara(Vector3& pos);
+	void creaBolaNieve(Vector3& pos);
+	void agitaBolaNieve();
 	void addK();
 	void subK();
 	~ParticleSystem();

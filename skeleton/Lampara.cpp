@@ -12,3 +12,10 @@ Lampara::Lampara(Vector3 meanPos, Vector3 meanVel, Vector3 meanAcc, double minPo
 	capsula_= new Particle({ meanPos.x,meanPos.y,meanPos.z }, { 0,0,0 }, { 0,0,0 }, 0, -1, capsObj, { 1, 0.8, 0.6, 1 }, 1);
 
 }
+
+Lampara::~Lampara()
+{
+	delete generator_;
+	delete base_;
+	delete capsula_;
+}

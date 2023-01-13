@@ -9,7 +9,7 @@ ParticleSystem::ParticleSystem()
 	//createFireworkRules();
 	iniTime_ = glutGet(GLUT_ELAPSED_TIME);
 
-	
+	agitaBola_ = false;
 
 }
 
@@ -220,6 +220,31 @@ void ParticleSystem::creaLampara(Vector3& pos)
 	Lampara* lamp = new Lampara(pos, { 0,2,0 }, { 0,-3,0 }, 0.2, 0.8, 0, 1, 0.6, 1, 0.99, 1000, { 0.9,0.3,0,1 }, 0.08, 1);
 	_particle_generators.push_back(lamp->getLampGen());
 
+}
+void ParticleSystem::creaBolaNieve(Vector3& pos)
+{
+	BolaNieve* bola = new BolaNieve(pos, { .2,.2,.2 }, { .1,.2,.1 }, { 0.6,0.6,0.6 }, { 0.3,.1,.3 }, 0.8, 1, 0.99, 4000, {0.8,0.8,0.8,1},0.08,1,3);
+	auto gen = bola->getBolaGen();
+	bolaGen_= bola->getBolaForce();
+	_particle_generators.push_back(gen);
+	gen->addForceGenerator(bolaGen_);
+	bolaGen_->deactivate();
+
+}
+void ParticleSystem::agitaBolaNieve()
+{
+
+	if (bolaGen_ != nullptr) {
+		if (agitaBola_) {
+			bolaGen_->deactivate();
+			agitaBola_ = false;
+		}
+		else {
+			bolaGen_->activate();
+			agitaBola_ = true;
+		}
+		
+	}
 }
 void ParticleSystem::addK()
 {

@@ -62,6 +62,9 @@
     <ClCompile Include="Lampara.cpp">
       <Filter>Final</Filter>
     </ClCompile>
+    <ClCompile Include="BolaNieve.cpp">
+      <Filter>Final</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -129,6 +132,9 @@
       <Filter>RBSystem</Filter>
     </ClInclude>
     <ClInclude Include="Lampara.h">
+      <Filter>Final</Filter>
+    </ClInclude>
+    <ClInclude Include="BolaNieve.h">
       <Filter>Final</Filter>
     </ClInclude>
   </ItemGroup>

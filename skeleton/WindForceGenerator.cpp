@@ -8,7 +8,7 @@ WindForceGenerator::WindForceGenerator(const float k1, const float k2, Vector3 w
 	pos_ = pos;
 	r_ = radius;
 	isActive = true;
-	new Particle(pos, { 0,0,0 }, { 0,0,0 }, 1.0, 30000, { 0, 1.0, 0.0, 0.1 },r_,1);
+	//new Particle(pos, { 0,0,0 }, { 0,0,0 }, 1.0, 30000, { 1, .0, 0.0, 0.1 },r_,1);
 }
 
 void WindForceGenerator::updateForce(Particle* particle, double t)
@@ -17,6 +17,10 @@ void WindForceGenerator::updateForce(Particle* particle, double t)
 		return;
 	if (isActive) {
 		//if (checkPosition(particle)) {
+		Vector3 particlePos = particle->getPos();
+		if ((particlePos.x <= pos_.x + r_ && particlePos.x >= pos_.x - r_) &&
+			(particlePos.y <= pos_.y + r_ && particlePos.y >= pos_.y - r_) &&
+			(particlePos.z <= pos_.z + r_ && particlePos.z >= pos_.z - r_)) {
 			Vector3 v = particle->getVel() - windVel_;
 
 			float drag_coef = v.normalize();
@@ -26,7 +30,8 @@ void WindForceGenerator::updateForce(Particle* particle, double t)
 
 			particle->addForce(dragF);
 
-		//}
+			//}
+		}
 	}
 	
 }

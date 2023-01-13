@@ -36,7 +36,7 @@ std::list<Particle*>UniformParticleGenerator::generateParticle()
         if (genProbRnd < _generation_probability) {
 
 
-        Particle* p = new Particle({ _mean_pos.x,_mean_pos.y,_mean_pos.z }, {_mean_pos.x,_mean_pos.y,_mean_vel.z}, mean_acc, damping_, lifeTime_, colour_, scale_,mass_);
+        Particle* p = new Particle({ _mean_pos.x,_mean_pos.y,_mean_pos.z }, {_mean_pos.x,_mean_pos.y,_mean_vel.z}, mean_acc, damping_, lifeTime_, colour_, scale_,mass_,-1);
         double newPosX = dist_pos(gen_);
         double newPosY = dist_pos(gen_);
         double newPosZ = dist_pos(gen_);
