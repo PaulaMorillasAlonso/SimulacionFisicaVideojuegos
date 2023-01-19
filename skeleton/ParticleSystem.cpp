@@ -261,6 +261,21 @@ void ParticleSystem::subK()
 	springGen_->setK(springGen_->getK() - 0.2);
 
 }
+void ParticleSystem::creaPeces(Vector3 &pos)
+{
+	Pecera* pecera_ = new Pecera(pos,1,3,7,8);
+
+	_particles.push_back(pecera_->getPez1());
+	_particles.push_back(pecera_->getPez2());
+
+	forceReg_->addRegistry(pecera_->getForce1(), pecera_->getPez1());
+	forceReg_->addRegistry(pecera_->getForce2(), pecera_->getPez2());
+
+}
+void ParticleSystem::creaBloques(Vector3& pos)
+{
+
+}
 ParticleSystem::~ParticleSystem()
 {
 	for (auto gens : _particle_generators) {

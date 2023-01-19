@@ -1,17 +1,10 @@
-﻿  BolaNieve.cpp
+﻿  Pecera.cpp
 C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\common\PhysX-3.4\PxShared\include\task\PxTask.h(329,1): warning C5220: "physx::PxLightCpuTask::mRefCount": un miembro de datos no estático con un tipo calificado volátil ya no implica
            que los constructores de copia/movimiento generados por el compilador y los operadores de asignación de copia o movimiento no sean triviales
 C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\common\PhysX-3.4\PxShared\include\task\PxTask.h(326): message : vea la declaración de 'physx::PxLightCpuTask::mRefCount'
 C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\Particle.h(12,3): warning C4265: "Particle": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
 C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\RBParticle.h(14,3): warning C4265: "RBParticle": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
 C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\ForceGenerator.h(21,1): warning C4265: "ForceGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\GravityForceGenerator.h(17,1): warning C4265: "GravityForceGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\ParticleDragGenerator.h(21,1): warning C4265: "ParticleDragGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\WindForceGenerator.h(12,3): warning C4265: "WindForceGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\WhirlwindForceGenerator.h(11,3): warning C4265: "WhirlwindForceGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\ExplosionForceGenerator.h(11,3): warning C4265: "ExplosionForceGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\ParticleGenerator.h(33,1): warning C4265: "ParticleGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\GaussianParticleGenerator.h(23,3): warning C4265: "GaussianParticleGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\BolaNieve.cpp(17,102): warning C4239: se ha utilizado una extensión no estándar: 'argumento': conversión de 'Vector3' a 'Vector3 &'
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\BolaNieve.cpp(17,102): message : Una referencia que no es const solamente se puede enlazar a un valor L
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\Pecera.cpp(3,37): warning C4100: 'mass': parámetro formal sin referencia
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\Pecera.cpp(12,7): warning C4189: 'esfera_': la variable local se ha inicializado pero no se hace referencia a ella
   game.vcxproj -> C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\../bin/game.exe

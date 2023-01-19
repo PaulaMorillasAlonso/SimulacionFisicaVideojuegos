@@ -36,29 +36,33 @@ PxDefaultCpuDispatcher*	gDispatcher = NULL;
 PxScene*				gScene      = NULL;
 ContactReportCallback gContactReportCallback;
 Particle* part;
-Particle* suelo;
 Particle* diana;
 std::vector<Proyectil*> bullet;
 ParticleSystem* pSystem;
 RBSystem* rbSystem;
 WindForceGenerator* wGen;
+Particle* suelo; Particle* frente;
+Particle* techo; Particle* der;
+Particle* cabezero; Particle* izq;
 
 void crearHabitacion()
 {
 	auto floor = CreateShape(physx::PxBoxGeometry(300, 1, 300));
-	Particle* suelo = new Particle({ 5,40,5 }, { 0,0,0 }, { 0,0,0 }, 0, -1, floor, { 0.5, 0.2, 0.0, 1 }, 1);
+	suelo = new Particle({ 5,40,5 }, { 0,0,0 }, { 0,0,0 }, 0, -1, floor, { 0.5, 0.2, 0.0, 1 }, 1);
 
 	auto techoObj = CreateShape(physx::PxBoxGeometry(300, 1, 300));
-	Particle* techo = new Particle({ 5,130,5 }, { 0,0,0 }, { 0,0,0 }, 0, -1, techoObj, { 1, 1, 1, 1 }, 1);
+	techo = new Particle({ 5,130,5 }, { 0,0,0 }, { 0,0,0 }, 0, -1, techoObj, { 1, 1, 1, 1 }, 1);
 
 	auto p1Obj = CreateShape(physx::PxBoxGeometry(1, 100, 300));
-	Particle* p1 = new Particle({ 7,50,7 }, { 0,0,0 }, { 0,0,0 }, 0, -1, p1Obj, { 0.99, 0.71, 0.29, 1 }, 1);
+	cabezero = new Particle({ 7,50,7 }, { 0,0,0 }, { 0,0,0 }, 0, -1, p1Obj, { 0.99, 0.71, 0.29, 1 }, 1); //cabezero
+	
 
-	Particle* p2 = new Particle({ 150,50,7 }, { 0,0,0 }, { 0,0,0 }, 0, -1, p1Obj, { 0.99, 0.71, 0.29, 1 }, 1);
+	frente= new Particle({ 150,50,7 }, { 0,0,0 }, { 0,0,0 }, 0, -1, p1Obj, { 0.99, 0.71, 0.29, 1 }, 1);//frente
+
 
 	auto p2Obj = CreateShape(physx::PxBoxGeometry(300, 100, 1));
-	Particle* p3 = new Particle({ 5,50,150 }, { 0,0,0 }, { 0,0,0 }, 0, -1, p2Obj, { 0.99, 0.71, 0.29, 1 }, 1);
-	Particle* p4 = new Particle({ 5,50,-150 }, { 0,0,0 }, { 0,0,0 }, 0, -1, p2Obj, { 0.99, 0.71, 0.29, 1 }, 1);
+	der = new Particle({ 5,50,150 }, { 0,0,0 }, { 0,0,0 }, 0, -1, p2Obj, { 0.99, 0.71, 0.29, 1 }, 1); //der
+	izq = new Particle({ 5,50,-150 }, { 0,0,0 }, { 0,0,0 }, 0, -1, p2Obj, { 0.99, 0.71, 0.29, 1 }, 1); //izq
 
 	auto camaObj = CreateShape(physx::PxBoxGeometry(30, 5, 20));
 	Particle* cama = new Particle({ 30,45,7 }, { 0,0,0 }, { 0,0,0 }, 0, -1, camaObj, { 1, 0, 0, 1 }, 1);
@@ -84,8 +88,18 @@ void crearHabitacion()
 
 	auto mesillaObj = CreateShape(physx::PxBoxGeometry(8, 6, 8));
 	Particle* mesilla = new Particle({ 16,45,-27 }, { 0,0,0 }, { 0,0,0 }, 0, -1, mesillaObj, { 0.5, 0.2, 0.0, 1 }, 1);
-	pSystem->creaLampara(Vector3(16, 54, -27));
 
+	pSystem->creaLampara(Vector3(16, 54, -27));
+	pSystem->creaPeces(Vector3(80, 70, 138));
+}
+void checkCamera() {
+
+	//auto cam = GetCamera()->getTransform().p;
+	//if (cam.y > techo->getPos().y) {
+	//	//GetCamera()->handleMotion()
+	//	//techo->getPos().y - 1;
+	//	std::cout << "techo\n";
+	//}
 }
 // Initialize physics engine
 void initPhysics(bool interactive)
@@ -120,7 +134,8 @@ void initPhysics(bool interactive)
 
 
 	crearHabitacion();
-
+	
+	//checkCamera();
 
 	/*rbSystem->addUniformGenerator({ -150,0,-250 }, { 0,0,0 }, { 0,0,0 }, 10, 20, 1, 2, 1, 1,
 		0.99f, 4000, { 1,0,0,1 }, { 8,8,8 }, 1, gScene, gPhysics, true, { 0.5, 0.5, 0.02 });*/

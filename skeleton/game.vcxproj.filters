@@ -65,6 +65,9 @@
     <ClCompile Include="BolaNieve.cpp">
       <Filter>Final</Filter>
     </ClCompile>
+    <ClCompile Include="Pecera.cpp">
+      <Filter>Final</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core.hpp" />
@@ -135,6 +138,9 @@
       <Filter>Final</Filter>
     </ClInclude>
     <ClInclude Include="BolaNieve.h">
+      <Filter>Final</Filter>
+    </ClInclude>
+    <ClInclude Include="Pecera.h">
       <Filter>Final</Filter>
     </ClInclude>
   </ItemGroup>

@@ -270,6 +270,7 @@
     <ClCompile Include="ParticleForceRegistry.cpp" />
     <ClCompile Include="ParticleGenerator.cpp" />
     <ClCompile Include="ParticleSystem.cpp" />
+    <ClCompile Include="Pecera.cpp" />
     <ClCompile Include="PlaneParticleGenerator.cpp" />
     <ClCompile Include="Proyectil.cpp" />
     <ClCompile Include="RBParticle.cpp" />
@@ -303,6 +304,7 @@
     <ClInclude Include="ParticleForceRegistry.h" />
     <ClInclude Include="ParticleGenerator.h" />
     <ClInclude Include="ParticleSystem.h" />
+    <ClInclude Include="Pecera.h" />
     <ClInclude Include="PlaneParticleGenerator.h" />
     <ClInclude Include="Proyectil.h" />
     <ClInclude Include="RBForceRegistry.h" />

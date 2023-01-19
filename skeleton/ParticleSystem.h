@@ -22,6 +22,7 @@
 #include "BuoyancyForceGenerator.h"
 #include "Lampara.h"
 #include "BolaNieve.h"
+#include "Pecera.h"
 
 class ParticleSystem
 {
@@ -67,12 +68,17 @@ public:
 	void activateSpringWind() { windGen_->activate(); };
 	void deactivateSpringWind() { windGen_->deactivate(); };
 	void activaViento();
+
+	void addK();
+	void subK();
+
+	~ParticleSystem();
+
+	//Final	
 	void creaLampara(Vector3& pos);
 	void creaBolaNieve(Vector3& pos);
 	void agitaBolaNieve();
-	void addK();
-	void subK();
-	~ParticleSystem();
-	
+	void creaPeces(Vector3& pos);
+	void creaBloques(Vector3& pos);
 };
 
