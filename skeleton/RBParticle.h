@@ -10,6 +10,9 @@ public:
 
 	RBParticle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double Damping, double lifeTime, Vector4 colour, Vector3 scale,
 		 PxScene* scene, PxPhysics* gPhysics, int mass, Vector3 matValues,	PxRigidDynamic* rigid=nullptr);
+
+	RBParticle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double Damping, double lifeTime, Vector4 colour, Vector3 scale,
+		PxScene* scene, PxPhysics* gPhysics, int mass, Vector3 matValues, physx::PxShape* geomType,PxRigidDynamic* rigid = nullptr);
 	
 	~RBParticle() {};
 
@@ -70,6 +73,10 @@ public:
 	
 	void addDynamicRB(Vector3 pos, Vector3 vel, Vector4 color, Vector3 size,
 		float staticFriction, float dynamicFriction, float restitution, PxRigidDynamic *rigid);
+
+	void addDynamicRB(Vector3 pos, Vector3 vel, Vector4 color, Vector3 size,
+		float staticFriction, float dynamicFriction, float restitution, PxRigidDynamic* rigid, physx::PxShape* geomType);
+
 	PxRigidDynamic* getDynamicInstance() { return rd; }
 
 	

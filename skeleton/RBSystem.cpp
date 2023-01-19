@@ -72,11 +72,33 @@ void RBSystem::generatePerSeconds()
 
 void RBSystem::creaBloques(Vector3& pos)
 {
-	
-	addStaticRB({pos.x+20,pos.y,pos.z+10}, { 0,0,1,1 }, { 12,12,12 }, -1, 1, { 0.5,0.5,0.6 });
-	RBParticle* p = new RBParticle({ pos.x + 20,pos.y+10,pos.z - 10 }, { 0,0,0 }, { 0,0,0 },
-		0.99f, -1, { 1,0,1,1 }, { 12,12,12 }, scene_, gPhysics_, 1, {0.5,0.5,0.5});
-	RBParticle* p2 = new RBParticle({ pos.x + 30,pos.y,pos.z - 10 }, { 0,0,0 }, { 0,0,0 },
-		0.99f, -1, { 1,0,0,1 }, { 6,6,6 }, scene_, gPhysics_, 4, { 0.5,0.5,0.5 });
-	
+	windBloquesGen_= new WindForceGenerator(1, 0, Vector3(40, 20, 30), {pos.x,pos.y,pos.z }, 20);
+	windBloquesGen_->deactivate();
+
+	addStaticRB({pos.x,pos.y,pos.z}, { 0,0.9,1,1 }, { 8,8,8 }, -1, 1, { 0.5,0.5,0.6 }); //estatico
+
+
+	RBParticle* p = new RBParticle({ pos.x + 20,pos.y,pos.z - 10 }, { 0,0,0 }, { 0,0,0 }, //dinamico mayor size y masa
+		0.99f, -1, { 1,0,1,1 }, {6,6,6 }, scene_, gPhysics_, 4, {0.5,0.5,0.5});
+	rigidBodies_.push_back(p);
+	forceReg_->addRegistry(windBloquesGen_, p->getDynamicInstance());
+
+	RBParticle* p2 = new RBParticle({ pos.x+20 ,pos.y,pos.z+20}, { 0,0,0 }, { 0,0,0 }, //dinamico menor size y masa
+		0.99f, -1, { 1,0.99,0,1 }, { 3,3,3 }, scene_, gPhysics_, 1, { 0.5,0.5,0.5 });
+	rigidBodies_.push_back(p2);
+	forceReg_->addRegistry(windBloquesGen_, p2->getDynamicInstance());
+
+
+	RBParticle* p3 = new RBParticle({ pos.x ,pos.y+10,pos.z }, { 0,0,0 }, { 0,0,0 }, //pelota
+		0.99f, -1, { 0.78,0,0.22,1 }, { 3,3,3 }, scene_, gPhysics_, 1, { 0.7,0.8,1 },CreateShape(physx::PxSphereGeometry(4)));
+	rigidBodies_.push_back(p3);
+	forceReg_->addRegistry(windBloquesGen_, p3->getDynamicInstance());
+
+
+	RBParticle* p4 = new RBParticle({ pos.x-10 ,pos.y,pos.z+50 }, { 0,0,0 }, { 0,0,0 }, //pelota
+		0.99f, -1, { 0.36,1,0,1 }, { 3,3,3 }, scene_, gPhysics_, 1, { 0.5,0.5,0.5 }, CreateShape(physx::PxSphereGeometry(6)));
+	rigidBodies_.push_back(p4);
+	forceReg_->addRegistry(windBloquesGen_, p4->getDynamicInstance());
+
+
 }

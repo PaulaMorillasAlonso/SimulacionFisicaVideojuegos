@@ -8,7 +8,7 @@ WindForceGenerator::WindForceGenerator(const float k1, const float k2, Vector3 w
 	pos_ = pos;
 	r_ = radius;
 	isActive = true;
-	//new Particle(pos, { 0,0,0 }, { 0,0,0 }, 1.0, 30000, { 1, .0, 0.0, 0.1 },r_,1);
+	new Particle(pos, { 0,0,0 }, { 0,0,0 }, 1.0, 30000, { 1, .0, 0.0, 0.1 },r_,1);
 }
 
 void WindForceGenerator::updateForce(Particle* particle, double t)

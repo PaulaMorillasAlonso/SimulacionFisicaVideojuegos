@@ -26,7 +26,8 @@ private:
 	int maxUniformParticles_;
 	RBForceRegistry* forceReg_;
 	WindForceGenerator* windGen_;
-
+	WindForceGenerator* windBloquesGen_;
+	bool activaBloques_;
 public:
 
 	RBSystem(PxScene *scene, PxPhysics *gPhysics);
@@ -53,6 +54,22 @@ public:
 
 	//Final
 	void creaBloques(Vector3& pos);
+
+	void activaBloques() { 
+		if (windBloquesGen_ != nullptr) {
+			if (activaBloques_) {
+				windBloquesGen_->deactivate();
+				activaBloques_ = false;
+			}
+			else {
+				windBloquesGen_->activate();
+				activaBloques_ = true;
+			}
+
+		}
+		
+		
+	}
 
 };
 

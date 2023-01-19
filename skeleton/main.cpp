@@ -83,8 +83,10 @@ void crearHabitacion()
 	auto mObj1 = CreateShape(physx::PxBoxGeometry(10, 1, 4));
 	Particle* m2 = new Particle({ 80,70,-146 }, { 0,0,0 }, { 0,0,0 }, 0, -1, mObj1, { 0.5, 0.2, 0.0, 1 }, 1);
 
+
 	auto mesaObj1 = CreateShape(physx::PxBoxGeometry(30, 2, 15));
 	Particle* mesa = new Particle({ 80,60,138 }, { 0,0,0 }, { 0,0,0 }, 0, -1, mesaObj1, { 0.5, 0.2, 0.0, 1 }, 1);
+	pSystem->creaPeces(Vector3(80, 70, 138));
 
 	auto pataObj = CreateShape(physx::PxBoxGeometry(2, 15, 2));
 	Particle* mesaPata1 = new Particle({ 100,45,142 }, { 0,0,0 }, { 0,0,0 }, 0, -1, pataObj, { 0.5, 0.2, 0.0, 1 }, 1);
@@ -96,7 +98,6 @@ void crearHabitacion()
 	Particle* mesilla = new Particle({ 16,45,-27 }, { 0,0,0 }, { 0,0,0 }, 0, -1, mesillaObj, { 0.5, 0.2, 0.0, 1 }, 1);
 
 	pSystem->creaLampara(Vector3(16, 54, -27));
-	pSystem->creaPeces(Vector3(80, 70, 138));
 }
 void checkCamera() {
 
@@ -140,7 +141,7 @@ void initPhysics(bool interactive)
 
 
 	crearHabitacion();
-	rbSystem->creaBloques(Vector3(7, 70, 7));
+	rbSystem->creaBloques(Vector3(30, 50, -100));
 	//checkCamera();
 
 	/*rbSystem->addUniformGenerator({ -150,0,-250 }, { 0,0,0 }, { 0,0,0 }, 10, 20, 1, 2, 1, 1,
@@ -227,6 +228,7 @@ void keyPress(unsigned char key, const PxTransform& camera)
 
 		break;
 	case '2':
+		rbSystem->activaBloques();
 		//pSystem->generateFireworkSystem(1);
 		//bullet.push_back(new Proyectil(Proyectil::CANNON, GetCamera()->getTransform().p, GetCamera()->getDir(), { 0.2,0.2,0.2,1 }));
 
