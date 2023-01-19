@@ -264,6 +264,8 @@ void ParticleSystem::subK()
 void ParticleSystem::creaPeces(Vector3 &pos)
 {
 	Pecera* pecera_ = new Pecera(pos,1,3,7,8);
+	
+	_particle_generators.push_back(pecera_->getGen());
 
 	_particles.push_back(pecera_->getPez1());
 	_particles.push_back(pecera_->getPez2());
