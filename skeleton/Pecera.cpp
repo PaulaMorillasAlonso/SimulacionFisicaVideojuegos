@@ -11,3 +11,11 @@ Pecera::Pecera(Vector3 pos1, double mass,double k1, float restLenght, double rad
 	auto capsObj = CreateShape(physx::PxSphereGeometry(radius));
 	auto esfera_ = new Particle({ pos1.x+2,pos1.y,pos1.z }, { 0,0,0 }, { 0,0,0 }, 0, -1, capsObj, { 0.69, 0.84, 0.98, 0.6 }, 1);
 }
+
+Pecera::~Pecera()
+{
+	delete pez1_;
+	delete pez2_;
+	delete force1_;
+	delete force2_;
+}

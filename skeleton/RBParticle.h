@@ -14,7 +14,7 @@ public:
 	RBParticle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double Damping, double lifeTime, Vector4 colour, Vector3 scale,
 		PxScene* scene, PxPhysics* gPhysics, int mass, Vector3 matValues, physx::PxShape* geomType,PxRigidDynamic* rigid = nullptr);
 	
-	~RBParticle() {};
+	~RBParticle();
 
 	//get
 	Vector3 getPos() { return pos; }

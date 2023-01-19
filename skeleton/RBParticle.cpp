@@ -47,6 +47,11 @@ RBParticle::RBParticle(Vector3 Pos, Vector3 Vel, Vector3 Acc, double Damping, do
 
 }
 
+RBParticle::~RBParticle()
+{
+
+}
+
 
 void RBParticle::integrate(double t)
 {

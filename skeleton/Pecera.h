@@ -10,7 +10,7 @@ class Pecera
 
 public:
 	Pecera(Vector3 pos1, double mass, double k1, float restLenght, double radius);
-	~Pecera() {};
+	~Pecera();
 	Particle* getPez1() { return pez1_; }
 	Particle* getPez2() { return pez2_; }
 	SpringForceGenerator* getForce1() { return force1_; }

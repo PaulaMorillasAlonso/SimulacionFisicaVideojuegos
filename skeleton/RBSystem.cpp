@@ -12,6 +12,14 @@ RBSystem::RBSystem(PxScene* scene, PxPhysics* gPhysics)
 	forceReg_ = new RBForceRegistry();
 }
 
+RBSystem::~RBSystem()
+{
+	delete uniformGen_;
+	delete windGen_;
+	delete windBloquesGen_;
+
+}
+
 void RBSystem::update(double t)
 {
 	std::list<RBParticle*>::iterator it = rigidBodies_.begin();
@@ -72,7 +80,7 @@ void RBSystem::generatePerSeconds()
 
 void RBSystem::creaBloques(Vector3& pos)
 {
-	windBloquesGen_= new WindForceGenerator(1, 0, Vector3(40, 20, 30), {pos.x,pos.y,pos.z }, 20);
+	windBloquesGen_= new WindForceGenerator(1, 0, Vector3(40, 80, 30), {pos.x,pos.y,pos.z }, 20);
 	windBloquesGen_->deactivate();
 
 	addStaticRB({pos.x,pos.y,pos.z}, { 0,0.9,1,1 }, { 8,8,8 }, -1, 1, { 0.5,0.5,0.6 }); //estatico

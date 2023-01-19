@@ -16,7 +16,7 @@ using namespace physx;
 class RBSystem
 {
 private:
-	std::list<RBParticle*>rigidBodies_;
+	std::list<RBParticle*> rigidBodies_;
 	std::list<PxRigidDynamic*>dynamicBodies_;
 	std::list<UniformRBGenerator*>rbGenerator_;
 	PxScene* scene_;
@@ -31,7 +31,7 @@ private:
 public:
 
 	RBSystem(PxScene *scene, PxPhysics *gPhysics);
-	~RBSystem() {};
+	~RBSystem();
 	void update(double t);
 	
 	void addStaticRB(Vector3 pos, Vector4 color, Vector3 size, double lifetime, int mass, Vector3 matValue);
@@ -65,10 +65,7 @@ public:
 				windBloquesGen_->activate();
 				activaBloques_ = true;
 			}
-
 		}
-		
-		
 	}
 
 };
