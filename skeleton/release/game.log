@@ -1,4 +1,4 @@
-﻿  ParticleSystem.cpp
+﻿  BolaNieve.cpp
 C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\common\PhysX-3.4\PxShared\include\task\PxTask.h(329,1): warning C5220: "physx::PxLightCpuTask::mRefCount": un miembro de datos no estático con un tipo calificado volátil ya no implica
            que los constructores de copia/movimiento generados por el compilador y los operadores de asignación de copia o movimiento no sean triviales
 C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\common\PhysX-3.4\PxShared\include\task\PxTask.h(326): message : vea la declaración de 'physx::PxLightCpuTask::mRefCount'
@@ -11,18 +11,7 @@ C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\WindForceGenerator.h
 C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\WhirlwindForceGenerator.h(11,3): warning C4265: "WhirlwindForceGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
 C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\ExplosionForceGenerator.h(11,3): warning C4265: "ExplosionForceGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
 C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\ParticleGenerator.h(33,1): warning C4265: "ParticleGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\UniformParticleGenerator.h(23,1): warning C4265: "UniformParticleGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
 C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\GaussianParticleGenerator.h(23,3): warning C4265: "GaussianParticleGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\CircleParticleGenerator.h(16,1): warning C4265: "CircleParticleGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\SphereParticleGenerator.h(15,1): warning C4265: "SphereParticleGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\Firework.h(41,3): warning C4265: "Firework": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\PlaneParticleGenerator.h(16,1): warning C4265: "PlaneParticleGenerator": la clase tiene funciones virtuales, pero su destructor no trivial no es virtual; puede que las instancias de esta clase no se destruyan correctamente
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\ParticleSystem.cpp(54,79): warning C4239: se ha utilizado una extensión no estándar: 'argumento': conversión de 'Vector3' a 'Vector3 &'
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\ParticleSystem.cpp(54,79): message : Una referencia que no es const solamente se puede enlazar a un valor L
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\ParticleSystem.cpp(136,78): warning C4239: se ha utilizado una extensión no estándar: 'argumento': conversión de 'Vector3' a 'Vector3 &'
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\ParticleSystem.cpp(136,78): message : Una referencia que no es const solamente se puede enlazar a un valor L
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\ParticleSystem.cpp(261,3): warning C5205: la eliminación de una clase abstracta "ParticleGenerator" que tiene un destructor no virtual produce un comportamiento no definido
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\ParticleGenerator.h(12): message : vea la declaración de 'ParticleGenerator'
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\ParticleSystem.cpp(402): warning C4701: posiblemente se utilizó la variable local 'g' sin inicializar
-C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\ParticleSystem.cpp(402): warning C4703: posiblemente se utilizó la variable de puntero local 'g' sin inicializar
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\BolaNieve.cpp(17,102): warning C4239: se ha utilizado una extensión no estándar: 'argumento': conversión de 'Vector3' a 'Vector3 &'
+C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\BolaNieve.cpp(17,102): message : Una referencia que no es const solamente se puede enlazar a un valor L
   game.vcxproj -> C:\Users\pauli\Desktop\SimulacionFisicaVideojuegos\skeleton\../bin/game.exe

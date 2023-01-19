@@ -36,7 +36,8 @@ private:
 	ParticleForceRegistry* forceReg_;
 	GravityForceGenerator* gravGen_ = nullptr;
 	WindForceGenerator* windGen_ = nullptr;
-	WindForceGenerator* bolaGen_ = nullptr;
+	WindForceGenerator* bolaWindGen_ = nullptr;
+	ExplosionForceGenerator* bolaExpGen_ = nullptr;
 	WhirlwindForceGenerator* whirlwindGen_ = nullptr;
 	ExplosionForceGenerator* explosionGen_ = nullptr;
 	SpringForceGenerator* springGen_ = nullptr;

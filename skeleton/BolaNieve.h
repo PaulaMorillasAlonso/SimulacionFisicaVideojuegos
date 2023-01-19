@@ -1,11 +1,13 @@
 #pragma once
 #include "GaussianParticleGenerator.h"
 #include "WindForceGenerator.h"
+#include "ExplosionForceGenerator.h"
 #include "Particle.h"
 class BolaNieve
 {
 	GaussianParticleGenerator* generator_;
 	WindForceGenerator* force_;
+	ExplosionForceGenerator* forceExplosion_;
 	Particle* base_;
 	Particle* esfera_;
 	
@@ -14,6 +16,7 @@ public:
 		int numPart, double damping, double lifeTime, Vector4 colour, double scale, double mass,double radius);
 	~BolaNieve();
 	GaussianParticleGenerator* getBolaGen() { return generator_; };
-	WindForceGenerator* getBolaForce() { return force_; };
+	WindForceGenerator* getBolaWindForce() { return force_; };
+	ExplosionForceGenerator* getBolaExplosionForce() { return forceExplosion_; };
 };
 

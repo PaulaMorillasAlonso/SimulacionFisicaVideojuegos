@@ -225,22 +225,28 @@ void ParticleSystem::creaBolaNieve(Vector3& pos)
 {
 	BolaNieve* bola = new BolaNieve(pos, { .2,.2,.2 }, { .1,.2,.1 }, { 0.6,0.6,0.6 }, { 0.3,.1,.3 }, 0.8, 1, 0.99, 4000, {0.8,0.8,0.8,1},0.08,1,3);
 	auto gen = bola->getBolaGen();
-	bolaGen_= bola->getBolaForce();
+	bolaWindGen_ = bola->getBolaWindForce();
 	_particle_generators.push_back(gen);
-	gen->addForceGenerator(bolaGen_);
-	bolaGen_->deactivate();
+	bolaExpGen_= bola->getBolaExplosionForce();
+	_particle_generators.push_back(gen);
+	gen->addForceGenerator(bolaWindGen_);
+	gen->addForceGenerator(bolaExpGen_);
+	bolaWindGen_->deactivate();
+	bolaExpGen_->deactivate();
 
 }
 void ParticleSystem::agitaBolaNieve()
 {
 
-	if (bolaGen_ != nullptr) {
+	if (bolaWindGen_ != nullptr && bolaExpGen_!=nullptr) {
 		if (agitaBola_) {
-			bolaGen_->deactivate();
+			bolaWindGen_->deactivate();
+			bolaExpGen_->deactivate();
 			agitaBola_ = false;
 		}
 		else {
-			bolaGen_->activate();
+			bolaWindGen_->activate();
+			bolaExpGen_->activate();
 			agitaBola_ = true;
 		}
 		
