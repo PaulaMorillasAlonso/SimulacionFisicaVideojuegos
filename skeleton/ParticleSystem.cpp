@@ -272,10 +272,6 @@ void ParticleSystem::creaPeces(Vector3 &pos)
 	forceReg_->addRegistry(pecera_->getForce2(), pecera_->getPez2());
 
 }
-void ParticleSystem::creaBloques(Vector3& pos)
-{
-
-}
 ParticleSystem::~ParticleSystem()
 {
 	for (auto gens : _particle_generators) {

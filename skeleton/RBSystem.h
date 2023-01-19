@@ -51,5 +51,8 @@ public:
 		}
 	}
 
+	//Final
+	void creaBloques(Vector3& pos);
+
 };
 

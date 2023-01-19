@@ -79,6 +79,5 @@ public:
 	void creaBolaNieve(Vector3& pos);
 	void agitaBolaNieve();
 	void creaPeces(Vector3& pos);
-	void creaBloques(Vector3& pos);
 };
 

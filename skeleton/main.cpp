@@ -41,28 +41,34 @@ std::vector<Proyectil*> bullet;
 ParticleSystem* pSystem;
 RBSystem* rbSystem;
 WindForceGenerator* wGen;
-Particle* suelo; Particle* frente;
-Particle* techo; Particle* der;
-Particle* cabezero; Particle* izq;
 
 void crearHabitacion()
 {
-	auto floor = CreateShape(physx::PxBoxGeometry(300, 1, 300));
-	suelo = new Particle({ 5,40,5 }, { 0,0,0 }, { 0,0,0 }, 0, -1, floor, { 0.5, 0.2, 0.0, 1 }, 1);
 
-	auto techoObj = CreateShape(physx::PxBoxGeometry(300, 1, 300));
-	techo = new Particle({ 5,130,5 }, { 0,0,0 }, { 0,0,0 }, 0, -1, techoObj, { 1, 1, 1, 1 }, 1);
+	rbSystem->addStaticRB({5,40,5}, { 0.5,0.2,0,1 }, { 400,2,400 }, -1, 1, { 0.5,0.5,0.6 });
+	//suelo = new Particle({ 5,40,5 }, { 0,0,0 }, { 0,0,0 }, 0, -1, floor, { 0.5, 0.2, 0.0, 1 }, 1);
 
-	auto p1Obj = CreateShape(physx::PxBoxGeometry(1, 100, 300));
-	cabezero = new Particle({ 7,50,7 }, { 0,0,0 }, { 0,0,0 }, 0, -1, p1Obj, { 0.99, 0.71, 0.29, 1 }, 1); //cabezero
-	
+	//auto techoObj = CreateShape(physx::PxBoxGeometry(300, 1, 300));
+	rbSystem->addStaticRB({ 5,130,5 }, { 1,1,1,1 }, { 400,2,400 }, -1, 1, { 0.5,0.5,0.6 });
 
-	frente= new Particle({ 150,50,7 }, { 0,0,0 }, { 0,0,0 }, 0, -1, p1Obj, { 0.99, 0.71, 0.29, 1 }, 1);//frente
+	//techo = new Particle({ 5,130,5 }, { 0,0,0 }, { 0,0,0 }, 0, -1, techoObj, { 1, 1, 1, 1 }, 1);
+
+	//auto p1Obj = CreateShape(physx::PxBoxGeometry(1, 100, 300));
+	rbSystem->addStaticRB({ 7,50,7 }, { 0.99, 0.71, 0.29, 1 }, { 2,400,400 }, -1, 1, { 0.5,0.5,0.6 });
+
+	//cabezero = new Particle({ 7,50,7 }, { 0,0,0 }, { 0,0,0 }, 0, -1, p1Obj, { 0.99, 0.71, 0.29, 1 }, 1); //cabezero
+	//
+
+	//frente= new Particle({ 150,50,7 }, { 0,0,0 }, { 0,0,0 }, 0, -1, p1Obj, { 0.99, 0.71, 0.29, 1 }, 1);//frente
+	rbSystem->addStaticRB({ 150,50,7 }, { 0.99, 0.71, 0.29, 1 }, { 2,400,400 }, -1, 1, { 0.5,0.5,0.6 });
 
 
-	auto p2Obj = CreateShape(physx::PxBoxGeometry(300, 100, 1));
-	der = new Particle({ 5,50,150 }, { 0,0,0 }, { 0,0,0 }, 0, -1, p2Obj, { 0.99, 0.71, 0.29, 1 }, 1); //der
-	izq = new Particle({ 5,50,-150 }, { 0,0,0 }, { 0,0,0 }, 0, -1, p2Obj, { 0.99, 0.71, 0.29, 1 }, 1); //izq
+	//auto p2Obj = CreateShape(physx::PxBoxGeometry(300, 100, 1));
+	//der = new Particle({ 5,50,150 }, { 0,0,0 }, { 0,0,0 }, 0, -1, p2Obj, { 0.99, 0.71, 0.29, 1 }, 1); //der
+	rbSystem->addStaticRB({ 5,50,150 }, { 0.99, 0.71, 0.29, 1 }, { 400,400,2 }, -1, 1, { 0.5,0.5,0.6 });
+
+	//izq = new Particle({ 5,50,-150 }, { 0,0,0 }, { 0,0,0 }, 0, -1, p2Obj, { 0.99, 0.71, 0.29, 1 }, 1); //izq
+	rbSystem->addStaticRB({ 5,50,-150 }, { 0.99, 0.71, 0.29, 1 }, { 400,400,2 }, -1, 1, { 0.5,0.5,0.6 });
 
 	auto camaObj = CreateShape(physx::PxBoxGeometry(30, 5, 20));
 	Particle* cama = new Particle({ 30,45,7 }, { 0,0,0 }, { 0,0,0 }, 0, -1, camaObj, { 1, 0, 0, 1 }, 1);
@@ -134,7 +140,7 @@ void initPhysics(bool interactive)
 
 
 	crearHabitacion();
-	
+	rbSystem->creaBloques(Vector3(7, 70, 7));
 	//checkCamera();
 
 	/*rbSystem->addUniformGenerator({ -150,0,-250 }, { 0,0,0 }, { 0,0,0 }, 10, 20, 1, 2, 1, 1,

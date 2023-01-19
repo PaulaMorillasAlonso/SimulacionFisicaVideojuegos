@@ -69,3 +69,14 @@ void RBSystem::generatePerSeconds()
 		forceReg_->addRegistry(windGen_, i);
 	}
 }
+
+void RBSystem::creaBloques(Vector3& pos)
+{
+	
+	addStaticRB({pos.x+20,pos.y,pos.z+10}, { 0,0,1,1 }, { 12,12,12 }, -1, 1, { 0.5,0.5,0.6 });
+	RBParticle* p = new RBParticle({ pos.x + 20,pos.y+10,pos.z - 10 }, { 0,0,0 }, { 0,0,0 },
+		0.99f, -1, { 1,0,1,1 }, { 12,12,12 }, scene_, gPhysics_, 1, {0.5,0.5,0.5});
+	RBParticle* p2 = new RBParticle({ pos.x + 30,pos.y,pos.z - 10 }, { 0,0,0 }, { 0,0,0 },
+		0.99f, -1, { 1,0,0,1 }, { 6,6,6 }, scene_, gPhysics_, 4, { 0.5,0.5,0.5 });
+	
+}
