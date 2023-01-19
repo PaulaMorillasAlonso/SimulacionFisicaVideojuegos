@@ -98,15 +98,18 @@ void crearHabitacion()
 	Particle* mesilla = new Particle({ 16,45,-27 }, { 0,0,0 }, { 0,0,0 }, 0, -1, mesillaObj, { 0.5, 0.2, 0.0, 1 }, 1);
 
 	pSystem->creaLampara(Vector3(16, 54, -27));
-}
-void checkCamera() {
 
-	//auto cam = GetCamera()->getTransform().p;
-	//if (cam.y > techo->getPos().y) {
-	//	//GetCamera()->handleMotion()
-	//	//techo->getPos().y - 1;
-	//	std::cout << "techo\n";
-	//}
+	auto alf = CreateShape(physx::PxBoxGeometry(70, 1, 70));
+	Particle* alfombra = new Particle({ 40,43,7 }, { 0,0,0 }, { 0,0,0 }, 0, -1, alf, { 1, 0.76, 0, 1 }, 1);
+
+	auto cuadro = CreateShape(physx::PxBoxGeometry(20, 20, 1));
+	Particle* c = new Particle({ 80,90,-146 }, { 0,0,0 }, { 0,0,0 }, 0, -1, cuadro, { 0, 0, 0, 1 }, 1);
+
+	auto cuadro2 = CreateShape(physx::PxBoxGeometry(18, 18, 1));
+	Particle* c2 = new Particle({ 80,90,-144 }, { 0,0,0 }, { 0,0,0 }, 0, -1, cuadro2, { 0.3, 0.3, 0.3, 1 }, 1);
+
+	auto cuadro3 = CreateShape(physx::PxBoxGeometry(1, 18, 18));
+	Particle* c3 = new Particle({ 146,94,-7 }, { 0,0,0 }, { 0,0,0 }, 0, -1, cuadro3, { 0.7, 0.4, 0.8, 1 }, 1);
 }
 // Initialize physics engine
 void initPhysics(bool interactive)
@@ -210,6 +213,7 @@ void keyPress(unsigned char key, const PxTransform& camera)
 {
 	PX_UNUSED(camera);
 
+	int fire =0;
 	switch(toupper(key))
 	{
 	case '1': 
@@ -236,7 +240,8 @@ void keyPress(unsigned char key, const PxTransform& camera)
 		//pSystem->creaViento();
 		break;
 	case '3':
-		//pSystem->generateFireworkSystem(2);
+		fire = rand() % 2 + 1;
+		pSystem->generateFireworkSystem(fire);
 		//bullet.push_back(new Proyectil(Proyectil::FIREBALL, GetCamera()->getTransform().p, GetCamera()->getDir(), {0.9,0.1,0.2,1}));
 		//pSystem->creaTornado();
 		break;
