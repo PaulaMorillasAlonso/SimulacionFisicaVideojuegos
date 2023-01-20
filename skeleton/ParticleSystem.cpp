@@ -4,8 +4,6 @@ ParticleSystem::ParticleSystem()
 {
 	forceReg_ = new ParticleForceRegistry();
 	
-	/*humo_ = new GaussianParticleGenerator({ 7,50,7 }, { 5,5,2 }, { 0,2,0 }, {4, 4, 0}, { 2,2,0 }, 1, 1, 0.99, 3000, { 0.8,0.8,0.8,1 },0.8);
-	_particle_generators.push_back(humo_);*/
 	createFireworkRules();
 	iniTime_ = glutGet(GLUT_ELAPSED_TIME);
 
@@ -225,27 +223,22 @@ void ParticleSystem::creaBolaNieve(Vector3& pos)
 {
 	BolaNieve* bola = new BolaNieve(pos, { .2,.2,.2 }, { .1,.2,.1 }, { 0.6,0.6,0.6 }, { 0.3,.1,.3 }, 0.8, 1, 0.99, 4000, {0.8,0.8,0.8,1},0.08,1,3);
 	auto gen = bola->getBolaGen();
-	bolaWindGen_ = bola->getBolaWindForce();
 	_particle_generators.push_back(gen);
 	bolaExpGen_= bola->getBolaExplosionForce();
 	_particle_generators.push_back(gen);
-	gen->addForceGenerator(bolaWindGen_);
 	gen->addForceGenerator(bolaExpGen_);
-	bolaWindGen_->deactivate();
 	bolaExpGen_->deactivate();
 
 }
 void ParticleSystem::agitaBolaNieve()
 {
 
-	if (bolaWindGen_ != nullptr && bolaExpGen_!=nullptr) {
+	if (bolaExpGen_!=nullptr) {
 		if (agitaBola_) {
-			bolaWindGen_->deactivate();
 			bolaExpGen_->deactivate();
 			agitaBola_ = false;
 		}
 		else {
-			bolaWindGen_->activate();
 			bolaExpGen_->activate();
 			agitaBola_ = true;
 		}

@@ -13,7 +13,7 @@ BolaNieve::BolaNieve(Vector3 meanPos, Vector3 meanVel, Vector3 meanAcc, Vector3 
 	auto capsObj = CreateShape(physx::PxSphereGeometry(radius));
 	esfera_ = new Particle({ meanPos.x,meanPos.y,meanPos.z }, { 0,0,0 }, { 0,0,0 }, 0, -1, capsObj, { 0.69, 0.84, 0.98, 0.6 }, 1);
 
-	force_ = new WindForceGenerator(-1, 0, { -8.5,-8,8 }, { meanPos.x,meanPos.y,meanPos.z }, 1);
+	//force_ = new WindForceGenerator(-1, 0, { -8.5,-8,8 }, { meanPos.x,meanPos.y,meanPos.z }, 1);
 	forceExplosion_ = new ExplosionForceGenerator(20, 10, 10000, Vector3(meanPos.x,meanPos.y,meanPos.z));
 
 }
